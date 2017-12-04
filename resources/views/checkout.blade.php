@@ -340,7 +340,7 @@
                                             <div class="col-md-8 col-md-offset-2">
                                                 <input type="hidden" name="email" value="grantfayrouz101@gmail.com"> {{-- required --}}
                                                 <input type="hidden" name="orderID" value="345">
-                                                <input type="hidden" name="amount" value="<% cart.total_price %>"> {{-- required in kobo --}}
+                                                <input type="hidden" name="amount" value="<% cart.total_price %>.00"> {{-- required in kobo --}}
                                                 <input type="hidden" name="quantity" value="<% cart.data.length %>">
                                                 <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
                                                 <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> {{-- required --}}
