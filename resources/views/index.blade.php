@@ -108,7 +108,7 @@
                                 <h2 data-ng-bind="product.brand"></h2>
 
                                 <p data-ng-bind="product.description"></p>
-                                <button type="button" class="btn btn-default get">Get it now</button>
+                                <button type="button" class="btn btn-default get" data-ng-click="addToCart(product)">Get it now</button>
                             </div>
                             <div class="col-sm-6">
                                 <img data-ng-src="<%product.image_location%>" style="height: 100%;"
