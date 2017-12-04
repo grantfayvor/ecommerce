@@ -50,6 +50,10 @@ Route::get('/home', function () {
     return redirect()->to('/');
 });
 
+Route::get('/payment/success', function () {
+    return view('payment-success');
+});
+
 // Route::middleware('auth:admin')->get('/admin/dashboard', function(){ return view('admin/dashboard');});
 
 Auth::routes();
