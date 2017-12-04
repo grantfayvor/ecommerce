@@ -13,10 +13,11 @@ class PaymentController extends Controller
         return Paystack::getAuthorizationUrl()->redirectNow();
     }
 
-    public function handleGatewayCallback()
+    public function handleGatewayCallback(Request $request)
     {
         $paymentDetails = Paystack::getPaymentData();
 //        dd($paymentDetails);
+        $request->session()->forget('cart');
         return redirect()->to('/payment/success');
     }
 }
