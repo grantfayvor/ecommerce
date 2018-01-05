@@ -52,6 +52,7 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
         console.log(details);
         CartService.updateProductInCart(details, function(response){
             $scope.getCartCount();
+            $scope.cart.total_price = response.data.total_price;
             console.log("product in cart has been updated");
             console.log(response.data);
         }, function(response){
