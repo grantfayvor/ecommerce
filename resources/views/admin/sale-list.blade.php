@@ -321,7 +321,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <th>Actions</th>
                                     </thead>
                                     <tbody>
-                                        <tr class="unread checked" data-ng-repeat="sale in sales | filter: search">
+                                        <tr class="unread checked" data-ng-repeat="sale in sales.data | filter: search">
                                             <td class="hidden-xs">
                                                 <input type="checkbox" class="checkbox">
                                             </td>
@@ -341,9 +341,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <span data-ng-bind="sale.amount_paid"></span>
                                             </td>
                                             <td>
-                                                <a href="javascript:void(0)" data-ng-click="showEditPage(sale)">
-                                                    <span class="fa fa-pencil"></span> Edit</a>
-                                                <a href="javascript:void(0)" data-ng-click="deleteSale(sale.id)">
+                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteSale(sale.id)">
                                                     <span class="fa fa-trash"></span> Delete</a>
                                             </td>
                                         </tr>
@@ -351,6 +349,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </table>
                             </div>
                         </div>
+                        <div class="text-center" data-ng-show="sales.next_page_url || sales.prev_page_url">
+                                <ul class="pagination" style="background-color:white!important;">
+                                    <li>
+                                        <a href="javascript:void(0)" data-ng-click="previousPage(sales.prev_page_url)">Previous</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" data-ng-click="nextPage(sales.next_page_url)">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
@@ -359,8 +367,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--inner block end here-->
             <!--copy rights start here-->
             <div class="copyrights">
-                <p>© 2016 Shoppy. All Rights Reserved | Design by
-                    <a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+                <p>© <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
                 </p>
             </div>
             <!--COPY rights end here-->

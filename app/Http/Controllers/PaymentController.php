@@ -25,7 +25,7 @@ class PaymentController extends Controller
         $paymentDetails = Paystack::getPaymentData();
 //        dd($paymentDetails);
         if($paymentDetails['status']){
-            $cart = $this->cartService->getCart();
+            $cart = base64_encode(serialize($this->cartService->getCart()));
             $cartPrice = $this->cartService->getCartSubtotal();
             $quantity = $this->cartService->getCountOfItems();
             $transactionId = $paymentDetails['data']['id'];

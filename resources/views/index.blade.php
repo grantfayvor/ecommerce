@@ -15,6 +15,8 @@
     <link href="/css/animate.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
     <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/pace.css" rel="stylesheet">
+    <script src="/js/pace.min.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -191,7 +193,6 @@
                                                 <div class="productinfo text-center">
                                                     <a href="javascript:void(0)" data-ng-click="productInfo(product)">
                                                         <img data-ng-src="<%product.image_location%>" alt="product image" style="height:200px;" />
-
                                                         <h2>₦
                                                             <span data-ng-bind="product.selling_price"></span>
                                                         </h2>
@@ -214,15 +215,7 @@
 
                 </div>
                 <div class="col-sm-12 padding-right" data-ng-show="page == 'product-details'">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="javascript:void(0)" data-ng-click="page = 'products'">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" data-ng-bind="currentProduct.name">
-                            </li>
-                        </ol>
-                    </nav>
+
                     <div class="breadcrumbs">
                         <ol class="breadcrumb">
                             <li>
@@ -262,6 +255,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" data-ng-click="page = 'products'">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" data-ng-bind="currentProduct.name">
+                            </li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -434,7 +437,8 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row" style="text-align: center;">
-                    <p class="pull-left">Copyright © 2017
+                    <p class="pull-left">Copyright ©
+                        <?php echo date("Y"); ?>
                         <a href="afiammuta.com">Afiammuta.com</a> All rights reserved.</p>
                 </div>
             </div>

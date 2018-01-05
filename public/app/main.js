@@ -1,4 +1,5 @@
-app.controller("MainController", ['$rootScope', '$scope', 'MainService', function ($rootScope, $scope, MainService) {
+app.controller("MainController", ['$rootScope', '$scope', 'MainService', 
+function ($rootScope, $scope, MainService) {
 
     $scope.products = [];
     $scope.hotProducts = [];
@@ -40,6 +41,7 @@ app.controller("MainController", ['$rootScope', '$scope', 'MainService', functio
     };
 
     $scope.getAllCards = function () {
+        Pace.restart();
         MainService.findAllCards(function (response) {
             $scope.products = response.data;
         }, function (response) {
@@ -48,6 +50,7 @@ app.controller("MainController", ['$rootScope', '$scope', 'MainService', functio
     };
 
     $scope.getAllCharts = function () {
+        Pace.restart();
         MainService.findAllCharts(function (response) {
             $scope.products = response.data;
         }, function (response) {
@@ -56,6 +59,7 @@ app.controller("MainController", ['$rootScope', '$scope', 'MainService', functio
     };
 
     $scope.getAllLearningAids = function () {
+        Pace.restart();
         MainService.findAllLearningAids(function (response) {
             $scope.products = response.data;
         }, function (response) {
@@ -80,7 +84,7 @@ app.controller("MainController", ['$rootScope', '$scope', 'MainService', functio
     };
 
     $scope.addToCart = function (product) {
-        console.log(product);
+        Pace.restart();
         var selectedProduct = {};
         selectedProduct.details = {
             "id": product.id,
@@ -118,6 +122,7 @@ app.controller("MainController", ['$rootScope', '$scope', 'MainService', functio
     };
 
     $scope.nextPage = function (url) {
+        Pace.restart();
         MainService.nextPage(url, function (response) {
             $scope.products = response.data;
         }, function (response) {
@@ -126,6 +131,7 @@ app.controller("MainController", ['$rootScope', '$scope', 'MainService', functio
     };
 
     $scope.previousPage = function (url) {
+        Pace.restart();
         MainService.previousPage(url, function (response) {
             $scope.products = response.data;
         }, function (response) {
