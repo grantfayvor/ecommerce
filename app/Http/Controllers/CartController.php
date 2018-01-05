@@ -25,8 +25,7 @@ class CartController extends Controller
     {
         $rowId = $request->rowId;
         $quantity = $request->qty;
-        $total = $request->total;
-        return response()->json(['data' => $this->cartService->updateCart($rowId, $quantity, $total)]);
+        return response()->json(['data' => $this->cartService->updateCart($rowId, $quantity)]);
     }
 
     public function getUserCart()

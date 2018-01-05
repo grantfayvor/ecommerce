@@ -38,9 +38,9 @@ class CartService
         return $this->cart->add($productDetails);
     }
 
-    public function updateCart($rowId, $quantity, $total)
+    public function updateCart($rowId, $quantity)
     {
-        return $this->cart->update($rowId, ['qty' => $quantity, 'options' => ['subtotal' => $total]]);
+        return $this->cart->update($rowId, $quantity);
     }
 
     public function getCart()

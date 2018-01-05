@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSalesTable extends Migration
+class CreateSalesRelationship extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateSalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sales', function(Blueprint $table){
-            $table->increments('id');
-            $table->string('payment_id');
-            $table->string('cart_id')->nullable();
+        Schema::table('sales', function(Blueprint $table) {
+            $table->foreign('cart_id')
+                ->references('identifier')
+                ->on('shoppingcart')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

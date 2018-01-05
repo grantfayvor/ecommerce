@@ -83,7 +83,7 @@ Route::get('/api/cart/user', 'CartController@getUserCart');
 Route::put('/api/cart/update', 'CartController@updateCart');
 Route::get('/api/cart/one/{rowId}', 'CartController@getCartItem');
 Route::delete('/api/cart/delete/{rowId}', 'CartController@removeFromCart');
-Route::delete('/api/cart/destroy', 'CartController@destroyCart');
+Route::get('/api/cart/destroy', 'CartController@destroyCart');
 Route::post('/api/cart/save', 'CartController@storeCartData');
 Route::get('/api/cart/restore', 'CartController@restoreCart');
 Route::get('/api/cart/count', 'CartController@getCountOfItems');

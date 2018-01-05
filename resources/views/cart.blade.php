@@ -92,8 +92,8 @@
                                         </li>
                                         <li>
                                             <a href="/cart">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span style="float:left;"> Cart</span>
+                                                <i class="fa fa-shopping-cart" style="float:left;"></i>
+                                                <span style="float:left;"> Cart </span>
                                                 <i style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
                                                     border-radius: 50%;background-color: black;color: white;text-align: center;font-size: 1em;float:right;"
                                                     data-ng-bind="cartCount"></i>
@@ -128,7 +128,10 @@
                     <li class="active">Shopping Cart</li>
                 </ol>
             </div>
-            <div class="table-responsive cart_info">
+            <div class="cart_info alert alert-info" data-ng-if="!cart.data.length">
+                <p>Cart is currently empty!</p>
+            </div>
+            <div class="table-responsive cart_info" data-ng-if="cart.data.length">
                 <table class="table table-condensed">
                     <thead>
                         <tr class="cart_menu">
@@ -144,8 +147,7 @@
                         <tr data-ng-repeat="product in cart.data">
                             <td class="cart_product">
                                 <a href="">
-                                    <img data-ng-src="<%product.options.image_location%>" style="height:40px;width:40px;padding:0px 0px 0px;"
-                                        alt="product image">
+                                    <img data-ng-src="<%product.options.image_location%>" style="height:40px;width:40px;padding:0px 0px 0px;" alt="product image">
                                 </a>
                             </td>
                             <td class="cart_description">
@@ -154,7 +156,9 @@
                                         <span data-ng-bind="product.name"></span>
                                     </a>
                                 </h4>
-                                <p>Web ID: 1089772</p>
+                                <p>
+                                    <!-- Web ID: 1089772 -->
+                                </p>
                             </td>
                             <td class="cart_price">
                                 <p>₦
@@ -163,11 +167,8 @@
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                    {{--
-                                    <a onclick="increment()" class="cart_quantity_up" href=""> + </a>--}}
-                                    <input id="quantity_value" class="cart_quantity_input" type="number" name="quantity" value="<% product.qty %>" data-ng-bind="product.qty"
-                                        autocomplete="off" size="2"> {{--
-                                    <a onclick="decrement()" class="cart_quantity_down" href=""> - </a>--}}
+                                    <input id="quantity_value" class="cart_quantity_input" style="width:20%!important" type="number" data-ng-model="productToUpdate.qty"
+                                        name="quantity" value="<% product.qty %>" data-ng-change="updateProductInCart(product.rowId)"> 
                                 </div>
                             </td>
                             <td class="cart_total">
@@ -190,67 +191,8 @@
 
     <section id="do_action">
         <div class="container">
-            <div class="heading">
-                <h3>What would you like to do next?</h3>
-                <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery
-                    cost.</p>
-            </div>
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="chose_area">
-                        <ul class="user_option">
-                            <li>
-                                <input type="checkbox">
-                                <label>Use Coupon Code</label>
-                            </li>
-                            <li>
-                                <input type="checkbox">
-                                <label>Use Gift Voucher</label>
-                            </li>
-                            <li>
-                                <input type="checkbox">
-                                <label>Estimate Shipping & Taxes</label>
-                            </li>
-                        </ul>
-                        <ul class="user_info">
-                            <li class="single_field">
-                                <label>Country:</label>
-                                <select>
-                                    <option>United States</option>
-                                    <option>Bangladesh</option>
-                                    <option>UK</option>
-                                    <option>India</option>
-                                    <option>Pakistan</option>
-                                    <option>Ucrane</option>
-                                    <option>Canada</option>
-                                    <option>Dubai</option>
-                                </select>
-
-                            </li>
-                            <li class="single_field">
-                                <label>Region / State:</label>
-                                <select>
-                                    <option>Select</option>
-                                    <option>Dhaka</option>
-                                    <option>London</option>
-                                    <option>Dillih</option>
-                                    <option>Lahore</option>
-                                    <option>Alaska</option>
-                                    <option>Canada</option>
-                                    <option>Dubai</option>
-                                </select>
-
-                            </li>
-                            <li class="single_field zip-field">
-                                <label>Zip Code:</label>
-                                <input type="text">
-                            </li>
-                        </ul>
-                        <a class="btn btn-default update" href="">Get Quotes</a>
-                        <a class="btn btn-default check_out" href="">Continue</a>
-                    </div>
-                </div>
-                <div class="col-sm-6">
+                <div class="col-sm-6 pull-right">
                     <div class="total_area">
                         <ul>
                             <li>Cart Sub Total
@@ -258,10 +200,10 @@
                                     <span data-ng-bind="cart.total_price"></span>
                                 </span>
                             </li>
-                            <li>Eco Tax
+                            <li>Tax
                                 <span>₦ 0</span>
                             </li>
-                            <li>Shipping Cost
+                            <li>Delivery Cost
                                 <span>₦ 0</span>
                             </li>
                             <li>Total
@@ -295,11 +237,11 @@
                         </div>
                     </div>
                     <div class="col-sm-7">
-                        <div class="col-sm-3">
+                        <div class="col-sm-3" data-ng-repeat="product in hotProducts.data">
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="images/home/iframe1.png" alt="" />
+                                        <img data-ng-src="<% product.image_location %>" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
@@ -308,58 +250,7 @@
 
                                 <p>popular today</p>
 
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="images/home/iframe2.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-
-                                <p>popular today</p>
-
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="images/home/iframe3.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-
-                                <p>popular today</p>
-
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="images/home/iframe4.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-
-                                <p>popular today</p>
-
-                                <h2>24 DEC 2014</h2>
+                                <h2>24 DEC 2017</h2>
                             </div>
                         </div>
                     </div>

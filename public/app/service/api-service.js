@@ -29,8 +29,7 @@ app.service('APIService', ['$http', '$q', function ($http, $q) {
 
     this.put = function (url, data, successHandler, errorHandler) {
         $http.put(url, data)
-            .success(successHandler)
-            .error(errorHandler);
+            .then(successHandler, errorHandler);
     };
 
     this.putWithOptions = function (url, data, headers, successHandler, errorHandler) {

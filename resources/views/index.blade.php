@@ -93,8 +93,8 @@
                                         </li>
                                         <li>
                                             <a href="/cart">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span style="float:left;"> Cart</span>
+                                                <i class="fa fa-shopping-cart" style="float:left;"></i>
+                                                <span style="float:left;"> Cart </span>
                                                 <i style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
                                                     border-radius: 50%;background-color: black;color: white;text-align: center;font-size: 1em;float:right;"
                                                     data-ng-bind="cartCount"></i>
@@ -118,51 +118,6 @@
 
     </header>
     <!--/header-->
-
-    <!-- <section id="slider"> -->
-    <!--slider-->
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#slider-carousel" data-slide-to="<% $index %>"
-                            data-ng-repeat="p in hotProducts.data" data-ng-class="{'active': $first}"></li>
-                    </ol>
-
-                    <div class="carousel-inner">
-                        <div class="item" data-ng-repeat="product in hotProducts.data" data-ng-class="{'active': $first}">
-                            <div class="col-sm-6">
-                                <h1 data-ng-bind="product.name"></h1>
-
-                                <h2 data-ng-bind="product.brand"></h2>
-
-                                <p data-ng-bind="product.description"></p>
-                                <button type="button" class="btn btn-default get" data-ng-click="addToCart(product)">Get it now</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <img data-ng-src="<%product.image_location%>" style="height: 200px;"
-                                     class="girl img-responsive"
-                                     alt=""/>
-                                {{--<img src="../images/home/pricing.png" style="width: 25%; height: 50%;" class="pricing"--}}
-                                     {{--alt=""/>--}}
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section> -->
-    <!--/slider-->
 
     <section>
         <div class="container">
