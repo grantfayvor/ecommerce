@@ -38,6 +38,11 @@ Route::get('/admin/view-products', function () {
 Route::get('/admin/view-products-list', function () {
     return view('admin/product-list', ['username' => Auth::user()->name]);
 });
+
+Route::get('/admin/view-sales-list', function () {
+    return view('admin/sale-list', ['username' => Auth::user()->name]);
+});
+
 Route::get('/', 'MainController@index');
 Route::get('/cart', 'MainController@Cart');
 Route::get('/checkout', 'MainController@checkout');
@@ -91,6 +96,9 @@ Route::get('/api/cart/destroy', 'CartController@destroyCart');
 Route::post('/api/cart/save', 'CartController@storeCartData');
 Route::get('/api/cart/restore', 'CartController@restoreCart');
 Route::get('/api/cart/count', 'CartController@getCountOfItems');
+
+//Sale apis
+Route::get('/api/sales', 'SaleController@getAllSales');
 
 //User apis
 Route::post('/api/user/save', 'UserController@saveUser');
