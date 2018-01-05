@@ -30,7 +30,7 @@ class PaymentController extends Controller
             $quantity = $this->cartService->getCountOfItems();
             $transactionId = $paymentDetails['data']['id'];
             $amountPaid = $paymentDetails['data']['amount'];
-            $customer = $paymentDetails['status']['customer']['email'];
+            $customer = $paymentDetails['data']['customer']['email'];
 
             $sale = [
                 'cart' => $cart,
