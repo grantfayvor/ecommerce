@@ -6,24 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 class Sale extends Model
 {
     protected $guarded = [];
-    
-    private $id;
-    private $product;
+
+    private $cart;
     private $quantity;
     private $profit;
-    private $customerId;
+    private $customer;
 
-    public function __construct($product, $quantity, $profit, $customerId)
+    public function __construct($cart, $quantity, $profit, $customer)
     {
-        $this->product = $product;
+        $this->cart = $cart;
         $this->quantity = $quantity;
         $this->profit = $profit;
-        $this->customerId = $customerId;
+        $this->customer = $customer;
     }
 
-    public function getProduct()
+    public function getCart()
     {
-        return $this->product;
+        return $this->cart;
     }
 
     public function getQuantity()
@@ -36,18 +35,18 @@ class Sale extends Model
         return $this->profit;
     }
 
-    public function getCustomerId()
+    public function getCustomer()
     {
-        return $this->customerId;
+        return $this->customer;
     }
 
     public function getAttributesArray()
     {
         return [
-            'product' => $this->product,
+            'cart' => $this->cart,
             'quantity' => $this->quantity,
             'profit' => $this->profit,
-            'customer_id' => $this->customerId
+            'customer' => $this->customer
         ];
     }
 }

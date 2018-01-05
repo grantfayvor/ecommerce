@@ -25,7 +25,7 @@ class CartController extends Controller
     {
         $rowId = $request->rowId;
         $quantity = $request->qty;
-        return response()->json(['data' => $this->cartService->updateCart($rowId, $quantity)]);
+        return response()->json(['data' => $this->cartService->updateCart($rowId, $quantity), 'total_price' => $this->cartService->getCartSubtotal()]);
     }
 
     public function getUserCart()
@@ -41,7 +41,7 @@ class CartController extends Controller
     public function removeFromCart($rowId)
     {
         $this->cartService->removeCartItem($rowId);
-        return response()->json(['data' => $this->cartService->getCart(), 'total_price' => $this->cartService->getCartTotal()]);
+        return response()->json(['data' => $this->cartService->getCart(), 'total_price' => $this->cartService->getCartSubtotal()]);
     }
 
     public function destroyCart()

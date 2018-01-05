@@ -123,8 +123,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 padding-right">
-                    <span class="alert alert-success">
-                        Your payment was successful and your purchase would be delivered as soon as possible
+                    <span class="alert alert-danger">
+                        Sorry, your payment was not be completed.
                     </span>
                 </div>
             </div>

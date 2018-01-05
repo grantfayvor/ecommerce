@@ -14,11 +14,11 @@ class CreateSalesRelationship extends Migration
     public function up()
     {
         Schema::table('sales', function(Blueprint $table) {
-            $table->foreign('cart_id')
-                ->references('identifier')
-                ->on('shoppingcart')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+//            $table->foreign('cart_id')
+//                ->references('identifier')
+//                ->on('shoppingcart')
+//                ->onUpdate('cascade')
+//                ->onDelete('cascade');
         });
     }
 

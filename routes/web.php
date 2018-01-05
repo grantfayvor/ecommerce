@@ -51,7 +51,11 @@ Route::get('/home', function () {
 });
 
 Route::get('/payment/success', function () {
-    return view('payment-success');
+    return view('payment-success', ['username' => Auth::user()->name]);
+});
+
+Route::get('/payment/failure', function () {
+    return view('payment-failure', ['username' => Auth::user()->name]);
 });
 
 // Route::middleware('auth:admin')->get('/admin/dashboard', function(){ return view('admin/dashboard');});
