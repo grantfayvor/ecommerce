@@ -70,7 +70,7 @@ class CartService
 
     public function getCartTotal()
     {
-        return $this->cart->subtotal();
+        return $this->cart->total();
     }
 
     public function getCartSubtotal()

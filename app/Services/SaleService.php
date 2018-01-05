@@ -20,14 +20,9 @@ class SaleService
         return $this->repository->findAll();
     }
 
-    public function addSale(Request $request)
+    public function addSale($saleDetails)
     {
-        $product = $request->product;
-        $quantity = $request->quantity;
-        $profit = $request->profit;
-        $customerId = $request->user()->id;
-        $sale = new Sale($product, $quantity, $profit, $customerId);
-        return $this->repository->save($sale->getAttributesArray());
+        return $this->repository->save($saleDetails);
     }
 
     public function searchByParam($param)

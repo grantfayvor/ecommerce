@@ -15,8 +15,13 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function(Blueprint $table){
             $table->increments('id');
+            $table->longText('cart');
+            $table->string('cart_price');
+            $table->string('quantity');
             $table->string('payment_id');
-            $table->string('cart_id')->nullable();
+            $table->string('amount_paid');
+            $table->string('profit');
+            $table->string('customer');
         });
     }
 
