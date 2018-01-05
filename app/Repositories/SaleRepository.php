@@ -8,7 +8,9 @@ class SaleRepository extends AbstractRepository
 
     protected $model;
 
-    public function __construct() {}
+    public function __construct(Sale $sale) {
+        $this->model = $sale;
+    }
 
     public function search($param)
     {
