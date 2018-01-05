@@ -3,16 +3,20 @@ app.controller("MainController", ['$rootScope', '$scope', 'MainService', functio
     $scope.products = [];
     $scope.hotProducts = [];
     $scope.show = false;
+    $scope.page = 'products';
+    $scope.cartCount = 0;
 
     $scope.initialize = function () {
         $scope.getHotProducts();
-        $scope.getAllPhones();
+        $scope.getCartCount();
+        $scope.getAllBooks();
         $scope.getRecommendedProducts();
     };
 
     $scope.getHotProducts = function () {
         MainService.getHotProducts(function (response) {
             $scope.hotProducts = response.data;
+            $scope.hotProducts.data = shuffle($scope.hotProducts.data);
         }, function () {
             console.log("error in getting hot products");
         });
@@ -21,24 +25,41 @@ app.controller("MainController", ['$rootScope', '$scope', 'MainService', functio
     $scope.getRecommendedProducts = function () {
         MainService.getRecommendedProducts(function (response) {
             $scope.recommendedProducts = response.data;
+            $scope.recommendedProducts.data = shuffle($scope.recommendedProducts.data);
         }, function (response) {
             console.log("error in getting recommended products");
         });
     };
 
-    $scope.getAllPhones = function () {
-        MainService.findAllPhones(function (response) {
+    $scope.getAllBooks = function () {
+        MainService.findAllBooks(function (response) {
             $scope.products = response.data;
         }, function (response) {
-            console.log("error in fetching phones");
+            console.log("error in fetching books");
         });
     };
 
-    $scope.getAllLaptops = function () {
-        MainService.findAllLaptops(function (response) {
+    $scope.getAllCards = function () {
+        MainService.findAllCards(function (response) {
             $scope.products = response.data;
         }, function (response) {
-            console.log("error in fetching laptops");
+            console.log("error in fetching cards");
+        });
+    };
+
+    $scope.getAllCharts = function () {
+        MainService.findAllCharts(function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error in fetching charts");
+        });
+    };
+
+    $scope.getAllLearningAids = function () {
+        MainService.findAllLearningAids(function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error in fetching learning aids");
         });
     };
 
@@ -46,15 +67,33 @@ app.controller("MainController", ['$rootScope', '$scope', 'MainService', functio
         MainService.getAllProducts(function (response) {
             $scope.products = response.data;
         }, function (response, status) {
-            console.log("an error occured while fetching the list of products");
+            console.log("an error occurred while fetching the list of products");
+        });
+    };
+
+    $scope.getCartCount = function () {
+        MainService.getCartCount(function(response){
+            $scope.cartCount = response.data;
+        }, function(response) {
+            console.log("error occured while getting count of the cart");
         });
     };
 
     $scope.addToCart = function (product) {
-        var selectedProduct = {
-            "product": product
+        console.log(product);
+        var selectedProduct = {};
+        selectedProduct.details = {
+            "id": product.id,
+            "name": product.name,
+            "qty": 1,
+            "price": product.selling_price
+        };
+        selectedProduct.details.options = {
+            "image_location": product.image_location,
+            "subtotal": selectedProduct.details.price * selectedProduct.details.qty
         };
         MainService.addToCart(selectedProduct, function (response) {
+            $scope.getCartCount();
             $('#cartModal').modal('show');
             console.log("product has been added to cart");
         }, function (response, status) {
@@ -62,16 +101,56 @@ app.controller("MainController", ['$rootScope', '$scope', 'MainService', functio
         });
     };
 
+    $scope.productInfo = function (product) {
+        $scope.currentProduct = product;
+        $scope.page = 'product-details';
+    };
+
     $scope.addItemClass = function (index) {
         if (index == 2) {
             //$('#hot').addClass('active');
-            setTimeout(function() {
+            setTimeout(function () {
                 document.getElementById('hot').classList.add('active');
                 $scope.show = true;
             }, 100);
         }
         return index;
     };
+
+    $scope.nextPage = function (url) {
+        MainService.nextPage(url, function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error occured while getting next page");
+        });
+    };
+
+    $scope.previousPage = function (url) {
+        MainService.previousPage(url, function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error occured while getting previous page");
+        });
+    };
+
+    var shuffle = function (array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
 
 }]);
 
@@ -95,15 +174,35 @@ app.service("MainService", ['APIService', function (APIService) {
         APIService.post("/api/product/save", productDetails, successHandler, errorHandler);
     };
 
-    this.findAllPhones = function (successHandler, errorHandler) {
+    this.findAllBooks = function (successHandler, errorHandler) {
         APIService.get('/api/products/find?q=1', successHandler, errorHandler);
     };
 
-    this.findAllLaptops = function (successHandler, errorHandler) {
+    this.findAllCards = function (successHandler, errorHandler) {
         APIService.get('/api/products/find?q=2', successHandler, errorHandler);
     };
 
+    this.findAllCharts = function (successHandler, errorHandler) {
+        APIService.get('/api/products/find?q=3', successHandler, errorHandler);
+    };
+
+    this.findAllLearningAids = function (successHandler, errorHandler) {
+        APIService.get('/api/products/find?q=4', successHandler, errorHandler);
+    };
+
     this.addToCart = function (selectedProduct, successHandler, errorHandler) {
-        APIService.post("/api/cart/put{" + selectedProduct.product.id + "}", selectedProduct, successHandler, errorHandler);
+        APIService.post("/api/cart/add", selectedProduct, successHandler, errorHandler);
+    };
+
+    this.getCartCount = function (successHandler, errorHandler) {
+        APIService.get('/api/cart/count', successHandler, errorHandler);
+    };
+
+    this.nextPage = function (url, successHandler, errorHandler) {
+        APIService.get(url, successHandler, errorHandler);
+    };
+
+    this.previousPage = function (url, successHandler, errorHandler) {
+        APIService.get(url, successHandler, errorHandler);
     };
 }]);

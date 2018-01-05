@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Login | GlowBrace</title>
+	<title>Login | Afiammuta</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/prettyPhoto.css" rel="stylesheet">
@@ -26,63 +26,65 @@
 </head>
 <!--/head-->
 
-<body data-ng-controller="UserController">
+<body data-ng-controller="UserController" data-ng-cloak>
 	<header id="header">
 		<!--header-->
-		<div class="header_top">
-			<!--header_top-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="contactinfo">
-							<ul class="nav nav-pills">
-								<li><a href=""><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href=""><i class="fa fa-envelope"></i> info@domain.com</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-facebook"></i></a></li>
-								<li><a href=""><i class="fa fa-twitter"></i></a></li>
-								<li><a href=""><i class="fa fa-linkedin"></i></a></li>
-								<li><a href=""><i class="fa fa-dribbble"></i></a></li>
-								<li><a href=""><i class="fa fa-google-plus"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--/header_top-->
 
-		<div class="header-middle">
-			<!--header-middle-->
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4">
-						<div class="logo pull-left">
-							<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
-						</div>
-							<div class="search_box pull-right">
-								<input type="text" placeholder="Search" />
-							</div>
-					</div>
-					<div class="col-sm-8">
-						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href=""><i class="fa fa-user"></i> Account</a></li>
-								<li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html" class="active"><i class="fa fa-lock"></i> Login</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <!--<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">-->
+        <nav class="navbar navbar-custom" role="navigation">
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="btn btn-navbar navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#app-navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="header-middle" style="background-color: white;">
+                <!--header-middle-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="logo pull-left">
+                                <!-- TODO change logo to company logo-->
+                                <a href="/"><img src="images/home/logo.png" alt="Afiammuta"/></a>
+                            </div>
+                            <div class="btn-group pull-right">
+                                <div class="search_box pull-right">
+                                    <input type="text" placeholder="Search"/>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="shop-menu pull-right">
+                                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                                    <ul class="nav navbar-nav">
+                                        <li class="dropdown"><a href="#"><i class="fa fa-user"></i> Account <i
+                                                        class="fa fa-angle-down"></i></a>
+                                            <ul role="menu" class="sub-menu">
+                                                <li><a href="/login" style="background-color: inherit!important;"><i
+                                                                class="fa fa-sign-in"></i> Sign in</a></li>
+                                                <li><a href="/register" style="background-color: inherit!important;"><i
+                                                                class="fa fa-user"></i> Create Account</a></li>
+                                            </ul>
+                                        </li>
+                                        <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
+                                        <li><a href="/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                                        <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                        <li><a href="/logout"><i class="fa fa-power-off"></i> Sign out</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/header-middle-->
+
+
+        </nav>
 		<!--/header-middle-->
 	</header>
 	<!--/header-->
@@ -139,7 +141,7 @@
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="companyinfo">
-							<h2><span>e</span>-shop</h2>
+							<h2><span>Afiammuta</span></h2>
 							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
 						</div>
 					</div>
@@ -255,7 +257,7 @@
 					</div>
 					<div class="col-sm-2">
 						<div class="single-widget">
-							<h2>About Shopper</h2>
+							<h2>About Afiammuta</h2>
 							<ul class="nav nav-pills nav-stacked">
 								<li><a href="">Company Information</a></li>
 								<li><a href="">Careers</a></li>
@@ -267,7 +269,7 @@
 					</div>
 					<div class="col-sm-3 col-sm-offset-1">
 						<div class="single-widget">
-							<h2>About Shopper</h2>
+							<h2>About Afiammuta</h2>
 							<form action="#" class="searchform">
 								<input type="text" placeholder="Your email address" />
 								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
@@ -283,7 +285,7 @@
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2017 GlowBrace Inc. All rights reserved.</p>
+                    <p class="pull-left">Copyright © 2017 <a href="afiammuta.com">Afiammuta.com</a>  All rights reserved.</p>
 				</div>
 			</div>
 		</div>

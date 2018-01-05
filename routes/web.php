@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 //View urls
 /*Route::get('/admin/dashboard', ['middleware' => ['auth', 'admin'], function () {
     return view('admin/dashboard');
@@ -25,22 +27,20 @@ Route::get('/admin/view-products-list', ['middleware' => ['auth', 'admin'], func
     return view('admin/product-list');
 }]);*/
 Route::get('/admin/dashboard', function () {
-    return view('admin/dashboard');
+    return view('admin/dashboard', ['username' => Auth::user()->name]);
 })->name('admin');
 Route::get('/admin/add-product', function () {
-    return view('admin/add-product');
+    return view('admin/add-product', ['username' => Auth::user()->name]);
 });
 Route::get('/admin/view-products', function () {
-    return view('admin/product');
+    return view('admin/product', ['username' => Auth::user()->name]);
 });
 Route::get('/admin/view-products-list', function () {
-    return view('admin/product-list');
+    return view('admin/product-list', ['username' => Auth::user()->name]);
 });
 Route::get('/', 'MainController@index');
 Route::get('/cart', 'MainController@Cart');
-Route::get('/checkout', function () {
-    return view('checkout');
-});
+Route::get('/checkout', 'MainController@checkout');
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login');
@@ -63,15 +63,30 @@ Auth::routes();
 //Product apis
 Route::get('/api/products', 'ProductController@findAllProducts');
 Route::post('/api/product/save', 'ProductController@saveProduct');
-Route::put('/api/product/update/{id}', 'ProductController@updateProduct');
+Route::post('/api/product/update', 'ProductController@updateProduct');
 Route::get('/api/product/find/{param}', 'ProductController@search');
-Route::post('/api/cart/put{id}', 'ProductController@addToCart');
-Route::get('/api/cart/user', 'ProductController@getUserCart');
 Route::delete('/api/cart/remove/{id}', 'ProductController@removeFromCart');
 Route::get('/api/products/count', 'ProductController@countProducts');
 Route::get('/api/product/delete/{id}', 'ProductController@deleteProduct');
 Route::get('/api/products/status/{status}', 'ProductController@findProductsByStatus');
 Route::get('/api/products/find', 'ProductController@findProductsByCategory');
+
+Route::get('/product/image', function(Request $request) {
+    $imageLocation = $request->location;
+//    return response()->file(Storage::disk('product')->get($imageLocation));
+     return response()->file($imageLocation);
+});
+
+//Cart apis
+Route::post('/api/cart/add', 'CartController@addToCart');
+Route::get('/api/cart/user', 'CartController@getUserCart');
+Route::put('/api/cart/update', 'CartController@updateCart');
+Route::get('/api/cart/one/{rowId}', 'CartController@getCartItem');
+Route::delete('/api/cart/delete/{rowId}', 'CartController@removeFromCart');
+Route::delete('/api/cart/destroy', 'CartController@destroyCart');
+Route::post('/api/cart/save', 'CartController@storeCartData');
+Route::get('/api/cart/restore', 'CartController@restoreCart');
+Route::get('/api/cart/count', 'CartController@getCountOfItems');
 
 //User apis
 Route::post('/api/user/save', 'UserController@saveUser');

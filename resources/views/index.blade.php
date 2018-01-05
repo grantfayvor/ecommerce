@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="images/favicon.ico"/>
-    <title>E-commerce</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <title>Afiammuta</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/prettyPhoto.css" rel="stylesheet">
@@ -27,81 +27,111 @@
 </head>
 <!--/head-->
 
-<body data-ng-controller="MainController">
-<header id="header">
-    <!--header-->
+<body data-ng-controller="MainController" data-ng-cloak>
+    <header id="header" data-ng-init="initialize()">
+        <!--header-->
 
-    <!--<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">-->
-    <nav class="navbar navbar-custom" role="navigation">
-        <!-- Collapsed Hamburger -->
-        <button type="button" class="btn btn-navbar navbar-toggle collapsed" data-toggle="collapse"
-                data-target="#app-navbar-collapse">
-            <span class="sr-only">Toggle Navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+        <!--<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">-->
+        <nav class="navbar navbar-custom" role="navigation">
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="btn btn-navbar navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-        <div class="header-middle" style="background-color: white;">
-            <!--header-middle-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="logo pull-left">
-                            <a href="/"><img src="images/home/logo.png" alt="e-shopper logo"/></a>
-                        </div>
-                        <div class="btn-group pull-right">
-                            <div class="search_box pull-right">
-                                <input type="text" placeholder="Search"/>
+            <div class="header-middle" style="background-color: white;">
+                <!--header-middle-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="logo pull-left">
+                                <!-- TODO change logo to company logo-->
+                                <a href="/">
+                                    <img src="images/home/logo.png" alt="Afiammuta" />
+                                </a>
                             </div>
-                        </div>
+                            <div class="btn-group pull-right">
+                                <div class="search_box pull-right">
+                                    <input type="text" placeholder="Search" />
+                                </div>
+                            </div>
 
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="shop-menu pull-right">
-                            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                                <ul class="nav navbar-nav">
-                                    <li class="dropdown"><a href="#"><i class="fa fa-user"></i> Account <i
-                                                    class="fa fa-angle-down"></i></a>
-                                        <ul role="menu" class="sub-menu">
-                                            <li><a href="/login" style="background-color: inherit!important;"><i
-                                                            class="fa fa-sign-in"></i> Sign in</a></li>
-                                            <li><a href="/register" style="background-color: inherit!important;"><i
-                                                            class="fa fa-user"></i> Create Account</a></li>
-                                        </ul>
-                                    </li>
-                                    <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
-                                    <li><a href="/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                    <li><a href="/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                    <li><a href="/logout"><i class="fa fa-power-off"></i> Sign out</a></li>
-                                </ul>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="shop-menu pull-right">
+                                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                                    <ul class="nav navbar-nav">
+                                        @if(!$username)
+                                        <li class="dropdown">
+                                            <a href="#">
+                                                <i class="fa fa-user"></i> Account
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul role="menu" class="sub-menu">
+                                                <li>
+                                                    <a href="/login" style="background-color: inherit!important;">
+                                                        <i class="fa fa-sign-in"></i> Sign in</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/register" style="background-color: inherit!important;">
+                                                        <i class="fa fa-user"></i> Create Account</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        @endif @if($username)
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-user"></i> {{ $username }}</a>
+                                        </li>
+                                        @endif
+                                        <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
+                                        <li>
+                                            <a href="/checkout">
+                                                <i class="fa fa-crosshairs"></i> Checkout</a>
+                                        </li>
+                                        <li>
+                                            <a href="/cart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                <span style="float:left;"> Cart</span>
+                                                <i style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
+                                                    border-radius: 50%;background-color: black;color: white;text-align: center;font-size: 1em;float:right;"
+                                                    data-ng-bind="cartCount"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/logout">
+                                                <i class="fa fa-power-off"></i> Sign out</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--/header-middle-->
+            <!--/header-middle-->
 
 
-    </nav>
+        </nav>
 
-</header>
-<!--/header-->
+    </header>
+    <!--/header-->
 
-<section id="slider" data-ng-init="initialize()">
+    <!-- <section id="slider"> -->
     <!--slider-->
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div id="slider-carousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#slider-carousel" data-slide-to="<% $index %>"
-                            data-ng-repeat="p in hotProducts" data-ng-class="{'active': $first}"></li>
+                            data-ng-repeat="p in hotProducts.data" data-ng-class="{'active': $first}"></li>
                     </ol>
 
                     <div class="carousel-inner">
-                        <div class="item" data-ng-repeat="product in hotProducts" data-ng-class="{'active': $first}">
+                        <div class="item" data-ng-repeat="product in hotProducts.data" data-ng-class="{'active': $first}">
                             <div class="col-sm-6">
                                 <h1 data-ng-bind="product.name"></h1>
 
@@ -111,11 +141,11 @@
                                 <button type="button" class="btn btn-default get" data-ng-click="addToCart(product)">Get it now</button>
                             </div>
                             <div class="col-sm-6">
-                                <img data-ng-src="<%product.image_location%>" style="height: 100%;"
+                                <img data-ng-src="<%product.image_location%>" style="height: 200px;"
                                      class="girl img-responsive"
                                      alt=""/>
-                                <img src="../images/home/pricing.png" style="width: 25%; height: 50%;" class="pricing"
-                                     alt=""/>
+                                {{--<img src="../images/home/pricing.png" style="width: 25%; height: 50%;" class="pricing"--}}
+                                     {{--alt=""/>--}}
                             </div>
                         </div>
                     </div>
@@ -131,70 +161,48 @@
             </div>
         </div>
     </div>
-</section>
-<!--/slider-->
+</section> -->
+    <!--/slider-->
 
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 padding-right">
-                <div class="category-tab">
-                    <!--category-tab-->
-                    <div class="col-sm-12">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="javascript:void(0)" data-ng-click="getAllPhones()"
-                                                  data-toggle="tab">Phones</a></li>
-                            <li><a href="javascript:void(0)" data-ng-click="getAllLaptops()"
-                                   data-toggle="tab">Laptops</a></li>
-                        </ul>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane fade active in" id="tshirt">
-                            <div class="col-sm-3" data-ng-repeat="product in products">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img data-ng-src="<%product.image_location%>" alt="product image"
-                                                 style="height:200px;"/>
-
-                                            <h2>₦ <span data-ng-bind="product.selling_price"></span></h2>
-
-                                            <p data-ng-bind="product.name"></p>
-                                            <a href="javascript:void(0)" data-ng-click="addToCart(product)"
-                                               class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
-                                                to cart</a>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 padding-right" data-ng-show="page != 'product-details'">
+                    <div class="category-tab">
+                        <!--category-tab-->
+                        <div class="col-sm-12">
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="javascript:void(0)" data-ng-click="getAllBooks()" data-toggle="tab">Books</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-ng-click="getAllCards()" data-toggle="tab">Cards</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-ng-click="getAllCharts()" data-toggle="tab">Charts</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-ng-click="getAllLearningAids()" data-toggle="tab">Learning Aids</a>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
-                </div>
-                <!--/category-tab-->
-
-                <div class="recommended_items">
-                    <!--recommended_items-->
-                    <h2 class="title text-center">recommended items</h2>
-
-                    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="item" data-ng-repeat="product in recommendedProducts"
-                                 data-ng-class="{'active': $index < 4}">
-                                <div class="col-sm-3">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="tshirt">
+                                <div class="col-sm-3" data-ng-repeat="product in products.data">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <img data-ng-src="<%product.image_location%>" alt="product image"
-                                                     style="height:200px;"/>
+                                                <a href="javascript:void(0)" data-ng-click="productInfo(product)">
+                                                    <img data-ng-src="<%product.image_location%>" alt="product image" style="height:200px;" />
 
-                                                <h2>₦ <span data-ng-bind="product.selling_price"></span></h2>
+                                                    <h2>₦
+                                                        <span data-ng-bind="product.selling_price"></span>
+                                                    </h2>
 
-                                                <p data-ng-bind="product.name"></p>
-                                                <a href="javascript:void(0)" data-ng-click="addToCart(product)"
-                                                   class="btn btn-default add-to-cart"><i
-                                                            class="fa fa-shopping-cart"></i>Add
-                                                    to cart</a>
+                                                    <p data-ng-bind="product.name"></p>
+                                                </a>
+                                                <a href="javascript:void(0)" data-ng-click="addToCart(product)" class="btn btn-default add-to-cart">
+                                                    <i class="fa fa-shopping-cart"></i>Add to cart</a>
                                             </div>
 
                                         </div>
@@ -202,219 +210,313 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                            <i class="fa fa-angle-left"></i>
-                        </a>
-                        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                            <i class="fa fa-angle-right"></i>
-                        </a>
+                    </div>
+                    <div class="text-center" data-ng-show="products.next_page_url || products.prev_page_url">
+                        <ul class="pagination" style="background-color:white!important;">
+                            <li>
+                                <a href="javascript:void(0)" data-ng-click="previousPage(products.prev_page_url)">Previous</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" data-ng-click="nextPage(products.next_page_url)">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/category-tab-->
+
+                    <div class="recommended_items">
+                        <!--recommended_items-->
+                        <h2 class="title text-center">recommended items</h2>
+
+                        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div id="<% $index %>" class="item" data-ng-repeat="product in recommendedProducts.data" data-ng-class="{'active': $index < 4}">
+                                    <div class="col-sm-3">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo text-center">
+                                                    <a href="javascript:void(0)" data-ng-click="productInfo(product)">
+                                                        <img data-ng-src="<%product.image_location%>" alt="product image" style="height:200px;" />
+
+                                                        <h2>₦
+                                                            <span data-ng-bind="product.selling_price"></span>
+                                                        </h2>
+
+                                                        <p data-ng-bind="product.name"></p>
+                                                    </a>
+                                                    <a href="javascript:void(0)" data-ng-click="addToCart(product)" class="btn btn-default add-to-cart">
+                                                        <i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/recommended_items-->
+
+                </div>
+                <div class="col-sm-12 padding-right" data-ng-show="page == 'product-details'">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="javascript:void(0)" data-ng-click="page = 'products'">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" data-ng-bind="currentProduct.name">
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="javascript:void(0)" data-ng-click="page = 'products'">Home</a>
+                            </li>
+                            <li class="active" data-ng-bind="currentProduct.name"></li>
+                        </ol>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="category-tab">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="product-details">
+                                <div class="col-sm-12">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <div class="col-sm-6 col-md-6">
+                                                    <img data-ng-src="<%currentProduct.image_location%>" alt="product image" style="height:500px;" />
+                                                </div>
+                                                <div class="col-sm-6 col-md-6" style="position: relative;">
+                                                    <p style="position: absolute; top: 50%; transform: translateY(-50%);">
+                                                        <h2>₦
+                                                            <span data-ng-bind="currentProduct.selling_price"></span>
+                                                        </h2>
+
+                                                        <h3 data-ng-bind="currentProduct.name"></h3>
+                                                        <p data-ng-bind="currentProduct.details"></p>
+                                                        <a href="javascript:void(0)" data-ng-click="addToCart(currentProduct)" class="btn btn-default add-to-cart">
+                                                            <i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!--/recommended_items-->
-
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer id="footer">
-    <!--Footer-->
-    <div class="footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="companyinfo">
-                        <h2><span>e</span>-shopper</h2>
+    <footer id="footer">
+        <!--Footer-->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="companyinfo">
+                            <h2>
+                                <span>Afiammuta</span>
+                            </h2>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+                            <p>The number one stop shop for your educational materials</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="col-sm-3" data-ng-repeat="product in hotProducts.data">
+                            <div class="video-gallery text-center">
+                                <a href="#">
+                                    <div class="iframe-img">
+                                        <img data-ng-src="<% product.image_location %>" alt="" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                </a>
+
+                                <p>popular today</p>
+
+                                <h2>24 DEC 2017</h2>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="address text-center">
+                            <img src="images/home/map.png" alt="" />
+
+                            <p>Enugu, Nigeria</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-7">
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="images/home/iframe1.png" alt=""/>
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
+            </div>
+        </div>
 
-                            <p>popular today</p>
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Service</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li>
+                                    <a href="#">Online Help</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Order Status</a>
+                                </li>
+                                <li>
+                                    <a href="#">FAQ’s</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Policies</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li>
+                                    <a href="#">Terms of Use</a>
+                                </li>
+                                <li>
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#">Refund Policy</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>About Afiammuta</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li>
+                                    <a href="#">Company Information</a>
+                                </li>
+                                <li>
+                                    <a href="#">Store Location</a>
+                                </li>
+                                <li>
+                                    <a href="#">Copyright</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <div class="single-widget">
+                            <h2>Contact Afiammuta</h2>
 
-                            <h2>24 DEC 2014</h2>
+                            <form action="#" class="searchform">
+                                <input type="text" placeholder="Your email address" />
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fa fa-arrow-circle-o-right"></i>
+                                </button>
+                                <p>Get the most recent educational materials from
+                                    <br/>from us at Afiammuta...</p>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <div class="social-icons pull-left">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="images/home/iframe2.png" alt=""/>
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-
-                            <p>popular today</p>
-
-                            <h2>24 DEC 2014</h2>
+                </div>
+            </div>
+        </div>
+        <!--modal-->
+        <div id="cartModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">Success</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>The product was successfully added to cart</label>
                         </div>
                     </div>
-
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="images/home/iframe3.png" alt=""/>
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-
-                            <p>popular today</p>
-
-                            <h2>24 DEC 2014</h2>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-3">
-                        <div class="video-gallery text-center">
-                            <a href="#">
-                                <div class="iframe-img">
-                                    <img src="images/home/iframe4.png" alt=""/>
-                                </div>
-                                <div class="overlay-icon">
-                                    <i class="fa fa-play-circle-o"></i>
-                                </div>
-                            </a>
-
-                            <p>popular today</p>
-
-                            <h2>24 DEC 2014</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="address text-center">
-                        <img src="images/home/map.png" alt=""/>
-
-                        <p>Lagos, Nigeria</p>
+                    <div class="modal-footer">
+                        <a href="#" data-dismiss="modal" class="btn btn-info">Ok</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="footer-widget">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="single-widget">
-                        <h2>Service</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Online Help</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Order Status</a></li>
-                            <li><a href="#">Change Location</a></li>
-                            <li><a href="#">FAQ’s</a></li>
-                        </ul>
-                    </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row" style="text-align: center;">
+                    <p class="pull-left">Copyright © 2017
+                        <a href="afiammuta.com">Afiammuta.com</a> All rights reserved.</p>
                 </div>
-                <div class="col-sm-2">
-                    <div class="single-widget">
-                        <h2>Policies</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Terms of Use</a></li>
-                            <li><a href="#">Privecy Policy</a></li>
-                            <li><a href="#">Refund Policy</a></li>
-                            <li><a href="#">Billing System</a></li>
-                            <li><a href="#">Ticket System</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="single-widget">
-                        <h2>About Shopper</h2>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Company Information</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Store Location</a></li>
-                            <li><a href="#">Affillate Program</a></li>
-                            <li><a href="#">Copyright</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-sm-offset-1">
-                    <div class="single-widget">
-                        <h2>About Shopper</h2>
-
-                        <form action="#" class="searchform">
-                            <input type="text" placeholder="Your email address"/>
-                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i>
-                            </button>
-                            <p>Get the most recent updates from <br/>our site and be updated your self...</p>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-sm-offset-1">
-                    <div class="social-icons pull-left">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </div>
-    <!--modal-->
-    <div id="cartModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">Success</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group"><label>The product was successfully added to cart</label></div>
-                </div>
-                <div class="modal-footer"><a href="#" data-dismiss="modal" class="btn btn-info">Ok</a></div>
-            </div>
-        </div>
-    </div>
 
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="row" style="text-align: center;">
-                <p>Copyright © 2013 <a href="#">E-SHOPPER</a> Inc. All rights reserved. <a
-                            href="tel://+2348020188821"><i class="fa fa-phone"></i> +2348020188821</a></p>
-            </div>
-        </div>
-    </div>
+    </footer>
+    <!--/Footer-->
 
-</footer>
-<!--/Footer-->
+    <style>
+        .my-circle {
+            display: block;
+            height: 60px;
+            width: 60px;
+            line-height: 60px;
+
+            -moz-border-radius: 30px;
+            /* or 50% */
+            border-radius: 30px;
+            /* or 50% */
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-size: 2em;
+        }
+    </style>
 
 
-<script src="/js/jquery.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/jquery.scrollUp.min.js"></script>
-<script src="/js/price-range.js"></script>
-<script src="/js/jquery.prettyPhoto.js"></script>
-<script src="/js/main.js"></script>
-<script type="text/javascript" src="/app/angular.js"></script>
-<script type="text/javascript" src="/app/config/config.js"></script>
-<script type="text/javascript" src="/app/service/api-service.js"></script>
-<script type="text/javascript" src="/app/main.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.scrollUp.min.js"></script>
+    <script src="/js/price-range.js"></script>
+    <script src="/js/jquery.prettyPhoto.js"></script>
+    <script src="/js/main.js"></script>
+    <script type="text/javascript" src="/app/angular.js"></script>
+    <script type="text/javascript" src="/app/config/config.js"></script>
+    <script type="text/javascript" src="/app/service/api-service.js"></script>
+    <script type="text/javascript" src="/app/main.js"></script>
 </body>
 
 </html>

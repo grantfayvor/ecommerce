@@ -19,12 +19,55 @@ class CartProductDetails extends Model{
     private $productQuantity;
     private $price;
 
-    public function __construct($productId, $productQuantity, $price)
+    /**
+     * @return array
+     */
+    public function getProductId()
+    {
+        return $this->productId;
+    }
+
+    /**
+     * @param array $productId
+     */
+    public function setProductId($productId)
     {
         $this->productId = $productId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductQuantity()
+    {
+        return $this->productQuantity;
+    }
+
+    /**
+     * @param mixed $productQuantity
+     */
+    public function setProductQuantity($productQuantity)
+    {
         $this->productQuantity = $productQuantity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param mixed $price
+     */
+    public function setPrice($price)
+    {
         $this->price = $price;
     }
+
+
 
     public function products ()
     {

@@ -9,47 +9,87 @@
 namespace App\Services;
 
 
-use App\Models\Cart;
-use App\Models\CartProductDetails;
+//use App\Models\Cart;
+//use App\Models\CartProductDetails;
 use App\Repositories\CartProductDetailsRepository;
 use App\Repositories\CartRepository;
+use Gloudemans\Shoppingcart\Cart as GSCart;
 
 class CartService
 {
 
     private $cartRepository;
     private $productDetailsRepository;
+    private $cart;
 
-    public function __construct(CartRepository $cartRepository, CartProductDetailsRepository $cpdRepository)
+    public function __construct(CartRepository $cartRepository, CartProductDetailsRepository $cpdRepository, GSCart $cart)
     {
         $this->cartRepository = $cartRepository;
         $this->productDetailsRepository = $cpdRepository;
+        $this->cart = $cart;
     }
 
-    public function saveCart($userCart, $userId, $request = null)
+    /**
+     * @param array $productDetails contains id, name, qty, price, options->imageLocation
+     * @return \Gloudemans\Shoppingcart\CartItem
+     */
+    public function addToCart(array $productDetails)
     {
-        $cart = new Cart();
-        $cart->setTotalPrice($userCart['total_price']);
-        $cart->setCustomerId($userId);
-        $productDetails = array();
-        for ($i = 0; $i < count($userCart); $i++) {
-            $product = $userCart[$i]['product'];
-            $cpd = new CartProductDetails($product['id'], $product['product_quantity'], $product['selling_price']);
-            array_push($productDetails, $cpd->getAttributesArray());
-        }
-        try {
-            $productDetails = $this->productDetailsRepository->save($productDetails);
-            $productDetails = $productDetails->pluck('id');
-            $cart->setCartProductDetails($productDetails);
-            $this->cartRepository->save($cart->getAttributesArray());
-            return response()->json(['message' => 'user cart was successfully saved', 200]);
-        } catch(\Exception $e) {
-            return response()->json(['message' => 'the request could not be completed']);
-        }
+        return $this->cart->add($productDetails);
+    }
+
+    public function updateCart($rowId, $quantity, $total)
+    {
+        return $this->cart->update($rowId, ['qty' => $quantity, 'options' => ['subtotal' => $total]]);
     }
 
     public function getCart()
     {
-        return $this->cartRepository->findAll();
+        $cart = $this->cart->content();
+        $result = array();
+        foreach($cart as $c) {
+            array_push($result, $c);
+        }
+        return $result;
+    }
+
+    public function getCartItem($rowId)
+    {
+        return $this->cart->get($rowId);
+    }
+
+    public function removeCartItem($rowId)
+    {
+        $this->cart->remove($rowId);
+    }
+
+    public function destroyCart()
+    {
+        $this->cart->destroy();
+    }
+
+    public function getCartTotal()
+    {
+        return $this->cart->total();
+    }
+
+    public function getCartSubtotal()
+    {
+        return $this->cart->subtotal();
+    }
+
+    public function getCountOfItems()
+    {
+        return $this->cart->count();
+    }
+
+    public function storeCart($username)
+    {
+        $this->cart->store($username);
+    }
+
+    public function restoreCart($username)
+    {
+        $this->cart->restore($username);
     }
 }

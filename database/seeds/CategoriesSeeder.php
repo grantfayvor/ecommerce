@@ -13,10 +13,16 @@ class CategoriesSeeder extends Seeder
     {
         DB::table('categories')->insert([[
             'id' => 1,
-            'name' => 'PHONE'
+            'name' => 'BOOKS'
         ], [
             'id' => 2,
-            'name' => 'LAPTOP'
+            'name' => 'CARDS'
+        ], [
+            'id' => 3,
+            'name' => 'CHARTS'
+        ], [
+            'id' => 4,
+            'name' => 'LEARNING AIDS'
         ]]);
     }
 }

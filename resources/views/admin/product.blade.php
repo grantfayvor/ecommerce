@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html data-ng-app="e-shop">
 <head>
-<title>Shoppy an Admin Panel Category Flat Bootstrap Responsive Website Template | Product :: w3layouts</title>
+<title>Affiamuta | Products</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -33,12 +33,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 							<div class="logo-name">
-									 <a href="index.html"> <h1>Shoppy</h1> 
+									 <a href="/admin/dashboard"> <h1>Affiamuta</h1> 
 									<!--<img id="logo" src="" alt="Logo"/>--> 
 								  </a> 								
 							</div>
 							<!--search-box-->
-								<div class="search-box">
+								<div class="search-box" style="float: right;">
 									<form>
 										<input type="text" placeholder="Search..." required="">	
 										<input type="submit" value="">					
@@ -189,7 +189,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<div class="profile_img">	
 												<span class="prfil-img"><img src="images/p1.png" alt=""> </span> 
 												<div class="user-name">
-													<p>Malorum</p>
+													<p>{{ $username }}</p>
 													<span>Administrator</span>
 												</div>
 												<i class="fa fa-angle-down lnr"></i>
@@ -200,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<ul class="dropdown-menu drp-mnu">
 											<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
 											<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-											<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+											<li> <a href="/logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
 										</ul>
 									</li>
 								</ul>
@@ -235,11 +235,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     	<div class="col-md-3 product-grid" data-ng-repeat="product in products">
     		<div class="product-items">
 	    		    <div class="project-eff">
-						<div id="nivo-lightbox-demo"> <p> <a data-ng-href="../<%product.image_location%>"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>
+						<div id="nivo-lightbox-demo"> <p> <a data-ng-href="/product/image?location=<%product.image_location%>"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"><span class="rollover1"> </span> </a></p></div>
 							<img class="img-responsive" data-ng-src="../<%product.image_location%>" style="height: 200px;" alt="">
 					</div>
 	    		<div class="produ-cost">
-	    			<h4><span data-ng-bind="product.name"></span></h4>
+	    			<h4 style="height: 60px!important;"><span data-ng-bind="product.name"></span></h4>
 	    			<h5>₦ <span data-ng-bind="product.selling_price"></span></h5>
 	    		</div>
     		</div>

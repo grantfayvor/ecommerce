@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html data-ng-app="e-shop">
 
 <head>
-	<title>Shoppy an Admin Panel Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+	<title>Affiamuta | Dashboard</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -112,13 +112,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 						<div class="logo-name">
-							<a href="index.html">
-								<h1>Shoppy</h1>
+							<a href="/admin/dashboard">
+								<h1>Affiamuta</h1>
 								<!--<img id="logo" src="" alt="Logo"/>-->
 							</a>
 						</div>
 						<!--search-box-->
-						<div class="search-box">
+						<div class="search-box" style="float: right;">
 							<form>
 								<input type="text" placeholder="Search..." required="">
 								<input type="submit" value="">
@@ -291,7 +291,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="profile_img">
 											<span class="prfil-img"><img src="images/p1.png" alt=""> </span>
 											<div class="user-name">
-												<p>Malorum</p>
+												<p>{{ $username }}</p>
 												<span>Administrator</span>
 											</div>
 											<i class="fa fa-angle-down lnr"></i>
@@ -302,7 +302,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<ul class="dropdown-menu drp-mnu">
 										<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
 										<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
-										<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+										<li> <a href="/logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
 									</ul>
 								</li>
 							</ul>

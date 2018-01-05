@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html data-ng-app="e-shop">
 
 <head>
-	<title>Shoppy an Admin Panel Category Flat Bootstrap Responsive Website Template | Inbox :: w3layouts</title>
+	<title>Affiamuta | Product List</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -35,13 +35,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-main">
 					<div class="header-left">
 						<div class="logo-name">
-							<a href="index.html">
-								<h1>Shoppy</h1>
+							<a href="/admin/dashboard">
+								<h1>Affiamuta</h1>
 								<!--<img id="logo" src="" alt="Logo"/>-->
 							</a>
 						</div>
 						<!--search-box-->
-						<div class="search-box">
+						<div class="search-box" style="float: right;">
 							<form>
 								<input type="text" data-ng-model="search" placeholder="Search..." required="">
 								<input type="submit" value="">
@@ -214,7 +214,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="profile_img">
 											<span class="prfil-img"><img src="images/p1.png" alt=""> </span>
 											<div class="user-name">
-												<p>Malorum</p>
+												<p>{{ $username }}</p>
 												<span>Administrator</span>
 											</div>
 											<i class="fa fa-angle-down lnr"></i>
@@ -225,7 +225,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<ul class="dropdown-menu drp-mnu">
 										<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
 										<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
-										<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+										<li> <a href="/logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
 									</ul>
 								</li>
 							</ul>
@@ -255,7 +255,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!--inner block start here-->
 			<div class="inner-block" data-ng-show="page == 'product-list'">
 				<div class="inbox">
-					<h2>Inbox</h2>
+					<h2>All Products</h2>
 
 					<div class="col-md-12 mailbox-content  tab-content tab-content-in">
 						<div class="tab-pane active text-style" id="tab1">
@@ -263,9 +263,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="mail-toolbar clearfix">
 
 								</div>
-								<table class="table tab-border table-hover">
+								<table class="table tab-border table-hover table-responsive">
 									<thead>
-										<th>#</th>
+										<th>S/N</th>
 										<th>Image</th>
 										<th>Name</th>
 										<th>Brand</th>
@@ -307,18 +307,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
 
-            {{--<div class="inner-block" data-ng-show="page == 'edit-product'">
+            <div class="inner-block" data-ng-show="page == 'edit-product'">
+            
 
                 <!--mainpage chit-chating-->
                 <div class="chit-chat-layer1">
                     <div style="width:50%;margin:auto;">
                         <div class="work-progres">
                             <div class="chit-chat-heading">
-                                New Product
+                                Update Product
                             </div>
                             <div class="signup-block">
-                                <form class="form-horizontal form-label-left input_mask" enctype="MULTIPART/FORM-DATA" method="PUT" action="/api/product/update/<% updatedProduct.id %>" novalidate>
+                                <form class="form-horizontal form-label-left input_mask" enctype="MULTIPART/FORM-DATA" method="post" action="/api/product/update" novalidate>
                                     {{ csrf_field() }}
+
+                                    <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true"/>
 
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -339,14 +342,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control">
                                                 <option value="" selected>Category</option>
-                                                <option value="1">Phone</option>
-                                                <option value="2">Laptop</option>
+                                                <option value="1">Books</option>
+                            					<option value="2">Cards</option>
+                                                <option value="3">Charts</option>
+                            					<option value="4">Learning Aids</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="file" name="image" data-ng-model="updatedProduct.image" class="form-control" placeholder="product image">
+                                            <input type="file" name="image" data-ng-model="updatedProduct.image_location" class="form-control" placeholder="product image">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -371,7 +376,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <!--main page chit chating end here-->
 
-            </div>--}}
+            </div>
 
 			<!--inner block end here-->
 			<!--copy rights start here-->

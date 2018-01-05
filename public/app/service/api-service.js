@@ -33,6 +33,12 @@ app.service('APIService', ['$http', '$q', function ($http, $q) {
             .error(errorHandler);
     };
 
+    this.putWithOptions = function (url, data, headers, successHandler, errorHandler) {
+        $http.put(url, data, headers)
+            .success(successHandler)
+            .error(errorHandler);
+    };
+
     this.head = function (url, notifyMsg) {
         $http.head(url)
             .success(successHandler)

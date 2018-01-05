@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\CartService;
+
+use Auth;
 
 class MainController extends Controller
 {
@@ -23,22 +26,27 @@ class MainController extends Controller
      */
     public function index()
     {
-        return view('index');
+        return view('index', ['username' => Auth::user()->name]);
     }
 
     public function cart()
     {
-        return view('cart');
+        return view('cart', ['username' => Auth::user()->name]);
+    }
+
+    public function checkout()
+    {
+        return view('checkout', ['username' => Auth::user()->name]);
     }
 
     public function admin()
     {
-        return view('admin/index');
+        return view('admin/index', ['username' => Auth::user()->name]);
     }
 
     public function addProductView()
     {
-        return view('admin/add-product');
+        return view('admin/add-product', ['username' => Auth::user()->name]);
     }
 
 }

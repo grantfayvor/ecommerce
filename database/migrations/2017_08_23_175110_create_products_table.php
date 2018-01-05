@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('brand');
             $table->integer('category_id')->unsigned();
-            $table->string('details');
+            $table->longText('details');
             $table->string('selling_price');
             $table->string('image_location');
             $table->enum('status', ['HOT', 'WARM', 'COLD'])->default('WARM');

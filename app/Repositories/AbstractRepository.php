@@ -8,7 +8,9 @@ abstract class AbstractRepository
 
     public function findAll()
     {
-        return $this->model->all();
+        $n = 5;
+        $fields = null;
+        return $this->model->all($fields)->paginate($n);
     }
 
     public function findById($id)
@@ -31,9 +33,11 @@ abstract class AbstractRepository
         return $this->model->create($object);
     }
 
-    public function findByParam($param, $value)
+    public function findByParam($param, $value, $url = null, int $n = 5)
     {
-        return $this->model->where($param, $value)->get();
+        $result = $this->model->where($param, $value)->simplePaginate($n);
+        if($url != null) $result->withPath($url);
+        return $result;
     }
 
     public function findOneByParam($param, $value)

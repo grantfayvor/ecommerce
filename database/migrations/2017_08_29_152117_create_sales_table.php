@@ -13,7 +13,16 @@ class CreateSalesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('sales', function(Blueprint $table){
+            $table->increments('id');
+            $table->string('payment_id');
+            $table->string('cart_id')->nullable();
+            $table->foreign('cart_id')
+                ->references('identifier')
+                ->on('shoppingcart')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            });
     }
 
     /**

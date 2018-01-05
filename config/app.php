@@ -169,6 +169,11 @@ return [
         Unicodeveloper\Paystack\PaystackServiceProvider::class,
 
         /*
+         * LaravelShoppingCart Service Provider
+         */
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+
+        /*
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
@@ -231,6 +236,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
+//        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class
 
     ],
 
