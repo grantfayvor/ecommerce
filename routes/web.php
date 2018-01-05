@@ -13,6 +13,8 @@
 
 use Illuminate\Http\Request;
 
+use Auth;
+
 //View urls
 /*Route::get('/admin/dashboard', ['middleware' => ['auth', 'admin'], function () {
     return view('admin/dashboard');
