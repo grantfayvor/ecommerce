@@ -22,6 +22,7 @@ class CreateSalesTable extends Migration
             $table->string('amount_paid');
             $table->string('profit');
             $table->string('customer');
+            $table->timestamps();
         });
     }
 
