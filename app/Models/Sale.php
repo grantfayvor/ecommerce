@@ -7,8 +7,8 @@ class Sale extends Model
 {
     protected $guarded = [];
 
-    public function __construct()
-    {
-    }
+    // public function __construct()
+    // {
+    // }
 
 }

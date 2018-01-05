@@ -28,6 +28,7 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
     };
 
     $scope.removeFromCart = function (id) {
+        Pace.restart();
         CartService.removeFromCart(id, function (response) {
             $scope.cart = response.data;
             $scope.getCartCount();
@@ -45,6 +46,7 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
     };
 
     $scope.updateProductInCart = function (rowId){
+        Pace.restart();
         var details = {
             'rowId' : rowId,
             'qty' : $('#quantity_value').val()

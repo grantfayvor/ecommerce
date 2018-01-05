@@ -6,11 +6,9 @@ abstract class AbstractRepository
 {
     protected $model;
 
-    public function findAll()
+    public function findAll(int $n = 5)
     {
-        $n = 5;
-        $fields = null;
-        return $this->model->all($fields)->paginate($n);
+        return $this->model->simplePaginate($n);
     }
 
     public function findById($id)

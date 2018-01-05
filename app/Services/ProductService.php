@@ -18,7 +18,7 @@ class ProductService
 
     public function findAllProducts()
     {
-        return $this->repository->findAll();
+        return $this->repository->findAll(50);
     }
 
     public function countProducts()

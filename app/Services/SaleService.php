@@ -17,7 +17,7 @@ class SaleService
 
     public function findAllSales()
     {
-        return $this->repository->findAll();
+        return $this->repository->findAll(50);
     }
 
     public function addSale($saleDetails)

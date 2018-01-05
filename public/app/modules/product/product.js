@@ -74,6 +74,22 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
         $scope.page = 'edit-product';
     };
 
+    $scope.nextPage = function (url) {
+        ProductService.nextPage(url, function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error occured while getting next page");
+        });
+    };
+
+    $scope.previousPage = function (url) {
+        ProductService.previousPage(url, function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error occured while getting previous page");
+        });
+    };
+
 }]);
 
 app.service("ProductService", ['APIService', function (APIService) {
@@ -101,6 +117,14 @@ app.service("ProductService", ['APIService', function (APIService) {
 
     this.deleteProduct = function (id, successHandler, errorHandler) {
         APIService.get('/api/product/delete/' + id, successHandler, errorHandler);
+    };
+
+    this.nextPage = function (url, successHandler, errorHandler) {
+        APIService.get(url, successHandler, errorHandler);
+    };
+
+    this.previousPage = function (url, successHandler, errorHandler) {
+        APIService.get(url, successHandler, errorHandler);
     };
 }]);
 
