@@ -20,7 +20,6 @@ class UserController extends Controller
     {
         $username = $request->email;
         $password = $request->password;
-        // return $this->userService->register($request);
         if ($this->userService->register($request) && $this->userService->authenticateUser($username, $password)) {
             return redirect()->intended('/');
         } else {

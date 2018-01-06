@@ -16,7 +16,7 @@ class MainController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -26,7 +26,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        return view('index', ['username' => Auth::user()->name]);
+        return view('index', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function home()
@@ -41,47 +41,47 @@ class MainController extends Controller
 
     public function cart()
     {
-        return view('cart', ['username' => Auth::user()->name]);
+        return view('cart', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function checkout()
     {
-        return view('checkout', ['username' => Auth::user()->name]);
+        return view('checkout', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function paymentSuccessView()
     {
-        return view('payment-success', ['username' => Auth::user()->name]);
+        return view('payment-success', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function paymentFailureView()
     {
-        return view('payment-failure', ['username' => Auth::user()->name]);
+        return view('payment-failure', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function adminDashboard()
     {
-        return view('admin/dashboard', ['username' => Auth::user()->name]);
+        return view('admin/dashboard', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function addProduct()
     {
-        return view('admin/add-product', ['username' => Auth::user()->name]);
+        return view('admin/add-product', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function viewProducts()
     {
-        return view('admin/product', ['username' => Auth::user()->name]);
+        return view('admin/product', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function viewProductsAsList()
     {
-        return view('admin/product-list', ['username' => Auth::user()->name]);
+        return view('admin/product-list', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function viewSalesAsList()
     {
-        return view('admin/sale-list', ['username' => Auth::user()->name]);
+        return view('admin/sale-list', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function viewProductImage(Request $request)
