@@ -29,6 +29,11 @@ class MainController extends Controller
         return view('index', ['username' => Auth::user()->name]);
     }
 
+    public function home()
+    {
+        return redirect()->to('/');
+    }
+
     public function login()
     {
         return view('login');
@@ -44,14 +49,44 @@ class MainController extends Controller
         return view('checkout', ['username' => Auth::user()->name]);
     }
 
-    public function admin()
+    public function paymentSuccessView()
     {
-        return view('admin/index', ['username' => Auth::user()->name]);
+        return view('payment-success', ['username' => Auth::user()->name]);
     }
 
-    public function addProductView()
+    public function paymentFailureView()
+    {
+        return view('payment-failure', ['username' => Auth::user()->name]);
+    }
+
+    public function adminDashboard()
+    {
+        return view('admin/dashboard', ['username' => Auth::user()->name]);
+    }
+
+    public function addProduct()
     {
         return view('admin/add-product', ['username' => Auth::user()->name]);
+    }
+
+    public function viewProducts()
+    {
+        return view('admin/product', ['username' => Auth::user()->name]);
+    }
+
+    public function viewProductsAsList()
+    {
+        return view('admin/product-list', ['username' => Auth::user()->name]);
+    }
+
+    public function viewSalesAsList()
+    {
+        return view('admin/sale-list', ['username' => Auth::user()->name]);
+    }
+
+    public function viewProductImage(Request $request)
+    {
+        return response()->file($request->location);
     }
 
 }
