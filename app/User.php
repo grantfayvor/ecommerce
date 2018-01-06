@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'phone_number', 'admin',
     ];
 
     /**
@@ -27,7 +28,75 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function isAdmin(){
+    private $name;
+    private $email;
+    private $password;
+    private $phoneNumber;
+    private $admin;
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function setPassword($password)
+    {
+        $this->password = Hash::make($password);
+    }
+
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber($phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    public function isAdmin()
+    {
         return $this->admin;
+    }
+
+    public function setAccountType($accountType)
+    {
+        // $this->accountType = $accountType;
+        if($accountType == 'ADMIN'){
+            $this->admin = true;
+        } else {
+            $this->admin = false;
+        }
+    }
+
+    public function getAttributesArray()
+    {
+        return [
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => $this->password,
+            'phone_number' => $this->phoneNumber,
+            'admin' => $this->admin
+        ];
     }
 }

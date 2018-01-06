@@ -48,10 +48,7 @@ Route::get('/admin/view-sales-list', function () {
 Route::get('/', 'MainController@index');
 Route::get('/cart', 'MainController@Cart');
 Route::get('/checkout', 'MainController@checkout');
-Route::get('/logout', function () {
-    Auth::logout();
-    return redirect('/login');
-});
+Route::get('/logout', 'UserController@logout');
 
 Route::get('/home', function () {
     return redirect()->to('/');
@@ -84,7 +81,6 @@ Route::get('/api/products/find', 'ProductController@findProductsByCategory');
 
 Route::get('/product/image', function(Request $request) {
     $imageLocation = $request->location;
-//    return response()->file(Storage::disk('product')->get($imageLocation));
      return response()->file($imageLocation);
 });
 

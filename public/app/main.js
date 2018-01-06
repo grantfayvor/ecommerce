@@ -156,7 +156,7 @@ function ($rootScope, $scope, MainService) {
         }
 
         return array;
-    }
+    };
 
 }]);
 

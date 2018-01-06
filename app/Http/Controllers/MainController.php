@@ -29,6 +29,11 @@ class MainController extends Controller
         return view('index', ['username' => Auth::user()->name]);
     }
 
+    public function login()
+    {
+        return view('login');
+    }
+
     public function cart()
     {
         return view('cart', ['username' => Auth::user()->name]);

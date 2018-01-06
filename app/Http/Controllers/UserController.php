@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class UserController extends Controller
 {
     private $userService;
@@ -16,9 +18,10 @@ class UserController extends Controller
 
     public function saveUser(Request $request)
     {
-        $username = $request->username;
+        $username = $request->email;
         $password = $request->password;
-        if ($this->userService->register($request) && $this->userService->authenticate($username, $password)) {
+        // return $this->userService->register($request);
+        if ($this->userService->register($request) && $this->userService->authenticateUser($username, $password)) {
             return redirect()->intended('/');
         } else {
             return back()->withInput();
@@ -27,7 +30,7 @@ class UserController extends Controller
 
     public function authenticateUser(Request $request)
     {
-        $username = $request->username;
+        $username = $request->email;
         $password = $request->password;
         if ($this->userService->authenticateUser($username, $password)) {
             return redirect()->intended('/');
@@ -41,8 +44,9 @@ class UserController extends Controller
         return $this->userService->countUsers();
     }
 
-    public function logout(Request $request, $id)
+    public function logout(Request $request)
     {
-
+        Auth::logout();
+        return redirect('/login');
     }
 }
