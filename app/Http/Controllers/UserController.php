@@ -16,6 +16,11 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
+    public function findAllUsers(Request $request)
+    {
+        return response()->json($this->userService->findAllUsers());
+    }
+
     public function saveUser(Request $request)
     {
         $username = $request->email;
@@ -51,6 +56,16 @@ class UserController extends Controller
     public function updateUser(Request $request, $id)
     {
         return $this->userService->updateUser($id, $request);
+    }
+
+    public function makeUserAdmin(Request $request, $id)
+    {
+        return $this->userService->makeUserAdmin($id, $request);
+    }
+
+    public function deleteUser($id)
+    {
+        return response()->json($this->userService->deleteUser($id));
     }
 
     public function logout(Request $request)

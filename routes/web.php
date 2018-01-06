@@ -35,6 +35,7 @@ Route::get('/admin/add-product', 'MainController@addProduct')->middleware('auth'
 Route::get('/admin/view-products', 'MainController@viewProducts')->middleware('auth', 'admin');
 Route::get('/admin/view-products-list', 'MainController@viewProductsAsList')->middleware('auth', 'admin');
 Route::get('/admin/view-sales-list', 'MainController@viewSalesAsList')->middleware('auth', 'admin');
+Route::get('/admin/view-users', 'MainController@viewUsersAsList')->middleware('auth', 'admin');
 
 //user view
 Route::get('/', 'MainController@index');
@@ -80,6 +81,9 @@ Route::post('/api/user/authenticate', 'UserController@authenticateUser');
 Route::get('/api/users/count', 'UserController@countUsers')->middleware('auth', 'admin');
 Route::get('/api/user', 'UserController@getCurrentUser')->middleware('auth');
 Route::put('/api/user/update/{id}', 'UserController@updateUser')->middleware('auth');
+Route::put('/api/user/admin/{id}', 'UserController@makeUserAdmin')->middleware('auth', 'admin');
+Route::get('/api/users', 'UserController@findAllUsers')->middleware('auth', 'admin');
+Route::delete('/api/user/delete/{id}', 'UserController@deleteUser')->middleware('auth', 'admin');
 
 //Payment gateway
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay')->middleware('auth');

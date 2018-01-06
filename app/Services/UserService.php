@@ -22,9 +22,14 @@ class UserService
         return Auth::attempt(['email' => $username, 'password' => $password]);
     }
 
+    public function findAllUsers()
+    {
+        return $this->repository->findAll(30);
+    }
+
     public function countUsers()
     {
-        return $this->repository->findAll()->count();
+        return $this->repository->findAllUnPaged()->count();
     }
 
     public function register(Request $request)
@@ -44,6 +49,14 @@ class UserService
         } else {
             return $this->repository->save($user->getAttributesArray());
         }
+    }
+
+    public function makeUserAdmin($id, Request $request) 
+    {
+        $details = [
+            'admin' => $request->adminStatus
+        ];
+        return $this->repository->update($id, $details) ? response()->json(['message' => 'user was successfuly made an admin'], 200) : response()->json(['message' => 'sorry user could not be made an admin.']);
     }
 
     public function updateUser($id, Request $request)
@@ -78,6 +91,11 @@ class UserService
                 return response()->json(['message' => 'old password is incorrect']);
             }
         }
+    }
+
+    public function deleteUser($id)
+    {
+        return $this->repository->delete($id);
     }
 
     private function getCurrentUserPassword($id)

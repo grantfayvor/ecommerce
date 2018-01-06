@@ -7,10 +7,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html data-ng-app="e-shop">
 
 <head>
-    <title>Afiammuta | Product List</title>
+    <title>Afiammuta | Users List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -27,8 +27,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--//skycons-icons-->
 </head>
 
-<body data-ng-controller="ProductController">
-    <div class="page-container" data-ng-init="initialize()">
+<body data-ng-controller="UserController">
+    <div class="page-container" data-ng-init="getAllUsers()">
         <div class="left-content">
             <div class="mother-grid-inner">
                 <!--header start here-->
@@ -266,7 +266,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <i class="fa fa-cog"></i> Settings</a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="/profile">
                                                 <i class="fa fa-user"></i> Profile</a>
                                         </li>
                                         <li>
@@ -300,9 +300,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </script>
             <!-- /script-for sticky-nav -->
             <!--inner block start here-->
-            <div class="inner-block" data-ng-show="page == 'product-list'">
+            <div class="inner-block">
                 <div class="inbox">
-                    <h2>All Products</h2>
+                    <h2>All Users</h2>
 
                     <div class="col-md-12 mailbox-content  tab-content tab-content-in">
                         <div class="tab-pane active text-style" id="tab1">
@@ -313,51 +313,52 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <table class="table tab-border table-hover table-responsive">
                                     <thead>
                                         <th>S/N</th>
-                                        <th>Image</th>
                                         <th>Name</th>
-                                        <th>Brand</th>
-                                        <th>Details</th>
-                                        <th>Selling Price</th>
-                                        <th>Actions</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th>Account Type</th>
+                                        <th>Make Administrator</th>
+                                        <th>Delete User</th>
                                     </thead>
                                     <tbody>
-                                        <tr class="unread checked" data-ng-repeat="product in products.data | filter: search">
+                                        <tr class="unread checked" data-ng-repeat="user in users.data | filter: search">
                                             <td class="hidden-xs">
-                                                <span data-ng-bind="$index + 1"></span>
-                                            </td>
-                                            <td>
-                                                <img data-ng-src="../<%product.image_location%>" style="height:30px;width:30px;" alt="product image" />
+                                                <input type="checkbox" class="checkbox">
                                             </td>
                                             <td class="hidden-xs">
-                                                <span data-ng-bind="product.name"></span>
+                                                <span data-ng-bind="user.name"></span>
                                             </td>
                                             <td class="hidden-xs">
-                                                <span data-ng-bind="product.brand"></span>
-                                            </td>
-                                            <td class="col-md-6 col-sm-6">
-                                                <span data-ng-bind="product.details"></span>
+                                                <span data-ng-bind="user.email"></span>
                                             </td>
                                             <td>
-                                                <span data-ng-bind="product.selling_price"></span>
+                                                <span data-ng-bind="user.phone_number"></span>
                                             </td>
                                             <td>
-                                                <a href="javascript:void(0)" data-ng-click="showEditPage(product)">
-                                                    <span class="fa fa-pencil"></span> Edit</a>
-                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteProduct(product.id)">
-                                                    <span class="fa fa-trash"></span>Delete</a>
+                                                <span data-ng-bind="user.admin ? 'Administrator' : 'User'"></span>
+                                            </td>
+                                            <td>
+                                                <label class="switch">
+                                                    <input id="adminToggle<%$index%>" type="checkbox" data-ng-checked="user.admin" data-ng-click="makeAdmin(user.id, $index)">
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteUser(user.id)">
+                                                    <span class="fa fa-trash"></span> Delete</a>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="text-center" data-ng-show="products.next_page_url || products.prev_page_url">
+                        <div class="text-center" data-ng-show="users.next_page_url || users.prev_page_url">
                             <ul class="pagination" style="background-color:white!important;">
                                 <li>
-                                    <a href="javascript:void(0)" data-ng-click="previousPage(products.prev_page_url)">Previous</a>
+                                    <a href="javascript:void(0)" data-ng-click="previousPage(users.prev_page_url)">Previous</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" data-ng-click="nextPage(products.next_page_url)">Next</a>
+                                    <a href="javascript:void(0)" data-ng-click="nextPage(users.next_page_url)">Next</a>
                                 </li>
                             </ul>
                         </div>
@@ -366,82 +367,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
 
-            <div class="inner-block" data-ng-show="page == 'edit-product'">
-
-
-                <!--mainpage chit-chating-->
-                <div class="chit-chat-layer1">
-                    <div style="width:50%;margin:auto;">
-                        <div class="work-progres">
-                            <div class="chit-chat-heading">
-                                Update Product
-                            </div>
-                            <div class="signup-block">
-                                <form class="form-horizontal form-label-left input_mask" enctype="MULTIPART/FORM-DATA" method="post" action="/api/product/update"
-                                    novalidate>
-                                    {{ csrf_field() }}
-
-                                    <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true" />
-
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="name" data-ng-model="updatedProduct.name" class="form-control" placeholder="Name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="brand" data-ng-model="updatedProduct.brand" class="form-control" placeholder="Brand">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="sellingPrice" data-ng-model="updatedProduct.sellingPrice" class="form-control" placeholder="Selling Price">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control">
-                                                <option value="" selected>Category</option>
-                                                <option value="1">Books</option>
-                                                <option value="2">Cards</option>
-                                                <option value="3">Charts</option>
-                                                <option value="4">Learning Aids</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="file" name="image" data-ng-model="updatedProduct.image_location" class="form-control" placeholder="product image">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <textarea name="details" data-ng-model="updatedProduct.details" class="form-control" rows="3" placeholder="Details about the product"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="ln_solid"></div>
-                                    <div class="form-group">
-                                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                            <button type="button" class="btn btn-primary">Cancel</button>
-                                            <button class="btn btn-primary" type="reset">Reset</button>
-                                            <button type="submit" class="btn btn-success">Submit</button>
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <!--main page chit chating end here-->
-
-            </div>
-
             <!--inner block end here-->
             <!--copy rights start here-->
             <div class="copyrights">
-                <p>© <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
+                <p>©
+                    <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
                 </p>
             </div>
             <!--COPY rights end here-->
@@ -547,7 +477,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript" src="/app/angular.js"></script>
     <script type="text/javascript" src="/app/config/config.js"></script>
     <script type="text/javascript" src="/app/service/api-service.js"></script>
-    <script type="text/javascript" src="/app/modules/product/product.js"></script>
+    <script type="text/javascript" src="/app/modules/user/user.js"></script>
 </body>
 
 </html>

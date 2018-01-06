@@ -401,6 +401,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>View Sales List</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/admin/view-users">
+                            <i class="fa fa-user"></i>
+                            <span>View Users</span>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="#">
