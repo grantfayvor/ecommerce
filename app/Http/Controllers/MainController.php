@@ -26,7 +26,7 @@ class MainController extends Controller
      */
     public function index()
     {
-        return view('index', ['username' => Auth::user() ? Auth::user()->name : null]);
+        return view('index', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);
     }
 
     public function home()
@@ -41,22 +41,22 @@ class MainController extends Controller
 
     public function cart()
     {
-        return view('cart', ['username' => Auth::user() ? Auth::user()->name : null]);
+        return view('cart', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);
     }
 
     public function checkout()
     {
-        return view('checkout', ['username' => Auth::user() ? Auth::user()->name : null]);
+        return view('checkout', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);
     }
 
     public function paymentSuccessView()
     {
-        return view('payment-success', ['username' => Auth::user() ? Auth::user()->name : null]);
+        return view('payment-success', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);
     }
 
     public function paymentFailureView()
     {
-        return view('payment-failure', ['username' => Auth::user() ? Auth::user()->name : null]);
+        return view('payment-failure', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);
     }
 
     public function adminDashboard()

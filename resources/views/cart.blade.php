@@ -81,10 +81,32 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        @endif @if($username)
-                                        <li>
+                                        @else
+                                        <li class="dropdown">
                                             <a href="javascript:void(0)">
-                                                <i class="fa fa-user"></i> {{ $username }}</a>
+                                                <i class="fa fa-user"></i> {{ $username }}
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul role="menu" class="sub-menu">
+                                                @if($admin)
+                                                <li>
+                                                    <a href="/admin/dashboard" style="background-color: inherit!important;">
+                                                        <i class="fa fa-dashboard"></i> Admin Dashboard</a>
+                                                </li>
+                                                @endif
+                                                <li>
+                                                    <a href="#" style="background-color: inherit!important;">
+                                                        <i class="fa fa-eye"></i> Profile</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" style="background-color: inherit!important;">
+                                                        </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/logout" style="background-color: inherit!important;">
+                                                        <i class="fa fa-power-off"></i> Sign Out</a>
+                                                </li>
+                                            </ul>
                                         </li>
                                         @endif
                                         <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
@@ -101,10 +123,12 @@
                                                     data-ng-bind="cartCount"></i>
                                             </a>
                                         </li>
+                                        @if($username)
                                         <li>
                                             <a href="/logout">
                                                 <i class="fa fa-power-off"></i> Sign out</a>
                                         </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
