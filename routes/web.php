@@ -28,45 +28,26 @@ Route::get('/admin/view-products', ['middleware' => ['auth', 'admin'], function 
 Route::get('/admin/view-products-list', ['middleware' => ['auth', 'admin'], function () {
     return view('admin/product-list');
 }]);*/
-Route::get('/admin/dashboard', function () {
-    return view('admin/dashboard', ['username' => Auth::user()->name]);
-})->name('admin');
-Route::get('/admin/add-product', function () {
-    return view('admin/add-product', ['username' => Auth::user()->name]);
-});
-Route::get('/admin/view-products', function () {
-    return view('admin/product', ['username' => Auth::user()->name]);
-});
-Route::get('/admin/view-products-list', function () {
-    return view('admin/product-list', ['username' => Auth::user()->name]);
-});
 
-Route::get('/admin/view-sales-list', function () {
-    return view('admin/sale-list', ['username' => Auth::user()->name]);
-});
+//admin view
+Route::get('/admin/dashboard', 'MainController@adminDashboard')->name('admin');
+Route::get('/admin/add-product', 'MainController@addProduct');
+Route::get('/admin/view-products', 'MainController@viewProducts');
+Route::get('/admin/view-products-list', 'MainController@viewProductsAsList');
+Route::get('/admin/view-sales-list', 'MainController@viewSalesAsList');
 
+//user view
 Route::get('/', 'MainController@index');
 Route::get('/cart', 'MainController@Cart');
 Route::get('/checkout', 'MainController@checkout');
 Route::get('/logout', 'UserController@logout');
-
-Route::get('/home', function () {
-    return redirect()->to('/');
-});
-
-Route::get('/payment/success', function () {
-    return view('payment-success', ['username' => Auth::user()->name]);
-});
-
-Route::get('/payment/failure', function () {
-    return view('payment-failure', ['username' => Auth::user()->name]);
-});
+Route::get('/home', 'MainController@home');
+Route::get('/payment/success', 'MainController@paymentSuccessView');
+Route::get('/payment/failure', 'MainController@paymentFailureView');
 
 // Route::middleware('auth:admin')->get('/admin/dashboard', function(){ return view('admin/dashboard');});
 
 Auth::routes();
-
-// Route::get('/home', 'MainController@index')->name('home');
 
 //Product apis
 Route::get('/api/products', 'ProductController@findAllProducts');
@@ -79,10 +60,7 @@ Route::get('/api/product/delete/{id}', 'ProductController@deleteProduct');
 Route::get('/api/products/status/{status}', 'ProductController@findProductsByStatus');
 Route::get('/api/products/find', 'ProductController@findProductsByCategory');
 
-Route::get('/product/image', function(Request $request) {
-    $imageLocation = $request->location;
-     return response()->file($imageLocation);
-});
+Route::get('/product/image', 'MainController@viewProductImage');
 
 //Cart apis
 Route::post('/api/cart/add', 'CartController@addToCart');
