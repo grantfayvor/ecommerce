@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico" />
-    <title>Afiammuta | Profile</title>
+    <title>Afiammuta | User Profile</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/prettyPhoto.css" rel="stylesheet">
@@ -158,7 +158,8 @@
                             <li class="active">Profile</li>
                         </ol>
                     </div>
-                    <div id="updateAlert" class="text-center alert alert-info" style="margin-left:auto;margin-right:auto;width:50%;background-color:#FE980F;color:white" data-ng-bind="updateMessage">
+                    <div id="updateAlert" class="text-center alert alert-info" style="margin-left:auto;margin-right:auto;width:50%;background-color:#FE980F;color:white"
+                        data-ng-bind="updateMessage">
                     </div>
                     <div class="category-tab shop-details-tab">
                         <!--category-tab-->
@@ -204,11 +205,17 @@
                                         <br>
                                         <span>
                                             <input style="margin-left:0%;" type="text" placeholder="Your phone number" data-ng-model="user.phone_number" required/>
+
+                                        </span>
+                                        <br>
+                                        <span>
+                                            <input type="checkbox" style="width:3%!important;display:inline-block;margin-left:0%;" class="checkbox" name="changePassword" data-ng-model="changePassword">Change password
                                         </span>
                                         <br>
                                         <span>
                                             <input type="password" placeholder="Old password" data-ng-model="user.oldPassword" required/>
-                                            <input type="password" placeholder="New password or leave empty" data-ng-model="user.newPassword" />
+                                            <input type="password" placeholder="New password" data-ng-model="user.newPassword" data-ng-disabled="!changePassword"
+                                            />
                                         </span>
                                         <br>
                                         <hr>
@@ -367,6 +374,16 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row" style="text-align: center;">
+                    <p class="pull-left">Copyright ©
+                        <?php echo date("Y"); ?>
+                        <a href="afiammuta.com">Afiammuta.com</a> All rights reserved.</p>
                 </div>
             </div>
         </div>

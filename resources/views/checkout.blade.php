@@ -92,11 +92,11 @@
                                                 </li>
                                                 @endif
                                                 <li>
-                                                    <a href="#" style="background-color: inherit!important;">
+                                                    <a href="/profile" style="background-color: inherit!important;">
                                                         <i class="fa fa-eye"></i> Profile</a>
                                                 </li>
                                                 <li>
-                                                    <a href="/profile" style="background-color: inherit!important;">
+                                                    <a href="#" style="background-color: inherit!important;">
                                                         </a>
                                                 </li>
                                                 <li>
