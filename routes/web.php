@@ -30,33 +30,30 @@ Route::get('/admin/view-products-list', ['middleware' => ['auth', 'admin'], func
 }]);*/
 
 //admin view
-Route::get('/admin/dashboard', 'MainController@adminDashboard')->name('admin');
-Route::get('/admin/add-product', 'MainController@addProduct');
-Route::get('/admin/view-products', 'MainController@viewProducts');
-Route::get('/admin/view-products-list', 'MainController@viewProductsAsList');
-Route::get('/admin/view-sales-list', 'MainController@viewSalesAsList');
+Route::get('/admin/dashboard', 'MainController@adminDashboard')->name('admin')->middleware('auth', 'admin');
+Route::get('/admin/add-product', 'MainController@addProduct')->middleware('auth', 'admin');
+Route::get('/admin/view-products', 'MainController@viewProducts')->middleware('auth', 'admin');
+Route::get('/admin/view-products-list', 'MainController@viewProductsAsList')->middleware('auth', 'admin');
+Route::get('/admin/view-sales-list', 'MainController@viewSalesAsList')->middleware('auth', 'admin');
 
 //user view
 Route::get('/', 'MainController@index');
 Route::get('/cart', 'MainController@Cart');
-Route::get('/checkout', 'MainController@checkout');
-Route::get('/logout', 'UserController@logout');
+Route::get('/checkout', 'MainController@checkout')->middleware('auth');
+Route::get('/logout', 'UserController@logout')->middleware('auth');
 Route::get('/home', 'MainController@home');
-Route::get('/payment/success', 'MainController@paymentSuccessView');
-Route::get('/payment/failure', 'MainController@paymentFailureView');
-
-// Route::middleware('auth:admin')->get('/admin/dashboard', function(){ return view('admin/dashboard');});
+Route::get('/payment/success', 'MainController@paymentSuccessView')->middleware('auth');
+Route::get('/payment/failure', 'MainController@paymentFailureView')->middleware('auth');
 
 Auth::routes();
 
 //Product apis
 Route::get('/api/products', 'ProductController@findAllProducts');
-Route::post('/api/product/save', 'ProductController@saveProduct');
-Route::post('/api/product/update', 'ProductController@updateProduct');
+Route::post('/api/product/save', 'ProductController@saveProduct')->middleware('auth', 'admin');
+Route::post('/api/product/update', 'ProductController@updateProduct')->middleware('auth', 'admin');
 Route::get('/api/product/find/{param}', 'ProductController@search');
-Route::delete('/api/cart/remove/{id}', 'ProductController@removeFromCart');
-Route::get('/api/products/count', 'ProductController@countProducts');
-Route::get('/api/product/delete/{id}', 'ProductController@deleteProduct');
+Route::get('/api/products/count', 'ProductController@countProducts')->middleware('auth', 'admin');
+Route::delete('/api/product/delete/{id}', 'ProductController@deleteProduct')->middleware('auth', 'admin');
 Route::get('/api/products/status/{status}', 'ProductController@findProductsByStatus');
 Route::get('/api/products/find', 'ProductController@findProductsByCategory');
 
@@ -74,14 +71,13 @@ Route::get('/api/cart/restore', 'CartController@restoreCart');
 Route::get('/api/cart/count', 'CartController@getCountOfItems');
 
 //Sale apis
-Route::get('/api/sales', 'SaleController@getAllSales');
+Route::get('/api/sales', 'SaleController@getAllSales')->middleware('auth', 'admin');
 
 //User apis
 Route::post('/api/user/save', 'UserController@saveUser');
 Route::post('/api/user/authenticate', 'UserController@authenticateUser');
-Route::get('/api/user/logout{id}', 'UserController@logout');
-Route::get('/api/users/count', 'UserController@countUsers');
+Route::get('/api/users/count', 'UserController@countUsers')->middleware('auth', 'admin');
 
 //Payment gateway
-Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
-Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay')->middleware('auth');
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback')->middleware('auth');

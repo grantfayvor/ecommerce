@@ -116,7 +116,7 @@ app.service("ProductService", ['APIService', function (APIService) {
     };
 
     this.deleteProduct = function (id, successHandler, errorHandler) {
-        APIService.get('/api/product/delete/' + id, successHandler, errorHandler);
+        APIService.delete('/api/product/delete/' + id, successHandler, errorHandler);
     };
 
     this.nextPage = function (url, successHandler, errorHandler) {

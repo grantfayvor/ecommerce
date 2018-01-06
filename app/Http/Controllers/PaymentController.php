@@ -10,7 +10,8 @@ use Paystack;
 class PaymentController extends Controller
 {
 
-    public function __construct(SaleService $saleService, CartService $cartService){
+    public function __construct(SaleService $saleService, CartService $cartService)
+    {
         $this->saleService = $saleService;
         $this->cartService = $cartService;
     }

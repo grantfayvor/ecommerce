@@ -33,6 +33,7 @@ function ($rootScope, $scope, MainService) {
     };
 
     $scope.getAllBooks = function () {
+        Pace.restart();
         MainService.findAllBooks(function (response) {
             $scope.products = response.data;
         }, function (response) {

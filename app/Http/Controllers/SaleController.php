@@ -12,7 +12,8 @@ class SaleController extends Controller
 {
     private $saleService;
 
-    public function __construct(SaleService $saleService){
+    public function __construct(SaleService $saleService)
+    {
         $this->saleService = $saleService;
     }
 
