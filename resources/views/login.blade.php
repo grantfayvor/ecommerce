@@ -2,41 +2,40 @@
 <html lang="en" data-ng-app="e-shop">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<title>Login | Afiammuta</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/prettyPhoto.css" rel="stylesheet">
-	<link href="css/price-range.css" rel="stylesheet">
-	<link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login | Afiammuta</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/price-range.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
     <link href="/css/pace.css" rel="stylesheet">
     <script src="/js/pace.min.js" type="text/javascript"></script>
-	<!--[if lt IE 9]>
+    <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-	<link rel="shortcut icon" href="images/ico/favicon.ico">
-	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-	<link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
 
 <body data-ng-controller="UserController" data-ng-cloak data-ng-init="getHotProducts()">
-	<header id="header">
-		<!--header-->
+    <header id="header">
+        <!--header-->
 
         <!--<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">-->
         <nav class="navbar navbar-custom" role="navigation">
             <!-- Collapsed Hamburger -->
-            <button type="button" class="btn btn-navbar navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#app-navbar-collapse">
+            <button type="button" class="btn btn-navbar navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                 <span class="sr-only">Toggle Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -50,11 +49,13 @@
                         <div class="col-sm-4">
                             <div class="logo pull-left">
                                 <!-- TODO change logo to company logo-->
-                                <a href="/"><img src="images/home/logo.png" alt="Afiammuta"/></a>
+                                <a href="/">
+                                    <img src="images/home/logo.png" alt="Afiammuta" />
+                                </a>
                             </div>
                             <div class="btn-group pull-right">
                                 <div class="search_box pull-right">
-                                    <input type="text" placeholder="Search"/>
+                                    <input type="text" placeholder="Search" />
                                 </div>
                             </div>
 
@@ -63,7 +64,10 @@
                             <div class="shop-menu pull-right">
                                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                                     <ul class="nav navbar-nav">
-                                        <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                                        <li>
+                                            <a href="/">
+                                                <i class="fa fa-home"></i> Home</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -75,57 +79,64 @@
 
 
         </nav>
-		<!--/header-middle-->
-	</header>
-	<!--/header-->
+        <!--/header-middle-->
+    </header>
+    <!--/header-->
 
-	<section id="form" style="margin-top:2px;margin-bottom:30px;">
-		<!--form-->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4 col-sm-offset-1">
-					<div class="login-form">
-						<!--login form-->
-						<h2>Login to your account</h2>
+    <section id="form" style="margin-top:2px;margin-bottom:30px;">
+        <!--form-->
+        <div class="container">
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="active">Login or create new account</li>
+                </ol>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-1">
+                    <div class="login-form">
+                        <!--login form-->
+                        <h2>Login to your account</h2>
                         <form method="post" action="/api/user/authenticate">
                             {{ csrf_field() }}
-							<input type="email" placeholder="User email" name="email"  value="{{ old('email') }}"/>
-							<input type="password" name="password" placeholder="User password" />
-							<span>
-                                <input type="checkbox" class="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> 
-								Keep me signed in
-							</span>
-							<button type="submit" class="btn btn-default">Login</button>
-						</form>
-					</div>
-					<!--/login form-->
-				</div>
-				<div class="col-sm-1">
-					<h2 class="or">OR</h2>
-				</div>
-				<div class="col-sm-4">
-					<div class="signup-form">
-						<!--sign up form-->
-						<h2>New User Signup!</h2>
+                            <input type="email" placeholder="User email" name="email" value="{{ old('email') }}" />
+                            <input type="password" name="password" placeholder="User password" />
+                            <span>
+                                <input type="checkbox" class="checkbox" name="remember" {{ old( 'remember') ? 'checked' : '' }}> Keep me signed in
+                            </span>
+                            <button type="submit" class="btn btn-default">Login</button>
+                        </form>
+                    </div>
+                    <!--/login form-->
+                </div>
+                <div class="col-sm-1">
+                    <h2 class="or">OR</h2>
+                </div>
+                <div class="col-sm-4">
+                    <div class="signup-form">
+                        <!--sign up form-->
+                        <h2>New User Signup!</h2>
                         <form method="post" action="/api/user/save">
                             {{ csrf_field() }}
-							<input type="text" placeholder="First Name" name="firstName" />
-							<input type="text" placeholder="Last Name" name="lastName" />
-							<input type="text" placeholder="Phone Number" name="phoneNumber" />
-							<input type="email" placeholder="Email Address" name="email" />
-							<input type="password" name="password" placeholder="Password" />
-							<button type="submit" class="btn btn-default">Signup</button>
-						</form>
-					</div>
-					<!--/sign up form-->
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--/form-->
+                            <input type="text" placeholder="First Name" name="firstName" />
+                            <input type="text" placeholder="Last Name" name="lastName" />
+                            <input type="text" placeholder="Phone Number" name="phoneNumber" />
+                            <input type="email" placeholder="Email Address" name="email" />
+                            <input type="password" name="password" placeholder="Password" />
+                            <button type="submit" class="btn btn-default">Signup</button>
+                        </form>
+                    </div>
+                    <!--/sign up form-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/form-->
 
 
-	<footer id="footer">
+    <footer id="footer">
         <!--Footer-->
         <div class="footer-top">
             <div class="container">
@@ -280,20 +291,20 @@
         </div>
 
     </footer>
-	<!--/Footer-->
+    <!--/Footer-->
 
 
 
-	<script src="js/jquery.js"></script>
-	<script src="js/price-range.js"></script>
-	<script src="js/jquery.scrollUp.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.prettyPhoto.js"></script>
-	<script src="js/main.js"></script>
-	<script type="text/javascript" src="../app/angular.js"></script>
-	<script type="text/javascript" src="../app/config/config.js"></script>
-	<script type="text/javascript" src="../app/service/api-service.js"></script>
-	<script type="text/javascript" src="../app/modules/user/user.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/price-range.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="../app/angular.js"></script>
+    <script type="text/javascript" src="../app/config/config.js"></script>
+    <script type="text/javascript" src="../app/service/api-service.js"></script>
+    <script type="text/javascript" src="../app/modules/user/user.js"></script>
 
 </body>
 
