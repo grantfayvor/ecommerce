@@ -268,7 +268,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <i class="fa fa-cog"></i> Settings</a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="/profile">
                                                 <i class="fa fa-user"></i> Profile</a>
                                         </li>
                                         <li>
@@ -418,10 +418,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                         <ul id="menu-academico-sub">
                             <li id="menu-academico-avaliacoes">
-                                <a href="inbox.html">Inbox</a>
+                                <a href="#">Inbox</a>
                             </li>
                             <li id="menu-academico-boletim">
-                                <a href="inbox-details.html">Compose email</a>
+                                <a href="#">Compose email</a>
                             </li>
                         </ul>
                     </li>

@@ -67,14 +67,20 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
         });
     };
 
-    $scope.deleteUser = function (userId) {
+    $scope.deleteUser = function () {
+        $('#deleteModal').modal('hide');
         Pace.restart();
-        UserService.deleteUser(userId, function (response) {
+        UserService.deleteUser($scope.userIdToDelete, function (response) {
             $scope.getAllUsers();
             console.log("user was successfully deleted");
         }, function (response) {
             console.log("user could not be deleted");
         });
+    };
+
+    $scope.showDeletePage = function (userId) {
+        $scope.userIdToDelete = userId;
+        $('#deleteModal').modal('show');
     };
 
     $scope.nextPage = function (url) {

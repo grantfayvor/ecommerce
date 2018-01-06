@@ -319,7 +319,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <th>Email</th>
                                         <th>Phone Number</th>
                                         <th>Account Type</th>
-                                        <th>Make Administrator</th>
+                                        <th>Administrator</th>
                                         <th>Delete User</th>
                                     </thead>
                                     <tbody>
@@ -346,7 +346,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 </label>
                                             </td>
                                             <td>
-                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteUser(user.id)">
+                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="showDeletePage(user.id)">
                                                     <span class="fa fa-trash"></span> Delete</a>
                                             </td>
                                         </tr>
@@ -438,10 +438,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                         <ul id="menu-academico-sub">
                             <li id="menu-academico-avaliacoes">
-                                <a href="inbox.html">Inbox</a>
+                                <a href="#">Inbox</a>
                             </li>
                             <li id="menu-academico-boletim">
-                                <a href="inbox-details.html">Compose email</a>
+                                <a href="#">Compose email</a>
                             </li>
                         </ul>
                     </li>
@@ -452,6 +452,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="clearfix"> </div>
     </div>
     <!--slide bar menu end here-->
+
+    <!--modal-->
+    <div id="deleteModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">Confirm</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Do you really want to delete the user?</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Cancel</a>
+                        <a href="javascript:void(0)" data-ng-click="deleteUser()" class="btn btn-danger">Ok</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     <script>
         var toggle = true;
 

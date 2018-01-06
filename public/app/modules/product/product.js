@@ -60,9 +60,10 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
         });
     };
 
-    $scope.deleteProduct = function (id) {
+    $scope.deleteProduct = function () {
+        $('#deleteModal').modal('hide');
         Pace.restart();
-        ProductService.deleteProduct(id, function (response) {
+        ProductService.deleteProduct($scope.productIdToDelete, function (response) {
             console.log("product delete was successful");
             $scope.getAllProducts();
         }, function (response) {
@@ -77,6 +78,11 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
         $scope.updatedProduct.categoryId = parseInt(product.category_id);
         $scope.updatedProduct.id = parseInt(product.id);
         $scope.page = 'edit-product';
+    };
+
+    $scope.showDeletePage = function (productId) {
+        $scope.productIdToDelete = productId;
+        $('#deleteModal').modal('show');
     };
 
     $scope.nextPage = function (url) {

@@ -232,7 +232,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</a>
 									<ul class="dropdown-menu drp-mnu">
 										<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-										<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
+										<li> <a href="/profile"><i class="fa fa-user"></i> Profile</a> </li>
 										<li> <a href="/logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
 									</ul>
 								</li>
@@ -356,10 +356,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
 		        
 		        <li><a href="#"><i class="fa fa-envelope"></i><span>Mailbox</span><span class="fa fa-angle-right" style="float: right"></span></a>
-		        	 <ul id="menu-academico-sub" >
-			            <li id="menu-academico-avaliacoes" ><a href="inbox.html">Inbox</a></li>
-			            <li id="menu-academico-boletim" ><a href="inbox-details.html">Compose email</a></li>
-		             </ul>
+		        	 <ul id="menu-academico-sub">
+                            <li id="menu-academico-avaliacoes">
+                                <a href="#">Inbox</a>
+                            </li>
+                            <li id="menu-academico-boletim">
+                                <a href="#">Compose email</a>
+                            </li>
+                        </ul>
 		        </li>
 		        
 		      </ul>
