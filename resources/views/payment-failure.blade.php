@@ -123,9 +123,39 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 padding-right">
-                    <span class="alert alert-danger">
-                        Sorry, your payment was not be completed.
-                    </span>
+
+                    <div class="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="active">Payment Success</li>
+                        </ol>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="category-tab">
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="payment-success">
+                                <div class="col-sm-12">
+                                    <div class="product-image-wrapper">
+                                        <div class="single-products">
+                                            <div class="productinfo text-center">
+                                                <div class="col-sm-12 col-md-12" style="position: relative;">
+                                                    <!-- <p style="position: absolute; top: 50%; transform: translateY(-50%);"> -->
+                                                    <h2 class="alert alert-danger" style="font:bold;">
+                                                        Sorry, your payment was not be completed.
+                                                    </h2>
+                                                    <!-- </p> -->
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
