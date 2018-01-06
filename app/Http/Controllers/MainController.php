@@ -49,6 +49,11 @@ class MainController extends Controller
         return view('checkout', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);
     }
 
+    public function userProfile()
+    {
+        return view('profile', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);
+    }
+
     public function paymentSuccessView()
     {
         return view('payment-success', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);

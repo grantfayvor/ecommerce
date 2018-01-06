@@ -1,69 +1,48 @@
-app.controller("UserController", ['$scope', '$rootScope', 'UserService', function($scope, $rootScope, UserService){
+app.controller("UserController", ['$scope', '$rootScope', 'UserService', function ($scope, $rootScope, UserService) {
 
-	$scope.user = {};
-	$scope.credentials = {};
-	$scope.new_user = {};
-	$scope.loggedIn = true;
+    $scope.user = {};
+    $scope.cartCount = 0;
+    $('#updateAlert').fadeOut(0);
 
-	$scope.login = function(){
-		UserService.authenticateUser($scope.credentials, function (response) {
-			/*if (response.data.role == "USER") {
-				window.location.href = "../../glow/resources/index.php";
-			} else if (response.data.role == "ADMIN") {
-				window.location.href = "../../glow/resources/admin.php";
-			} else {
-				$scope.loggedIn = false;
-			}*/
-			window.location.href = "../../glow/resources/index.php";
-		}, function (response, status) {
-			$scope.loggedIn = false;
-			console.log(response.data);
-		});
-	};
-
-	$scope.register = function(){
-		UserService.registerUser($scope.new_user, function (response) {
-			if (response.data.result === true) {
-				console.log("the user has successfully been registered " + response.data);
-				$scope.registered = 1;
-				$scope.credentials.username = $scope.new_user.username;
-				$scope.credentials.password = $scope.new_user.password;
-				$scope.login();
-			} else {
-				$scope.registered = 0;
-			}	
-		}, function(response, status){
-			console.log(response.data);
-		});
-	};
-
-	$scope.registerAdmin = function(){
-		UserService.registerUser($scope.new_user, function (response) {
-			if (response.data.result === true) {
-				console.log("the user has successfully been registered " + response.data);
-				$scope.registered = 1;
-				setTimeout(function () {
-					$("#fade1").fadeOut(5000);
-					$scope.registered = 2;
-				}, 1000);
-			} else {
-				$scope.registered = 0;
-				setTimeout(function () {
-					$("#fade2").fadeOut(5000);
-					$scope.registered = 2;
-				}, 1000);
-			}	
-		}, function(response, status){
-			console.log(response.data);
-		});
+    $scope.initialize = function () {
+        $scope.getHotProducts();
+        $scope.getCartCount();
     };
-    
+
     $scope.getHotProducts = function () {
         UserService.getHotProducts(function (response) {
             $scope.hotProducts = response.data;
             $scope.hotProducts.data = shuffle($scope.hotProducts.data);
         }, function () {
             console.log("error in getting hot products");
+        });
+    };
+
+    $scope.getCartCount = function () {
+        UserService.getCartCount(function (response) {
+            $scope.cartCount = response.data;
+        }, function (response) {
+            console.log("error occured while getting count of the cart");
+        });
+    };
+
+    $scope.getCurrentUser = function () {
+        UserService.getCurrentUser(function(response) {
+            $scope.user = response.data;
+        }, function(response) {
+            console.log("error occured while fetching user data");
+        });
+    };
+
+    $scope.updateUser = function () {
+        Pace.restart();
+        UserService.updateUser($scope.user.id, $scope.user, function(response) {
+            $('#updateAlert').fadeIn();
+            $scope.updateMessage = response.data.message;
+            console.log('user was successfully updated');
+            // $('#updateAlert').fadeOut(10000);
+        }, function(response){
+            console.log('error occured while trying to update the user');
         });
     };
 
@@ -88,19 +67,23 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
 
 }]);
 
-app.service("UserService", ['APIService', function(APIService){
+app.service("UserService", ['APIService', function (APIService) {
 
     this.getHotProducts = function (successHandler, errorHandler) {
         var status = "HOT";
         APIService.get("/api/products/status/" + status + "", successHandler, errorHandler);
     };
 
-	this.authenticateUser = function(userDetails, successHandler, errorHandler){
-		APIService.post("/api/user/authenticate", userDetails, successHandler, errorHandler);
-	};
+    this.getCartCount = function (successHandler, errorHandler) {
+        APIService.get('/api/cart/count', successHandler, errorHandler);
+    };
 
-	this.registerUser = function(userDetails, successHandler, errorHandler){
-		APIService.post("/api/user/save", userDetails, successHandler, errorHandler);
-	};
-	
+    this.getCurrentUser = function (successHandler, errorHandler) {
+        APIService.get('/api/user', successHandler, errorHandler);
+    };
+
+    this.updateUser = function (userId, userDetails, successHandler, errorHandler) {
+        APIService.put('/api/user/update/' +userId, userDetails, successHandler, errorHandler);
+    };
+
 }]);

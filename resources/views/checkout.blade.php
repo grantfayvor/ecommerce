@@ -96,7 +96,7 @@
                                                         <i class="fa fa-eye"></i> Profile</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#" style="background-color: inherit!important;">
+                                                    <a href="/profile" style="background-color: inherit!important;">
                                                         </a>
                                                 </li>
                                                 <li>
@@ -115,7 +115,7 @@
                                             <a href="/cart">
                                                 <i class="fa fa-shopping-cart" style="float:left;"></i>
                                                 <span style="float:left;"> Cart </span>
-                                                <i style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
+                                                <i data-ng-if="cartCount" style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
                                                     border-radius: 50%;background-color: black;color: white;text-align: center;font-size: 1em;float:right;"
                                                     data-ng-bind="cartCount"></i>
                                             </a>

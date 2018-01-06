@@ -42,6 +42,7 @@ Route::get('/cart', 'MainController@Cart');
 Route::get('/checkout', 'MainController@checkout')->middleware('auth');
 Route::get('/logout', 'UserController@logout')->middleware('auth');
 Route::get('/home', 'MainController@home');
+Route::get('/profile', 'MainController@userProfile')->middleware('auth');
 Route::get('/payment/success', 'MainController@paymentSuccessView')->middleware('auth');
 Route::get('/payment/failure', 'MainController@paymentFailureView')->middleware('auth');
 
@@ -77,6 +78,8 @@ Route::get('/api/sales', 'SaleController@getAllSales')->middleware('auth', 'admi
 Route::post('/api/user/save', 'UserController@saveUser');
 Route::post('/api/user/authenticate', 'UserController@authenticateUser');
 Route::get('/api/users/count', 'UserController@countUsers')->middleware('auth', 'admin');
+Route::get('/api/user', 'UserController@getCurrentUser')->middleware('auth');
+Route::put('/api/user/update/{id}', 'UserController@updateUser')->middleware('auth');
 
 //Payment gateway
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay')->middleware('auth');

@@ -43,6 +43,16 @@ class UserController extends Controller
         return $this->userService->countUsers();
     }
 
+    public function getCurrentUser(Request $request)
+    {
+        return response()->json($request->user());
+    }
+
+    public function updateUser(Request $request, $id)
+    {
+        return $this->userService->updateUser($id, $request);
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();
