@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Cart | Afiammuta</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <title>Afiammuta | Profile</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/css/price-range.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/responsive.css" rel="stylesheet">
     <link href="/css/pace.css" rel="stylesheet">
     <script src="/js/pace.min.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
@@ -21,15 +22,15 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
 
-<body data-ng-controller="CartController" data-ng-cloak>
-    <header id="header" data-ng-init="initialize()">
+<body data-ng-controller="UserController" data-ng-init="initialize();getCurrentUser();">
+    <header id="header">
         <!--header-->
 
         <!--<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">-->
@@ -100,7 +101,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="#" style="background-color: inherit!important;">
-                                                        </a>
+                                                    </a>
                                                 </li>
                                                 <li>
                                                     <a href="/logout" style="background-color: inherit!important;">
@@ -144,109 +145,89 @@
     </header>
     <!--/header-->
 
-    <section id="cart_items">
-        <div class="container">
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li class="active">Shopping Cart</li>
-                </ol>
-            </div>
-            <div class="cart_info alert alert-info" data-ng-if="!cart.data.length">
-                <p>Cart is currently empty!</p>
-            </div>
-            <div class="table-responsive cart_info" data-ng-if="cart.data.length">
-                <table class="table table-condensed">
-                    <thead>
-                        <tr class="cart_menu">
-                            <td class="image">Item</td>
-                            <td class="description">Name</td>
-                            <td class="price">Price</td>
-                            <td class="quantity">Quantity</td>
-                            <td class="total">Total</td>
-                            <td></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-ng-repeat="product in cart.data">
-                            <td class="cart_product">
-                                <a href="">
-                                    <img data-ng-src="<%product.options.image_location%>" style="height:40px;width:40px;padding:0px 0px 0px;" alt="product image">
-                                </a>
-                            </td>
-                            <td class="cart_description">
-                                <h4>
-                                    <a href="">
-                                        <span data-ng-bind="product.name"></span>
-                                    </a>
-                                </h4>
-                                <p>
-                                    <!-- Web ID: 1089772 -->
-                                </p>
-                            </td>
-                            <td class="cart_price">
-                                <p>₦
-                                    <span data-ng-bind="product.price"></span>
-                                </p>
-                            </td>
-                            <td class="cart_quantity">
-                                <div class="cart_quantity_button">
-                                    <input id="quantity_value" class="cart_quantity_input" style="width:20%!important" type="number" data-ng-model="productToUpdate.qty"
-                                        name="quantity" value="<% product.qty %>" data-ng-change="updateProductInCart(product.rowId)"> 
-                                </div>
-                            </td>
-                            <td class="cart_total">
-                                <p class="cart_total_price">₦
-                                    <span data-ng-bind="product.options.subtotal"></span>
-                                </p>
-                            </td>
-                            <td class="cart_delete">
-                                <a class="cart_quantity_delete" href="javascript:void(0)" data-ng-click="removeFromCart(product.rowId)">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </section>
-    <!--/#cart_items-->
-
-    <section id="do_action">
+    <section>
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 pull-right">
-                    <div class="total_area">
-                        <ul>
-                            <li>Cart Sub Total
-                                <span>₦
-                                    <span data-ng-bind="cart.total_price"></span>
-                                </span>
+                <div class="col-sm-12">
+
+                    <div class="breadcrumbs">
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="/">Home</a>
                             </li>
-                            <li>Tax
-                                <span>₦ 0</span>
-                            </li>
-                            <li>Delivery Cost
-                                <span>₦ 0</span>
-                            </li>
-                            <li>Total
-                                <span>₦
-                                    <span data-ng-bind="cart.total_price"></span>
-                                </span>
-                            </li>
-                        </ul>
-                        {{--
-                        <a class="btn btn-default update" href="">Update</a>--}}
-                        <a class="btn btn-default update" href="/checkout">Check Out</a>
+                            <li class="active">Profile</li>
+                        </ol>
                     </div>
+                    <div id="updateAlert" class="text-center alert alert-info" style="margin-left:auto;margin-right:auto;width:50%;background-color:#FE980F;color:white" data-ng-bind="updateMessage">
+                    </div>
+                    <div class="category-tab shop-details-tab">
+                        <!--category-tab-->
+                        <!-- <div class="col-sm-12">
+							<ul class="nav nav-tabs">
+								<li><a href="#details" data-toggle="tab">Details</a></li>
+								<li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
+								<li><a href="#tag" data-toggle="tab">Tag</a></li>
+								<li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+							</ul>
+						</div> -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="reviews">
+                                <div class="col-sm-12">
+                                    <div class="clearfix"></div>
+                                    <ul>
+                                        <li>
+                                            <a href="">
+                                                <i class="fa fa-user"></i>
+                                                <span>{{ $username }}</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <i class="fa fa-calendar-o"></i>
+                                                <?php echo date('d, M Y') ?>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                                        ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation
+                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in
+                                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                    <p> -->
+                                    <b>Edit your profile</b>
+                                    </p>
+
+                                    <form novalidate>
+                                        <span>
+                                            <input type="text" placeholder="Your Name" data-ng-model="user.name" required/>
+                                            <input type="email" placeholder="Email Address" data-ng-model="user.email" required/>
+                                        </span>
+                                        <br>
+                                        <span>
+                                            <input style="margin-left:0%;" type="text" placeholder="Your phone number" data-ng-model="user.phone_number" required/>
+                                        </span>
+                                        <br>
+                                        <span>
+                                            <input type="password" placeholder="Old password" data-ng-model="user.oldPassword" required/>
+                                            <input type="password" placeholder="New password or leave empty" data-ng-model="user.newPassword" />
+                                        </span>
+                                        <br>
+                                        <hr>
+                                        <b>Rating: </b>
+                                        <img src="images/product-details/rating.png" alt="" />
+                                        <button type="submit" data-ng-click="updateUser()" class="btn btn-default pull-right">
+                                            Submit
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
     </section>
-    <!--/#do_action-->
 
     <footer id="footer">
         <!--Footer-->
@@ -267,7 +248,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img data-ng-src="<% product.image_location %>" alt="" />
+                                        <img data-ng-src="../<% product.image_location %>" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
@@ -390,38 +371,20 @@
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row" style="text-align: center;">
-                    <p class="pull-left">Copyright © <?php echo date("Y"); ?>
-                        <a href="afiammuta.com">Afiammuta.com</a> All rights reserved.</p>
-                </div>
-            </div>
-        </div>
     </footer>
     <!--/Footer-->
 
 
-
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.scrollUp.min.js"></script>
+    <script src="/js/price-range.js"></script>
+    <script src="/js/jquery.prettyPhoto.js"></script>
+    <script src="/js/main.js"></script>
     <script type="text/javascript" src="/app/angular.js"></script>
     <script type="text/javascript" src="/app/config/config.js"></script>
     <script type="text/javascript" src="/app/service/api-service.js"></script>
-    <script type="text/javascript" src="/app/modules/cart/cart.js"></script>
-
-    <script>
-        var decrement = function () {
-            document.getElementById('#quantity_value') = document.getElementById('#quantity_value') - 1;
-        };
-
-        var increment = function () {
-            document.getElementById('#quantity_value') = document.getElementById('#quantity_value') + 1;
-        };
-    </script>
+    <script type="text/javascript" src="/app/modules/user/user.js"></script>
 </body>
 
 </html>

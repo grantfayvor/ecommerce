@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico" />
-    <title>Afiammuta | Success</title>
+    <title>Afiammuta | Failure</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/prettyPhoto.css" rel="stylesheet">
@@ -15,6 +15,8 @@
     <link href="/css/animate.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
     <link href="/css/responsive.css" rel="stylesheet">
+    <link href="/css/pace.css" rel="stylesheet">
+    <script src="/js/pace.min.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -94,7 +96,7 @@
                                                 </li>
                                                 @endif
                                                 <li>
-                                                    <a href="#" style="background-color: inherit!important;">
+                                                    <a href="/profile" style="background-color: inherit!important;">
                                                         <i class="fa fa-eye"></i> Profile</a>
                                                 </li>
                                                 <li>
@@ -117,7 +119,7 @@
                                             <a href="/cart">
                                                 <i class="fa fa-shopping-cart" style="float:left;"></i>
                                                 <span style="float:left;"> Cart </span>
-                                                <i style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
+                                                <i data-ng-if="cartCount" style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
                                                     border-radius: 50%;background-color: black;color: white;text-align: center;font-size: 1em;float:right;"
                                                     data-ng-bind="cartCount"></i>
                                             </a>
