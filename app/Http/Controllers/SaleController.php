@@ -21,6 +21,10 @@ class SaleController extends Controller
         return response()->json($this->saleService->findAllSales());
     }
 
+    public function getSaleCount(){
+        return response()->json($this->saleService->countAllSales());
+    }
+
     public function addSale(Request $request){
         $product = $request->input('product');
         $quantity = $request->input('quantity');

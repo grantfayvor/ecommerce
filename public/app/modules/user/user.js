@@ -35,6 +35,7 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
     };
 
     $scope.getAllUsers = function () {
+        // Pace.restart();
         UserService.getAllUsers(function (response) {
             $scope.users = response.data;
         }, function (response) {
@@ -43,8 +44,7 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
     };
 
     $scope.makeAdmin = function (userId, currentIndex) {
-        console.log("there was a change");
-        console.log($('#adminToggle' + currentIndex).is(':checked'));
+        Pace.restart();
         UserService.makeAdmin(userId, {
             'adminStatus': $('#adminToggle' + currentIndex).is(':checked')
         }, function (response) {
@@ -68,11 +68,30 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
     };
 
     $scope.deleteUser = function (userId) {
+        Pace.restart();
         UserService.deleteUser(userId, function (response) {
             $scope.getAllUsers();
             console.log("user was successfully deleted");
         }, function (response) {
             console.log("user could not be deleted");
+        });
+    };
+
+    $scope.nextPage = function (url) {
+        Pace.restart();
+        MainService.nextPage(url, function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error occured while getting next page");
+        });
+    };
+
+    $scope.previousPage = function (url) {
+        Pace.restart();
+        MainService.previousPage(url, function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error occured while getting previous page");
         });
     };
 
@@ -126,6 +145,14 @@ app.service("UserService", ['APIService', function (APIService) {
 
     this.deleteUser = function (userId, successHandler, errorHandler) {
         APIService.delete('/api/user/delete/' + userId, successHandler, errorHandler);
+    };
+
+    this.nextPage = function (url, successHandler, errorHandler) {
+        APIService.get(url, successHandler, errorHandler);
+    };
+
+    this.previousPage = function (url, successHandler, errorHandler) {
+        APIService.get(url, successHandler, errorHandler);
     };
 
 }]);

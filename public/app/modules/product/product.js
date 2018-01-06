@@ -19,6 +19,7 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
     };
 
     $scope.addNewProduct = function () {
+        Pace.restart();
         ProductService.saveProduct($scope.new_product, function (response) {
             console.log("product was added successfully");
         }, function (response, status) {
@@ -27,6 +28,7 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
     };
 
     $scope.updateProduct = function () {
+        Pace.restart();
         var payload = new FormData();
         payload.append('name', $scope.updatedProduct.name);
         payload.append('brand', $scope.updatedProduct.brand);
@@ -50,6 +52,7 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
     // };
 
     $scope.countProducts = function () {
+        Pace.restart();
         ProductService.countProducts(function (response) {
             $scope.productCount = response.data;
         }, function (response) {
@@ -58,6 +61,7 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
     };
 
     $scope.deleteProduct = function (id) {
+        Pace.restart();
         ProductService.deleteProduct(id, function (response) {
             console.log("product delete was successful");
             $scope.getAllProducts();
@@ -67,6 +71,7 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
     };
 
     $scope.showEditPage = function (product) {
+        Pace.restart();
         $scope.updatedProduct = product;
         $scope.updatedProduct.sellingPrice = product.selling_price;
         $scope.updatedProduct.categoryId = parseInt(product.category_id);
@@ -75,6 +80,7 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
     };
 
     $scope.nextPage = function (url) {
+        Pace.restart();
         ProductService.nextPage(url, function (response) {
             $scope.products = response.data;
         }, function (response) {
@@ -83,6 +89,7 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
     };
 
     $scope.previousPage = function (url) {
+        Pace.restart();
         ProductService.previousPage(url, function (response) {
             $scope.products = response.data;
         }, function (response) {

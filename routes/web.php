@@ -74,6 +74,7 @@ Route::get('/api/cart/count', 'CartController@getCountOfItems');
 
 //Sale apis
 Route::get('/api/sales', 'SaleController@getAllSales')->middleware('auth', 'admin');
+Route::get('/api/sales/count', 'SaleController@getSaleCount')->middleware('auth', 'admin');
 
 //User apis
 Route::post('/api/user/save', 'UserController@saveUser');

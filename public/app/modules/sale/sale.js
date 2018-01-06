@@ -15,6 +15,7 @@ app.controller('SaleController', ['$scope', 'SaleService', function($scope, Sale
     };
 
     $scope.nextPage = function (url) {
+        Pace.restart();
         SaleService.nextPage(url, function (response) {
             $scope.sales = response.data;
         }, function (response) {
@@ -23,6 +24,7 @@ app.controller('SaleController', ['$scope', 'SaleService', function($scope, Sale
     };
 
     $scope.previousPage = function (url) {
+        Pace.restart();
         SaleService.previousPage(url, function (response) {
             $scope.sales = response.data;
         }, function (response) {

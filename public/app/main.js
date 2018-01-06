@@ -107,6 +107,7 @@ function ($rootScope, $scope, MainService) {
     };
 
     $scope.productInfo = function (product) {
+        Pace.restart();
         $scope.currentProduct = product;
         $scope.page = 'product-details';
     };
