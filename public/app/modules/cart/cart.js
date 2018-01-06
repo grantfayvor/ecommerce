@@ -79,7 +79,7 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
         }
 
         return array;
-    }
+    };
 }]);
 
 app.service("CartService", ['APIService', function (APIService) {

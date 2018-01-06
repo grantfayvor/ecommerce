@@ -1,9 +1,11 @@
 <?php
 namespace App\Services;
 
-use App\Models\User;
+use App\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+
+use Auth;
 
 class UserService
 {
@@ -17,7 +19,7 @@ class UserService
 
     public function authenticateUser($username, $password)
     {
-        return Auth::attempt(['username' => $username, 'password' => $password]);
+        return Auth::attempt(['email' => $username, 'password' => $password]);
     }
 
     public function countUsers()
@@ -37,21 +39,17 @@ class UserService
 
     public function register(Request $request)
     {
-        $firstName = $request->firstname;
-        $lastName = $request->lastname;
-        $username = $request->username;
+        $name = $request->firstName ." ". $request->lastName;
+        $phoneNumber = $request->phoneNumber;
         $password = $request->password;
         $email = $request->email;
-        $phoneNumber = $request->phoneNumber;
         $user = new User();
-        $user->setFirstName($firstName);
-        $user->setLastName($lastName);
-        $user->setUsername($username);
+        $user->setName($name);
         $user->setPassword($password);
         $user->setEmail($email);
         $user->setPhoneNumber($phoneNumber);
         $user->setAccountType("USER");
-        if ($this->repository->findByUsername($user->getUsername()) != null) {
+        if ($this->repository->findOneByParam('email', $user->getEmail()) != null) {
             return response()->json(['message' => 'user already exists'], 403);
         } else {
             return $this->repository->save($user->getAttributesArray());

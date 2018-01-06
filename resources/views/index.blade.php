@@ -287,7 +287,7 @@
                     <div class="col-sm-7">
                         <div class="col-sm-3" data-ng-repeat="product in hotProducts.data">
                             <div class="video-gallery text-center">
-                                <a href="#">
+                                <a href="javascript:void(0)" data-ng-click="productInfo(product)">
                                     <div class="iframe-img">
                                         <img data-ng-src="<% product.image_location %>" alt="" />
                                     </div>
@@ -428,7 +428,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="#" data-dismiss="modal" class="btn btn-info">Ok</a>
+                        <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Ok</a>
                     </div>
                 </div>
             </div>

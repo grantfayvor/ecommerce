@@ -7,73 +7,25 @@ class User extends Model
 {
     protected $guarded = [];
 
-    private $id;
-    private $firstName;
-    private $lastName;
-    private $username;
+    private $name;
     private $email;
     private $password;
     private $phoneNumber;
-    private $accountType;
+    private $admin;
 
     public function __construct()
     {
 
     }
 
-    /*public function __construct($username, $password){
-        $this->username = $username;
-        $this->password = $password;
-    }*/
-
-    /*public function __construct($firstname, $lastname, $username, $email, $password, $phoneNumber){
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-        $this->username = $username;
-        $this->email = $email;
-        $this->password = $password;
-        $this->phoneNumber = $phoneNumber
-    }
-    */
-
-    public function getId()
+    public function getName()
     {
-        return $this->id;
+        return $this->name;
     }
 
-    public function setId($id)
+    public function setName($name)
     {
-        $this->id = $id;
-    }
-
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-    }
-
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName($lastName)
-    {
-        $this->lastName = $lastName;
-    }
-
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    public function setUsername($username)
-    {
-        $this->username = $username;
+        $this->name = $name;
     }
 
     public function getEmail()
@@ -113,19 +65,22 @@ class User extends Model
 
     public function setAccountType($accountType)
     {
-        $this->accountType = $accountType;
+        // $this->accountType = $accountType;
+        if($accountType == 'ADMIN'){
+            $this->admin = true;
+        } else {
+            $this->admin = false;
+        }
     }
 
     public function getAttributesArray()
     {
         return [
-            'first_name' => $this->firstName,
-            'last_name' => $this->lastName,
-            'username' => $this->username,
+            'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password,
             'phone_number' => $this->phoneNumber,
-            'account_type' => $this->accountType
+            'admin' => $this->admin
         ];
     }
 

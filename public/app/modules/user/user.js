@@ -56,18 +56,51 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
 		}, function(response, status){
 			console.log(response.data);
 		});
-	};
+    };
+    
+    $scope.getHotProducts = function () {
+        UserService.getHotProducts(function (response) {
+            $scope.hotProducts = response.data;
+            $scope.hotProducts.data = shuffle($scope.hotProducts.data);
+        }, function () {
+            console.log("error in getting hot products");
+        });
+    };
+
+    var shuffle = function (array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    };
 
 }]);
 
 app.service("UserService", ['APIService', function(APIService){
 
+    this.getHotProducts = function (successHandler, errorHandler) {
+        var status = "HOT";
+        APIService.get("/api/products/status/" + status + "", successHandler, errorHandler);
+    };
+
 	this.authenticateUser = function(userDetails, successHandler, errorHandler){
-		APIService.post("../../glow/php/controller/login-controller.php", userDetails, successHandler, errorHandler);
+		APIService.post("/api/user/authenticate", userDetails, successHandler, errorHandler);
 	};
 
 	this.registerUser = function(userDetails, successHandler, errorHandler){
-		APIService.post("../../glow/php/controller/register-controller.php", userDetails, successHandler, errorHandler);
+		APIService.post("/api/user/save", userDetails, successHandler, errorHandler);
 	};
 	
 }]);
