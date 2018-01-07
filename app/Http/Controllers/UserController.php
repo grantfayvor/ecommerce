@@ -50,6 +50,9 @@ class UserController extends Controller
         $username = $request->email;
         $password = $request->password;
         if ($this->userService->authenticateUser($username, $password)) {
+            if(Auth::user()->admin){
+                return redirect()->intended('/admin/dashboard');
+            }
             return redirect()->intended('/');
         } else {
             return back()->withInput();

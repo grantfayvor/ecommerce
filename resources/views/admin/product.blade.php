@@ -311,8 +311,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="project-eff">
                                     <div id="nivo-lightbox-demo">
                                         <p>
-                                            <a data-ng-href="/product/image?location=<%product.image_location%>" data-lightbox-gallery="gallery1"
-                                                id="nivo-lightbox-demo">
+                                            <a data-ng-href="/product/image?location=<%product.image_location%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
                                                 <span class="rollover1"> </span>
                                             </a>
                                         </p>
@@ -353,7 +352,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <!--copy rights start here-->
                 <div class="copyrights">
-                    <p>© <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
+                    <p>©
+                        <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
                     </p>
                 </div>
                 <!--COPY rights end here-->
@@ -407,6 +407,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="/admin/view-users">
                             <i class="fa fa-user"></i>
                             <span>View Users</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Go to Market</span>
                         </a>
                     </li>
 

@@ -352,15 +352,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                         <div class="text-center" data-ng-show="sales.next_page_url || sales.prev_page_url">
-                                <ul class="pagination" style="background-color:white!important;">
-                                    <li>
-                                        <a href="javascript:void(0)" data-ng-click="previousPage(sales.prev_page_url)">Previous</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" data-ng-click="nextPage(sales.next_page_url)">Next</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <ul class="pagination" style="background-color:white!important;">
+                                <li>
+                                    <a href="javascript:void(0)" data-ng-click="previousPage(sales.prev_page_url)">Previous</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-ng-click="nextPage(sales.next_page_url)">Next</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
@@ -369,7 +369,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--inner block end here-->
             <!--copy rights start here-->
             <div class="copyrights">
-                <p>© <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
+                <p>©
+                    <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
                 </p>
             </div>
             <!--COPY rights end here-->
@@ -423,6 +424,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="/admin/view-users">
                             <i class="fa fa-user"></i>
                             <span>View Users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Go to Market</span>
                         </a>
                     </li>
 
