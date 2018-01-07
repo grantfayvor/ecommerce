@@ -383,7 +383,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     novalidate>
                                     {{ csrf_field() }}
 
-                                    <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true"  required/>
+                                    <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true" required/>
 
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">

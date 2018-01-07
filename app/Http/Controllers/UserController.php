@@ -23,6 +23,14 @@ class UserController extends Controller
 
     public function saveUser(Request $request)
     {
+        $rules = [
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'phoneNumber' => 'required',
+            'email' => 'required|email',
+            'password' => 'required'
+        ];
+        $this->validate($request, $rules);
         $username = $request->email;
         $password = $request->password;
         if ($this->userService->register($request) && $this->userService->authenticateUser($username, $password)) {
@@ -34,6 +42,11 @@ class UserController extends Controller
 
     public function authenticateUser(Request $request)
     {
+        $rules = [
+            'email' => 'required|email',
+            'password' => 'required'
+        ];
+        $this->validate($request, $rules);
         $username = $request->email;
         $password = $request->password;
         if ($this->userService->authenticateUser($username, $password)) {

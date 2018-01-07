@@ -18,6 +18,15 @@ class PaymentController extends Controller
 
     public function redirectToGateway()
     {
+        $rules = [
+            'email' => 'required|email',
+            'orderID' => 'required',
+            'amount' => 'required',
+            'quantity' => 'required',
+            'reference' => 'required',
+            'key' => 'required'
+        ];
+        $this->validate($request, $rules);
         return Paystack::getAuthorizationUrl()->redirectNow();
     }
 
