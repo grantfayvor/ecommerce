@@ -403,7 +403,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control" required>
-                                                <option value="" selected>Category</option>
                                                 <option value="1">Books</option>
                                                 <option value="2">Cards</option>
                                                 <option value="3">Charts</option>
@@ -424,7 +423,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                            <button type="button" class="btn btn-primary">Cancel</button>
+                                            <button type="button" class="btn btn-primary" data-ng-click="page = 'product-list'">Cancel</button>
                                             <button class="btn btn-primary" type="reset">Reset</button>
                                             <button type="submit" class="btn btn-success">Submit</button>
                                         </div>
