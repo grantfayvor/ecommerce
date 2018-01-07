@@ -27,22 +27,77 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
     };
 
     $scope.getCurrentUser = function () {
-        UserService.getCurrentUser(function(response) {
+        UserService.getCurrentUser(function (response) {
             $scope.user = response.data;
-        }, function(response) {
+        }, function (response) {
             console.log("error occured while fetching user data");
+        });
+    };
+
+    $scope.getAllUsers = function () {
+        // Pace.restart();
+        UserService.getAllUsers(function (response) {
+            $scope.users = response.data;
+        }, function (response) {
+            console.log("error occured while fetching all users");
+        });
+    };
+
+    $scope.makeAdmin = function (userId, currentIndex) {
+        Pace.restart();
+        UserService.makeAdmin(userId, {
+            'adminStatus': $('#adminToggle' + currentIndex).is(':checked')
+        }, function (response) {
+            $scope.getAllUsers();
+            console.log("user was successfully made an admin");
+        }, function (response) {
+            console.log("error occured  while trying to make user an admin");
         });
     };
 
     $scope.updateUser = function () {
         Pace.restart();
-        UserService.updateUser($scope.user.id, $scope.user, function(response) {
+        UserService.updateUser($scope.user.id, $scope.user, function (response) {
             $('#updateAlert').fadeIn();
             $scope.updateMessage = response.data.message;
             console.log('user was successfully updated');
             // $('#updateAlert').fadeOut(10000);
-        }, function(response){
+        }, function (response) {
             console.log('error occured while trying to update the user');
+        });
+    };
+
+    $scope.deleteUser = function () {
+        $('#deleteModal').modal('hide');
+        Pace.restart();
+        UserService.deleteUser($scope.userIdToDelete, function (response) {
+            $scope.getAllUsers();
+            console.log("user was successfully deleted");
+        }, function (response) {
+            console.log("user could not be deleted");
+        });
+    };
+
+    $scope.showDeletePage = function (userId) {
+        $scope.userIdToDelete = userId;
+        $('#deleteModal').modal('show');
+    };
+
+    $scope.nextPage = function (url) {
+        Pace.restart();
+        MainService.nextPage(url, function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error occured while getting next page");
+        });
+    };
+
+    $scope.previousPage = function (url) {
+        Pace.restart();
+        MainService.previousPage(url, function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error occured while getting previous page");
         });
     };
 
@@ -83,7 +138,27 @@ app.service("UserService", ['APIService', function (APIService) {
     };
 
     this.updateUser = function (userId, userDetails, successHandler, errorHandler) {
-        APIService.put('/api/user/update/' +userId, userDetails, successHandler, errorHandler);
+        APIService.put('/api/user/update/' + userId, userDetails, successHandler, errorHandler);
+    };
+
+    this.makeAdmin = function (userId, adminStatus, successHandler, errorHandler) {
+        APIService.put('/api/user/admin/' + userId, adminStatus, successHandler, errorHandler);
+    };
+
+    this.getAllUsers = function (successHandler, errorHandler) {
+        APIService.get('/api/users', successHandler, errorHandler);
+    };
+
+    this.deleteUser = function (userId, successHandler, errorHandler) {
+        APIService.delete('/api/user/delete/' + userId, successHandler, errorHandler);
+    };
+
+    this.nextPage = function (url, successHandler, errorHandler) {
+        APIService.get(url, successHandler, errorHandler);
+    };
+
+    this.previousPage = function (url, successHandler, errorHandler) {
+        APIService.get(url, successHandler, errorHandler);
     };
 
 }]);

@@ -6,6 +6,12 @@ abstract class AbstractRepository
 {
     protected $model;
 
+
+    public function findAllUnPaged()
+    {
+        return $this->model->all();
+    }
+
     public function findAll(int $n = 5)
     {
         return $this->model->simplePaginate($n);

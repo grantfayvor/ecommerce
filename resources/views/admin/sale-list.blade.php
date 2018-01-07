@@ -19,6 +19,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!--js-->
     <script src="/js/jquery-2.1.1.min.js"></script>
+    <link href="/css/pace.admin.css" rel="stylesheet">
+    <script src="/js/pace.min.js" type="text/javascript"></script>
     <!--icons-css-->
     <link href="/css/font-awesome.css" rel="stylesheet">
     <!--Google Fonts-->
@@ -266,7 +268,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <i class="fa fa-cog"></i> Settings</a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="/profile">
                                                 <i class="fa fa-user"></i> Profile</a>
                                         </li>
                                         <li>
@@ -417,6 +419,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>View Sales List</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/admin/view-users">
+                            <i class="fa fa-user"></i>
+                            <span>View Users</span>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="#">
@@ -426,10 +434,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                         <ul id="menu-academico-sub">
                             <li id="menu-academico-avaliacoes">
-                                <a href="inbox.html">Inbox</a>
+                                <a href="#">Inbox</a>
                             </li>
                             <li id="menu-academico-boletim">
-                                <a href="inbox-details.html">Compose email</a>
+                                <a href="#">Compose email</a>
                             </li>
                         </ul>
                     </li>

@@ -23,7 +23,7 @@ class ProductService
 
     public function countProducts()
     {
-        return $this->repository->findAll()->count();
+        return $this->repository->findAllUnPaged()->count();
     }
 
     /*public function saveProduct($product, $image)

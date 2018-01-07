@@ -20,6 +20,11 @@ class SaleService
         return $this->repository->findAll(50);
     }
 
+    public function countAllSales()
+    {
+        return $this->repository->findAllUnPaged()->count();
+    }
+
     public function addSale($saleDetails)
     {
         return $this->repository->save($saleDetails);

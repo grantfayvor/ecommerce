@@ -47,6 +47,9 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
 
     $scope.updateProductInCart = function (rowId){
         Pace.restart();
+        if(!$('#quantity_value').val()){
+            return;
+        }
         var details = {
             'rowId' : rowId,
             'qty' : $('#quantity_value').val()

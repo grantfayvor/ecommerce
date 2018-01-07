@@ -19,6 +19,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!--js-->
     <script src="/js/jquery-2.1.1.min.js"></script>
+    <link href="/css/pace.admin.css" rel="stylesheet">
+    <script src="/js/pace.min.js" type="text/javascript"></script>
     <!--icons-css-->
     <link href="/css/font-awesome.css" rel="stylesheet">
     <!--Google Fonts-->
@@ -266,7 +268,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 <i class="fa fa-cog"></i> Settings</a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="/profile">
                                                 <i class="fa fa-user"></i> Profile</a>
                                         </li>
                                         <li>
@@ -343,7 +345,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <td>
                                                 <a href="javascript:void(0)" data-ng-click="showEditPage(product)">
                                                     <span class="fa fa-pencil"></span> Edit</a>
-                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteProduct(product.id)">
+                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="showDeletePage(product.id)">
                                                     <span class="fa fa-trash"></span>Delete</a>
                                             </td>
                                         </tr>
@@ -381,27 +383,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     novalidate>
                                     {{ csrf_field() }}
 
-                                    <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true" />
+                                    <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true" required/>
 
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="name" data-ng-model="updatedProduct.name" class="form-control" placeholder="Name">
+                                            <input type="text" name="name" data-ng-model="updatedProduct.name" class="form-control" placeholder="Name" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="brand" data-ng-model="updatedProduct.brand" class="form-control" placeholder="Brand">
+                                            <input type="text" name="brand" data-ng-model="updatedProduct.brand" class="form-control" placeholder="Brand" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="sellingPrice" data-ng-model="updatedProduct.sellingPrice" class="form-control" placeholder="Selling Price">
+                                            <input type="text" name="sellingPrice" data-ng-model="updatedProduct.sellingPrice" class="form-control" placeholder="Selling Price" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control">
-                                                <option value="" selected>Category</option>
+                                            <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control" required>
                                                 <option value="1">Books</option>
                                                 <option value="2">Cards</option>
                                                 <option value="3">Charts</option>
@@ -411,18 +412,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="file" name="image" data-ng-model="updatedProduct.image_location" class="form-control" placeholder="product image">
+                                            <input type="file" name="image" data-ng-model="updatedProduct.image_location" class="form-control" placeholder="product image" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <textarea name="details" data-ng-model="updatedProduct.details" class="form-control" rows="3" placeholder="Details about the product"></textarea>
+                                            <textarea name="details" data-ng-model="updatedProduct.details" class="form-control" rows="3" placeholder="Details about the product" required></textarea>
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                            <button type="button" class="btn btn-primary">Cancel</button>
+                                            <button type="button" class="btn btn-primary" data-ng-click="page = 'product-list'">Cancel</button>
                                             <button class="btn btn-primary" type="reset">Reset</button>
                                             <button type="submit" class="btn btn-success">Submit</button>
                                         </div>
@@ -491,6 +492,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>View Sales List</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/admin/view-users">
+                            <i class="fa fa-user"></i>
+                            <span>View Users</span>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="#">
@@ -500,10 +507,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                         <ul id="menu-academico-sub">
                             <li id="menu-academico-avaliacoes">
-                                <a href="inbox.html">Inbox</a>
+                                <a href="#">Inbox</a>
                             </li>
                             <li id="menu-academico-boletim">
-                                <a href="inbox-details.html">Compose email</a>
+                                <a href="#">Compose email</a>
                             </li>
                         </ul>
                     </li>
@@ -514,6 +521,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="clearfix"> </div>
     </div>
     <!--slide bar menu end here-->
+    <!--modal-->
+    <div id="deleteModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">Confirm</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Do you really want to delete the product?</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Cancel</a>
+                        <a href="javascript:void(0)" data-ng-click="deleteProduct()" class="btn btn-danger">Ok</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     <script>
         var toggle = true;
 

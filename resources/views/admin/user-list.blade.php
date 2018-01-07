@@ -7,10 +7,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html data-ng-app="e-shop">
 
 <head>
-    <title>Afiammuta | Products</title>
+    <title>Afiammuta | Users List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -29,8 +29,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--//skycons-icons-->
 </head>
 
-<body data-ng-controller="ProductController">
-    <div class="page-container" data-ng-init="initialize()">
+<body data-ng-controller="UserController">
+    <div class="page-container" data-ng-init="getAllUsers()">
         <div class="left-content">
             <div class="mother-grid-inner">
                 <!--header start here-->
@@ -45,7 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!--search-box-->
                         <div class="search-box" style="float: right;">
                             <form>
-                                <input type="text" placeholder="Search..." required="">
+                                <input type="text" data-ng-model="search" placeholder="Search..." required="">
                                 <input type="submit" value="">
                             </form>
                         </div>
@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li>
                                             <a href="#">
                                                 <div class="user_img">
-                                                    <img src="/images/p4.png" alt="">
+                                                    <img src="images/p4.png" alt="">
                                                 </div>
                                                 <div class="notification_desc">
                                                     <p>Lorem ipsum dolor</p>
@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li class="odd">
                                             <a href="#">
                                                 <div class="user_img">
-                                                    <img src="/images/p2.png" alt="">
+                                                    <img src="images/p2.png" alt="">
                                                 </div>
                                                 <div class="notification_desc">
                                                     <p>Lorem ipsum dolor </p>
@@ -98,7 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li>
                                             <a href="#">
                                                 <div class="user_img">
-                                                    <img src="/images/p3.png" alt="">
+                                                    <img src="images/p3.png" alt="">
                                                 </div>
                                                 <div class="notification_desc">
                                                     <p>Lorem ipsum dolor</p>
@@ -130,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li>
                                             <a href="#">
                                                 <div class="user_img">
-                                                    <img src="/images/p5.png" alt="">
+                                                    <img src="images/p5.png" alt="">
                                                 </div>
                                                 <div class="notification_desc">
                                                     <p>Lorem ipsum dolor</p>
@@ -144,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li class="odd">
                                             <a href="#">
                                                 <div class="user_img">
-                                                    <img src="/images/p6.png" alt="">
+                                                    <img src="images/p6.png" alt="">
                                                 </div>
                                                 <div class="notification_desc">
                                                     <p>Lorem ipsum dolor</p>
@@ -158,7 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <li>
                                             <a href="#">
                                                 <div class="user_img">
-                                                    <img src="/images/p7.png" alt="">
+                                                    <img src="images/p7.png" alt="">
                                                 </div>
                                                 <div class="notification_desc">
                                                     <p>Lorem ipsum dolor</p>
@@ -283,82 +283,102 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="clearfix"> </div>
                 </div>
-                <!--heder end here-->
-                <!-- script-for sticky-nav -->
-                <script>
-                    $(document).ready(function () {
-                        var navoffeset = $(".header-main").offset().top;
-                        $(window).scroll(function () {
-                            var scrollpos = $(window).scrollTop();
-                            if (scrollpos >= navoffeset) {
-                                $(".header-main").addClass("fixed");
-                            } else {
-                                $(".header-main").removeClass("fixed");
-                            }
-                        });
-
+            </div>
+            <!--heder end here-->
+            <!-- script-for sticky-nav -->
+            <script>
+                $(document).ready(function () {
+                    var navoffeset = $(".header-main").offset().top;
+                    $(window).scroll(function () {
+                        var scrollpos = $(window).scrollTop();
+                        if (scrollpos >= navoffeset) {
+                            $(".header-main").addClass("fixed");
+                        } else {
+                            $(".header-main").removeClass("fixed");
+                        }
                     });
-                </script>
-                <!-- /script-for sticky-nav -->
-                <!--inner block start here-->
-                <div class="inner-block">
-                    <div class="product-block">
-                        <div class="pro-head">
-                            <h2>Products</h2>
-                        </div>
-                        <div class="col-md-3 product-grid" data-ng-repeat="product in products.data">
-                            <div class="product-items">
-                                <div class="project-eff">
-                                    <div id="nivo-lightbox-demo">
-                                        <p>
-                                            <a data-ng-href="/product/image?location=<%product.image_location%>" data-lightbox-gallery="gallery1"
-                                                id="nivo-lightbox-demo">
-                                                <span class="rollover1"> </span>
-                                            </a>
-                                        </p>
-                                    </div>
-                                    <img class="img-responsive" data-ng-src="../<%product.image_location%>" style="height: 200px;" alt="">
+
+                });
+            </script>
+            <!-- /script-for sticky-nav -->
+            <!--inner block start here-->
+            <div class="inner-block">
+                <div class="inbox">
+                    <h2>All Users</h2>
+
+                    <div class="col-md-12 mailbox-content  tab-content tab-content-in">
+                        <div class="tab-pane active text-style" id="tab1">
+                            <div class="mailbox-border">
+                                <div class="mail-toolbar clearfix">
+
                                 </div>
-                                <div class="produ-cost">
-                                    <h4 style="height: 60px!important;">
-                                        <span data-ng-bind="product.name"></span>
-                                    </h4>
-                                    <h5>₦
-                                        <span data-ng-bind="product.selling_price"></span>
-                                    </h5>
-                                </div>
+                                <table class="table tab-border table-hover table-responsive">
+                                    <thead>
+                                        <th>S/N</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th>Account Type</th>
+                                        <th>Administrator</th>
+                                        <th>Delete User</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="unread checked" data-ng-repeat="user in users.data | filter: search">
+                                            <td class="hidden-xs">
+                                                <input type="checkbox" class="checkbox">
+                                            </td>
+                                            <td class="hidden-xs">
+                                                <span data-ng-bind="user.name"></span>
+                                            </td>
+                                            <td class="hidden-xs">
+                                                <span data-ng-bind="user.email"></span>
+                                            </td>
+                                            <td>
+                                                <span data-ng-bind="user.phone_number"></span>
+                                            </td>
+                                            <td>
+                                                <span data-ng-bind="user.admin ? 'Administrator' : 'User'"></span>
+                                            </td>
+                                            <td>
+                                                <label class="switch">
+                                                    <input id="adminToggle<%$index%>" type="checkbox" data-ng-checked="user.admin" data-ng-click="makeAdmin(user.id, $index)">
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="showDeletePage(user.id)">
+                                                    <span class="fa fa-trash"></span> Delete</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <div class="clearfix"> </div>
-                        <div class="text-center" data-ng-show="products.next_page_url || products.prev_page_url">
+                        <div class="text-center" data-ng-show="users.next_page_url || users.prev_page_url">
                             <ul class="pagination" style="background-color:white!important;">
                                 <li>
-                                    <a href="javascript:void(0)" data-ng-click="previousPage(products.prev_page_url)">Previous</a>
+                                    <a href="javascript:void(0)" data-ng-click="previousPage(users.prev_page_url)">Previous</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" data-ng-click="nextPage(products.next_page_url)">Next</a>
+                                    <a href="javascript:void(0)" data-ng-click="nextPage(users.next_page_url)">Next</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
+                    <div class="clearfix"> </div>
                 </div>
-                <!--inner block end here-->
-                <link rel="stylesheet" type="text/css" href="/css/magnific-popup.css">
-                <script type="text/javascript" src="/js/nivo-lightbox.min.js"></script>
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $('#nivo-lightbox-demo a').nivoLightbox({ effect: 'fade' });
-                    });
-                </script>
-
-                <!--copy rights start here-->
-                <div class="copyrights">
-                    <p>© <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
-                    </p>
-                </div>
-                <!--COPY rights end here-->
             </div>
+
+            <!--inner block end here-->
+            <!--copy rights start here-->
+            <div class="copyrights">
+                <p>©
+                    <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
+                </p>
+            </div>
+            <!--COPY rights end here-->
         </div>
+
         <!--slider menu-->
         <div class="sidebar-menu">
             <div class="logo">
@@ -432,6 +452,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="clearfix"> </div>
     </div>
     <!--slide bar menu end here-->
+
+    <!--modal-->
+    <div id="deleteModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">Confirm</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Do you really want to delete the user?</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Cancel</a>
+                        <a href="javascript:void(0)" data-ng-click="deleteUser()" class="btn btn-danger">Ok</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     <script>
         var toggle = true;
 
@@ -459,7 +502,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript" src="/app/angular.js"></script>
     <script type="text/javascript" src="/app/config/config.js"></script>
     <script type="text/javascript" src="/app/service/api-service.js"></script>
-    <script type="text/javascript" src="/app/modules/product/product.js"></script>
+    <script type="text/javascript" src="/app/modules/user/user.js"></script>
 </body>
 
 </html>

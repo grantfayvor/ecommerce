@@ -18,7 +18,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- Custom Theme files -->
 	<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!--js-->
-	<script src="/js/jquery-2.1.1.min.js"></script>
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <link href="/css/pace.admin.css" rel="stylesheet">
+    <script src="/js/pace.min.js" type="text/javascript"></script>
 	<!--icons-css-->
 	<link href="/css/font-awesome.css" rel="stylesheet">
 	<!--Google Fonts-->
@@ -230,7 +232,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</a>
 									<ul class="dropdown-menu drp-mnu">
 										<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-										<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li>
+										<li> <a href="/profile"><i class="fa fa-user"></i> Profile</a> </li>
 										<li> <a href="/logout"><i class="fa fa-sign-out"></i> Logout</a> </li>
 									</ul>
 								</li>
@@ -273,22 +275,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 										<div class="form-group">
 											<div class="col-md-12 col-sm-12 col-xs-12">
-												<input type="text" name="name" data-ng-model="new_product.name" class="form-control" placeholder="Name">
+												<input type="text" name="name" data-ng-model="new_product.name" class="form-control" placeholder="Name" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-md-12 col-sm-12 col-xs-12">
-												<input type="text" name="brand" data-ng-model="new_product.brand" class="form-control" placeholder="Brand">
+												<input type="text" name="brand" data-ng-model="new_product.brand" class="form-control" placeholder="Brand" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-md-12 col-sm-12 col-xs-12">
-												<input type="text" name="sellingPrice" data-ng-model="new_product.sellingPrice" class="form-control" placeholder="Selling Price">
+												<input type="text" name="sellingPrice" data-ng-model="new_product.sellingPrice" class="form-control" placeholder="Selling Price" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-md-12 col-sm-12 col-xs-12">
-												<select name="categoryId" data-ng-model="new_product.categoryId" class="form-control">
+												<select name="categoryId" data-ng-model="new_product.categoryId" class="form-control" required>
                             						<option value="" selected>Category</option>
                             						<option value="1">Books</option>
                             						<option value="2">Cards</option>
@@ -299,12 +301,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</div>
 										<div class="form-group">
 											<div class="col-md-12 col-sm-12 col-xs-12">
-												<input type="file" name="image" data-ng-model="new_product.image" class="form-control" placeholder="product image">
+												<input type="file" name="image" data-ng-model="new_product.image" class="form-control" placeholder="product image" required>
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="col-md-12 col-sm-12 col-xs-12">
-												<textarea name="details" data-ng-model="new_product.details" class="form-control" rows="3" placeholder="Details about the product"></textarea>
+												<textarea name="details" data-ng-model="new_product.details" class="form-control" rows="3" placeholder="Details about the product" required></textarea>
 											</div>
 										</div>
 										<div class="ln_solid"></div>
@@ -346,12 +348,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<li><a href="/admin/view-products"><i class="fa fa-eye"></i><span>View Products</span></a></li>
 				<li><a href="/admin/view-products-list"><i class="fa fa-cogs"></i><span>View Product List</span></a></li>
                   <li><a href="/admin/view-sales-list"><i class="fa fa-line-chart"></i><span>View Sales List</span></a></li>
+                  <li>
+                        <a href="/admin/view-users">
+                            <i class="fa fa-user"></i>
+                            <span>View Users</span>
+                        </a>
+                    </li>
 		        
 		        <li><a href="#"><i class="fa fa-envelope"></i><span>Mailbox</span><span class="fa fa-angle-right" style="float: right"></span></a>
-		        	 <ul id="menu-academico-sub" >
-			            <li id="menu-academico-avaliacoes" ><a href="inbox.html">Inbox</a></li>
-			            <li id="menu-academico-boletim" ><a href="inbox-details.html">Compose email</a></li>
-		             </ul>
+		        	 <ul id="menu-academico-sub">
+                            <li id="menu-academico-avaliacoes">
+                                <a href="#">Inbox</a>
+                            </li>
+                            <li id="menu-academico-boletim">
+                                <a href="#">Compose email</a>
+                            </li>
+                        </ul>
 		        </li>
 		        
 		      </ul>

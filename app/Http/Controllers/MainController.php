@@ -89,6 +89,11 @@ class MainController extends Controller
         return view('admin/sale-list', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
+    public function viewUsersAsList()
+    {
+        return view('admin/user-list', ['username' => Auth::user() ? Auth::user()->name : null]);
+    }
+
     public function viewProductImage(Request $request)
     {
         return response()->file($request->location);

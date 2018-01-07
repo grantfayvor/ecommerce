@@ -20,6 +20,15 @@ class ProductController extends Controller
 
     public function saveProduct(Request $request)
     {
+        $rules = [
+            'name' => 'required',
+            'brand' => 'required',
+            'sellingPrice' => 'required',
+            'categoryId' => 'required',
+            'image' => 'required',
+            'details' => 'required'
+        ];
+        $this->validate($request, $rules);
         if($this->productService->save($request)){
             return redirect('/admin/view-products');
         } else {
@@ -29,6 +38,15 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request)
     {
+        $rules = [
+            'id' => 'required',
+            'name' => 'required',
+            'brand' => 'required',
+            'sellingPrice' => 'required',
+            'categoryId' => 'required',
+            'image' => 'required',
+            'details' => 'required'
+        ];
         $id = $request->id;
         if($this->productService->update($request, $id)){
             return redirect('/admin/view-products');

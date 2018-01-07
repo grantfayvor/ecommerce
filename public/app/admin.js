@@ -6,6 +6,7 @@ app.controller('AdminController', ['$scope', 'AdminService', function ($scope, A
     $scope.initialize = function () {
         $scope.countProducts();
         $scope.countUsers();
+        $scope.countSales();
     };
 
     $scope.countProducts = function () {
@@ -23,6 +24,14 @@ app.controller('AdminController', ['$scope', 'AdminService', function ($scope, A
             console.log("error in getting user count");
         });
     };
+
+    $scope.countSales = function () {
+        AdminService.countSales(function(response) {
+            $scope.saleCount = response.data;
+        }, function(response) {
+            console.log("error occured while trying to get the sale count");
+        });
+    };
     
 }]);
 
@@ -34,5 +43,9 @@ app.service('AdminService', ['APIService', function (APIService) {
 
     this.countProducts = function (successHandler, errorHandler) {
         APIService.get('/api/products/count', successHandler, errorHandler);
+    };
+
+    this.countSales = function (successHandler, errorHandler) {
+        APIService.get('/api/sales/count', successHandler, errorHandler);
     };
 }]);
