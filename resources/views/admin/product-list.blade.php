@@ -383,26 +383,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     novalidate>
                                     {{ csrf_field() }}
 
-                                    <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true" />
+                                    <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true"  required/>
 
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="name" data-ng-model="updatedProduct.name" class="form-control" placeholder="Name">
+                                            <input type="text" name="name" data-ng-model="updatedProduct.name" class="form-control" placeholder="Name" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="brand" data-ng-model="updatedProduct.brand" class="form-control" placeholder="Brand">
+                                            <input type="text" name="brand" data-ng-model="updatedProduct.brand" class="form-control" placeholder="Brand" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="sellingPrice" data-ng-model="updatedProduct.sellingPrice" class="form-control" placeholder="Selling Price">
+                                            <input type="text" name="sellingPrice" data-ng-model="updatedProduct.sellingPrice" class="form-control" placeholder="Selling Price" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control">
+                                            <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control" required>
                                                 <option value="" selected>Category</option>
                                                 <option value="1">Books</option>
                                                 <option value="2">Cards</option>
@@ -413,12 +413,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="file" name="image" data-ng-model="updatedProduct.image_location" class="form-control" placeholder="product image">
+                                            <input type="file" name="image" data-ng-model="updatedProduct.image_location" class="form-control" placeholder="product image" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <textarea name="details" data-ng-model="updatedProduct.details" class="form-control" rows="3" placeholder="Details about the product"></textarea>
+                                            <textarea name="details" data-ng-model="updatedProduct.details" class="form-control" rows="3" placeholder="Details about the product" required></textarea>
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>

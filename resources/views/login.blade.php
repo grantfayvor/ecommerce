@@ -101,8 +101,8 @@
                         <h2>Login to your account</h2>
                         <form method="post" action="/api/user/authenticate">
                             {{ csrf_field() }}
-                            <input type="email" placeholder="User email" name="email" value="{{ old('email') }}" />
-                            <input type="password" name="password" placeholder="User password" />
+                            <input type="email" placeholder="User email" name="email" value="{{ old('email') }}"  required/>
+                            <input type="password" name="password" placeholder="User password"  required/>
                             <span>
                                 <input type="checkbox" class="checkbox" name="remember" {{ old( 'remember') ? 'checked' : '' }}> Keep me signed in
                             </span>
@@ -120,11 +120,11 @@
                         <h2>New User Signup!</h2>
                         <form method="post" action="/api/user/save">
                             {{ csrf_field() }}
-                            <input type="text" placeholder="First Name" name="firstName" />
-                            <input type="text" placeholder="Last Name" name="lastName" />
-                            <input type="text" placeholder="Phone Number" name="phoneNumber" />
-                            <input type="email" placeholder="Email Address" name="email" />
-                            <input type="password" name="password" placeholder="Password" />
+                            <input type="text" placeholder="First Name" name="firstName"  required/>
+                            <input type="text" placeholder="Last Name" name="lastName"  required/>
+                            <input type="text" placeholder="Phone Number" name="phoneNumber"  required/>
+                            <input type="email" placeholder="Email Address" name="email"  required/>
+                            <input type="password" name="password" placeholder="Password"  required/>
                             <button type="submit" class="btn btn-default">Signup</button>
                         </form>
                     </div>
