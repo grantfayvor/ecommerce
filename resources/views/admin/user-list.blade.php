@@ -429,6 +429,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>View Users</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Go to Market</span>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="#">
@@ -455,26 +461,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <!--modal-->
     <div id="deleteModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title">Confirm</h4>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Confirm</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Do you really want to delete the user?</label>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Do you really want to delete the user?</label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Cancel</a>
-                        <a href="javascript:void(0)" data-ng-click="deleteUser()" class="btn btn-danger">Ok</a>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Cancel</a>
+                    <a href="javascript:void(0)" data-ng-click="deleteUser()" class="btn btn-danger">Ok</a>
                 </div>
             </div>
         </div>
+    </div>
     <script>
         var toggle = true;
 

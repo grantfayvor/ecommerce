@@ -397,7 +397,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="sellingPrice" data-ng-model="updatedProduct.sellingPrice" class="form-control" placeholder="Selling Price" required>
+                                            <input type="text" name="sellingPrice" data-ng-model="updatedProduct.sellingPrice" class="form-control" placeholder="Selling Price"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -412,12 +413,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="file" name="image" data-ng-model="updatedProduct.image_location" class="form-control" placeholder="product image" required>
+                                            <input type="file" name="image" data-ng-model="updatedProduct.image_location" class="form-control" placeholder="product image"
+                                                required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <textarea name="details" data-ng-model="updatedProduct.details" class="form-control" rows="3" placeholder="Details about the product" required></textarea>
+                                            <textarea name="details" data-ng-model="updatedProduct.details" class="form-control" rows="3" placeholder="Details about the product"
+                                                required></textarea>
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>
@@ -442,7 +445,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <!--inner block end here-->
             <!--copy rights start here-->
             <div class="copyrights">
-                <p>© <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
+                <p>©
+                    <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
                 </p>
             </div>
             <!--COPY rights end here-->
@@ -498,6 +502,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>View Users</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span>Go to Market</span>
+                        </a>
+                    </li>
 
                     <li>
                         <a href="#">
@@ -523,26 +533,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--slide bar menu end here-->
     <!--modal-->
     <div id="deleteModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title">Confirm</h4>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Confirm</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Do you really want to delete the product?</label>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Do you really want to delete the product?</label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Cancel</a>
-                        <a href="javascript:void(0)" data-ng-click="deleteProduct()" class="btn btn-danger">Ok</a>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Cancel</a>
+                    <a href="javascript:void(0)" data-ng-click="deleteProduct()" class="btn btn-danger">Ok</a>
                 </div>
             </div>
         </div>
+    </div>
     <script>
         var toggle = true;
 
