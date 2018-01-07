@@ -341,7 +341,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             </td>
                                             <td>
                                                 <label class="switch">
-                                                    <input id="adminToggle<%$index%>" type="checkbox" data-ng-checked="user.admin" data-ng-click="makeAdmin(user.id, $index)">
+                                                    <input id="adminToggle<%$index%>" type="checkbox" data-ng-checked="user.admin" data-ng-click="showMakeAdminModal(user.id, $index)">
                                                     <span class="slider round"></span>
                                                 </label>
                                             </td>
@@ -470,13 +470,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <h4 class="modal-title">Confirm</h4>
                 </div>
                 <div class="modal-body">
+                    <div class="form-group text-center" data-ng-show="deleteUserMessage">
+                        <label class="alert alert-warning" data-ng-bind="deleteUserMessage"></label>
+                    </div>
                     <div class="form-group">
-                        <label>Do you really want to delete the user?</label>
+                        <label>Please put your password to delete the user.</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Enter your password" name="password" data-ng-model="confirmPassword"
+                            required />
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Cancel</a>
+                    <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart" data-ng-click="deleteUserMessage = ''">Cancel</a>
                     <a href="javascript:void(0)" data-ng-click="deleteUser()" class="btn btn-danger">Ok</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="makeAdminModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Confirm</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group text-center" data-ng-show="makeAdminMessage">
+                        <label class="alert alert-warning" data-ng-bind="makeAdminMessage"></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Please put your password to make the user an administrator</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Enter your password" name="password" data-ng-model="confirmPassword"
+                            required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart" data-ng-click="makeAdminMessage = ''">Cancel</a>
+                    <a href="javascript:void(0)" data-ng-click="makeAdmin()" class="btn btn-danger">Ok</a>
                 </div>
             </div>
         </div>

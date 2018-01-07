@@ -51,12 +51,22 @@ class UserService
         }
     }
 
-    public function makeUserAdmin($id, Request $request) 
+    public function makeUserAdmin($id, Request $request)
     {
-        $details = [
-            'admin' => $request->adminStatus
-        ];
-        return $this->repository->update($id, $details) ? response()->json(['message' => 'user was successfuly made an admin'], 200) : response()->json(['message' => 'sorry user could not be made an admin.']);
+        $currentPassword = $this->getCurrentUserPassword(Auth::user()->id);
+        if (Hash::check($request->password, $currentPassword)) {
+            $details = [
+                'admin' => $request->adminStatus
+            ];
+            return $this->repository->update($id, $details) ? response()->json(['message' => 'user was successfully made an admin'], 200) : response()->json(['message' => 'sorry user could not be made an admin.']);
+        } else {
+            return response()->json(['message' => 'your password is incorrect'], 403);
+        }
+    }
+
+    private function getCurrentUserPassword($id)
+    {
+        return $this->repository->getUserPassword($id);
     }
 
     public function updateUser($id, Request $request)
@@ -93,14 +103,14 @@ class UserService
         }
     }
 
-    public function deleteUser($id)
+    public function deleteUser($id, $password)
     {
-        return $this->repository->delete($id);
-    }
-
-    private function getCurrentUserPassword($id)
-    {
-        return $this->repository->getUserPassword($id);
+        $currentPassword = $this->getCurrentUserPassword(Auth::user()->id);
+        if (Hash::check($password, $currentPassword)) {
+            return $this->repository->delete($id);
+        } else {
+            return response()->json(['message' => 'your password is incorrect'], 403);
+        }
     }
 
 }
