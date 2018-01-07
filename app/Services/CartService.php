@@ -70,12 +70,16 @@ class CartService
 
     public function getCartTotal()
     {
-        return $this->cart->total();
+        $cartTotal = $this->cart->total();
+        $cartTotal = preg_replace('[,]', '', $cartTotal);
+        return $cartTotal;
     }
 
     public function getCartSubtotal()
     {
-        return $this->cart->subtotal();
+        $cartTotal = $this->cart->subtotal();
+        $cartTotal = preg_replace('[,]', '', $cartTotal);
+        return $cartTotal;
     }
 
     public function getCountOfItems()

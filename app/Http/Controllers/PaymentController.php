@@ -16,7 +16,7 @@ class PaymentController extends Controller
         $this->cartService = $cartService;
     }
 
-    public function redirectToGateway()
+    public function redirectToGateway(Request $request)
     {
         $rules = [
             'email' => 'required|email',
@@ -27,7 +27,11 @@ class PaymentController extends Controller
             'key' => 'required'
         ];
         $this->validate($request, $rules);
-        return Paystack::getAuthorizationUrl()->redirectNow();
+        if($request->amount == ((int) $this->cartService->getCartSubtotal() * 100)){
+            return Paystack::getAuthorizationUrl()->redirectNow();
+        } else {
+            return response()->json(['message' => 'sorry you can\'t hack the price. I got it covered! ;)' . $request->amount]);
+        }
     }
 
     public function handleGatewayCallback(Request $request)

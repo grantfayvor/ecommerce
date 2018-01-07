@@ -21,6 +21,7 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
     $scope.getUserCart = function () {
         CartService.getUserCart(function (response) {
             $scope.cart = response.data;
+            $scope.cart.total_price = parseInt($scope.cart.total_price);
             console.log($scope.cart.data);
         }, function (response, status) {
             console.log("error in getting user cart");
