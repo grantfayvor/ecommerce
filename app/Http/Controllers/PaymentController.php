@@ -37,7 +37,7 @@ class PaymentController extends Controller
     public function handleGatewayCallback(Request $request)
     {
         $paymentDetails = Paystack::getPaymentData();
-//        dd($paymentDetails);
+       dd($paymentDetails);
         if($paymentDetails['status']){
             $cart = base64_encode(serialize($this->cartService->getCart()));
             $cartPrice = $this->cartService->getCartSubtotal();
