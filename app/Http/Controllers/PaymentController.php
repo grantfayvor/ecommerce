@@ -51,7 +51,7 @@ class PaymentController extends Controller
                 'cart_price' => $cartPrice,
                 'quantity' => $quantity,
                 'payment_id' => $transactionId,
-                'amount_paid' => $amountPaid,
+                'amount_paid' => (int) $amountPaid / 100,
                 'profit' => $cartPrice,
                 'customer' => $customer,
             ];
