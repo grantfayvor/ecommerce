@@ -29,7 +29,7 @@
 </head>
 <!--/head-->
 
-<body data-ng-controller="MainController" data-ng-cloak>
+<body data-ng-controller="MainController">
     <header id="header" data-ng-init="initialize()">
         <!--header-->
 
