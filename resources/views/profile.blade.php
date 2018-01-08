@@ -209,21 +209,26 @@
                                         </span>
                                         <br>
                                         <span>
-                                            <input type="checkbox" style="width:3%!important;display:inline-block;margin-left:0%;" class="checkbox" name="changePassword" data-ng-model="changePassword">Change password
+                                            <input type="checkbox" style="width:3%!important;display:inline-block;margin-left:0%;" class="checkbox" name="changePassword"
+                                                data-ng-model="changePassword">Change password
                                         </span>
                                         <br>
                                         <span>
                                             <input type="password" placeholder="Old password" data-ng-model="user.oldPassword" required/>
-                                            <input type="password" placeholder="New password" data-ng-model="user.newPassword" data-ng-disabled="!changePassword"
-                                            />
+                                            <input type="password" placeholder="New password" data-ng-model="user.newPassword" data-ng-disabled="!changePassword" />
                                         </span>
                                         <br>
                                         <hr>
                                         <b>Rating: </b>
                                         <img src="images/product-details/rating.png" alt="" />
-                                        <button type="submit" data-ng-click="updateUser()" class="btn btn-default pull-right">
-                                            Submit
-                                        </button>
+                                        <div class="pull-right">
+                                            <a href="/" class="btn btn-default">
+                                                Cancel
+                                            </a>
+                                            <button type="submit" data-ng-click="updateUser()" class="btn btn-default">
+                                                Submit
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
