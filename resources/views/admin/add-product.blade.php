@@ -443,7 +443,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                     </li>
 
-                    <li>
+                    <!-- <li>
                         <a href="#">
                             <i class="fa fa-envelope"></i>
                             <span>Mailbox</span>
@@ -457,7 +457,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <a href="#">Compose email</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
                 </ul>
             </div>
