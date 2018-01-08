@@ -76,12 +76,22 @@ class UserController extends Controller
 
     public function makeUserAdmin(Request $request, $id)
     {
+        $rules = [
+            'password' => 'required'
+        ];
+        $this->validate($request, $rules);
         return $this->userService->makeUserAdmin($id, $request);
     }
 
-    public function deleteUser($id)
+    public function deleteUser(Request $request)
     {
-        return response()->json($this->userService->deleteUser($id));
+        $id = $request->id;
+        $password = $request->p;
+        $rules = [
+            'p' => 'required'
+        ];
+        $this->validate($request, $rules);
+        return response()->json($this->userService->deleteUser($id, $password));
     }
 
     public function logout(Request $request)

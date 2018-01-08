@@ -43,16 +43,27 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
         });
     };
 
-    $scope.makeAdmin = function (userId, currentIndex) {
+    $scope.makeAdmin = function () {
         Pace.restart();
-        UserService.makeAdmin(userId, {
-            'adminStatus': $('#adminToggle' + currentIndex).is(':checked')
+        UserService.makeAdmin($scope.userIdToMakeAdmin, {
+            'adminStatus': $scope.adminStatus,
+            'password': $scope.confirmPassword
         }, function (response) {
+            $('#makeAdminModal').modal('hide');
+            $scope.confirmPassword = "";
             $scope.getAllUsers();
             console.log("user was successfully made an admin");
         }, function (response) {
+            $scope.makeAdminMessage = response.data.message;
+            $scope.confirmPassword = "";
             console.log("error occured  while trying to make user an admin");
         });
+    };
+
+    $scope.showMakeAdminModal = function (userId, currentIndex) {
+        $scope.userIdToMakeAdmin = userId;
+        $scope.adminStatus = $('#adminToggle' + currentIndex).is(':checked');
+        $('#makeAdminModal').modal('show');
     };
 
     $scope.updateUser = function () {
@@ -68,12 +79,18 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
     };
 
     $scope.deleteUser = function () {
-        $('#deleteModal').modal('hide');
         Pace.restart();
-        UserService.deleteUser($scope.userIdToDelete, function (response) {
-            $scope.getAllUsers();
-            console.log("user was successfully deleted");
+        UserService.deleteUser($scope.userIdToDelete, $scope.confirmPassword, function (response) {
+            $scope.deleteUserMessage = response.data.original ? response.data.original.message : '';
+            if($scope.deleteUserMessage !== 'your password is incorrect'){
+                $('#deleteModal').modal('hide');
+                $scope.getAllUsers();
+                console.log("user was successfully deleted");
+            }
+            $scope.confirmPassword = "";
         }, function (response) {
+            $scope.deleteUserMessage = response.data.original.message;
+            $scope.confirmPassword = "";
             console.log("user could not be deleted");
         });
     };
@@ -141,16 +158,16 @@ app.service("UserService", ['APIService', function (APIService) {
         APIService.put('/api/user/update/' + userId, userDetails, successHandler, errorHandler);
     };
 
-    this.makeAdmin = function (userId, adminStatus, successHandler, errorHandler) {
-        APIService.put('/api/user/admin/' + userId, adminStatus, successHandler, errorHandler);
+    this.makeAdmin = function (userId, details, successHandler, errorHandler) {
+        APIService.put('/api/user/admin/' + userId, details, successHandler, errorHandler);
     };
 
     this.getAllUsers = function (successHandler, errorHandler) {
         APIService.get('/api/users', successHandler, errorHandler);
     };
 
-    this.deleteUser = function (userId, successHandler, errorHandler) {
-        APIService.delete('/api/user/delete/' + userId, successHandler, errorHandler);
+    this.deleteUser = function (userId, password, successHandler, errorHandler) {
+        APIService.delete('/api/user/delete?id=' + userId +'&p=' +password, successHandler, errorHandler);
     };
 
     this.nextPage = function (url, successHandler, errorHandler) {

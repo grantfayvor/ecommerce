@@ -236,10 +236,10 @@
                                                 <div class="row" style="margin-bottom:40px;">
                                                     <div class="col-md-8 col-md-offset-2">
 
-                                                        <input type="hidden" name="email" value="grantfayrouz101@gmail.com" required> {{-- required email of the user making payments --}}
-                                                        <input type="hidden" name="orderID" value="345" required>
-                                                        <input type="hidden" name="amount" value="<% cart.total_price %>00" required> {{-- required in kobo --}}
-                                                        <input type="hidden" name="quantity" value="<% cart.data.length %>" required>
+                                                        <input type="hidden" name="email" value="{{ $email }}" required> {{-- required email of the user making payments --}}
+                                                        <input type="hidden" name="orderID" value="<% orderId %>" required>
+                                                        <input type="hidden" name="amount" value="<% cart.total_price * 100 %>" required> {{-- required in kobo --}}
+                                                        <input type="hidden" name="quantity" value="<% cartCount %>" required>
                                                         <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}" required> {{-- required --}}
                                                         <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}" required> {{-- required --}} {{ csrf_field() }} {{-- works only when using
                                                         laravel 5.1, 5.2 --}}
