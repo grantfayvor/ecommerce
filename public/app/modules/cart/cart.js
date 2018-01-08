@@ -7,6 +7,8 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
         $scope.getHotProducts();
         $scope.getCartCount();
         $scope.getUserCart();
+        $scope.orderId = Math.random().toString(36).replace(/[^a-z0-9]+/g, '').substr(0, 6);
+        console.log($scope.orderId);
     };
 
     $scope.getHotProducts = function () {
