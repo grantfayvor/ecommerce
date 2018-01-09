@@ -97,7 +97,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="#" style="background-color: inherit!important;">
-                                                        </a>
+                                                    </a>
                                                 </li>
                                                 <li>
                                                     <a href="/logout" style="background-color: inherit!important;">
@@ -315,9 +315,9 @@
                         <div class="single-widget">
                             <h2>Afiammuta</h2>
                             <ul class="nav nav-pills nav-stacked">
-                                <li>
+                                <!-- <li>
                                     <a href="/company-info">Company Information</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="#" data-toggle="modal" data-target="#storeLocationModal">Store Location</a>
                                 </li>
@@ -338,10 +338,10 @@
                     </div>
                     <div class="col-sm-4 col-sm-offset-1">
                         <div class="single-widget">
-                            <h2>Contact Afiammuta</h2>
+                            <!-- <h2>Contact Afiammuta</h2> -->
 
-                            <form action="#" class="searchform">
-                                <input type="text" placeholder="Your email address" />
+                            <form action="/" method="get" class="searchform">
+                                <input type="text" placeholder="Afiammuta" disabled />
                                 <button type="submit" class="btn btn-default">
                                     <i class="fa fa-arrow-circle-o-right"></i>
                                 </button>
@@ -405,8 +405,9 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row" style="text-align: center;">
-                    <p class="pull-left">Copyright © <?php echo date("Y"); ?>
-                        <a href="afiammuta.com">Afiammuta.com</a> All rights reserved.</p>
+                    <p class="pull-left">Copyright ©
+                        <?php echo date("Y"); ?>
+                        <a href="/">Afiammuta.com</a> All rights reserved.</p>
                 </div>
             </div>
         </div>

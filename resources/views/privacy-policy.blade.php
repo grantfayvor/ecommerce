@@ -1,211 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="e-shop">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Contact | Afiammuta</title>
+    <title>Privacy Policy | Afiammuta</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/price-range.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
-	<link href="css/responsive.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-</head><!--/head-->
+</head>
+<!--/head-->
 
-<body>
-<header id="header" data-ng-init="initialize()">
-<!--header-->
+<body data-ng-controller="UtilityController">
+    <header id="header" data-ng-init="initialize()">
+        <!--header-->
 
-<!--<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">-->
-<nav class="navbar navbar-custom" role="navigation">
-    <!-- Collapsed Hamburger -->
-    <button type="button" class="btn btn-navbar navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-        <span class="sr-only">Toggle Navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
+        <!--<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">-->
+        <nav class="navbar navbar-custom" role="navigation">
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="btn btn-navbar navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-    <div class="header-middle" style="background-color: white;">
-        <!--header-middle-->
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="logo pull-left">
-                        <!-- TODO change logo to company logo-->
-                        <a href="/">
-                            <img src="images/home/logo.png" alt="Afiammuta" />
-                        </a>
-                    </div>
-                    <div class="btn-group pull-right">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Search" />
+            <div class="header-middle" style="background-color: white;">
+                <!--header-middle-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="logo pull-left">
+                                <!-- TODO change logo to company logo-->
+                                <a href="/">
+                                    <img src="images/home/logo.png" alt="Afiammuta" />
+                                </a>
+                            </div>
+                            <div class="btn-group pull-right">
+                                <div class="search_box pull-right">
+                                    <input type="text" placeholder="Search" />
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-
-                </div>
-                <div class="col-sm-8">
-                    <div class="shop-menu pull-right">
-                        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                @if(!$username)
-                                <li class="dropdown">
-                                    <a href="#">
-                                        <i class="fa fa-user"></i> Account
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li>
-                                            <a href="/login" style="background-color: inherit!important;">
-                                                <i class="fa fa-sign-in"></i> Sign in</a>
+                        <div class="col-sm-8">
+                            <div class="shop-menu pull-right">
+                                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                                    <ul class="nav navbar-nav">
+                                        @if(!$username)
+                                        <li class="dropdown">
+                                            <a href="#">
+                                                <i class="fa fa-user"></i> Account
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul role="menu" class="sub-menu">
+                                                <li>
+                                                    <a href="/login" style="background-color: inherit!important;">
+                                                        <i class="fa fa-sign-in"></i> Sign in</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/register" style="background-color: inherit!important;">
+                                                        <i class="fa fa-user"></i> Create Account</a>
+                                                </li>
+                                            </ul>
                                         </li>
-                                        <li>
-                                            <a href="/register" style="background-color: inherit!important;">
-                                                <i class="fa fa-user"></i> Create Account</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                @else
-                                <li class="dropdown">
-                                    <a href="javascript:void(0)">
-                                        <i class="fa fa-user"></i> {{ $username }}
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                    <ul role="menu" class="sub-menu">
-                                        @if($admin)
-                                        <li>
-                                            <a href="/admin/dashboard" style="background-color: inherit!important;">
-                                                <i class="fa fa-dashboard"></i> Admin Dashboard</a>
+                                        @else
+                                        <li class="dropdown">
+                                            <a href="javascript:void(0)">
+                                                <i class="fa fa-user"></i> {{ $username }}
+                                                <i class="fa fa-angle-down"></i>
+                                            </a>
+                                            <ul role="menu" class="sub-menu">
+                                                @if($admin)
+                                                <li>
+                                                    <a href="/admin/dashboard" style="background-color: inherit!important;">
+                                                        <i class="fa fa-dashboard"></i> Admin Dashboard</a>
+                                                </li>
+                                                @endif
+                                                <li>
+                                                    <a href="/profile" style="background-color: inherit!important;">
+                                                        <i class="fa fa-eye"></i> Profile</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" style="background-color: inherit!important;">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/logout" style="background-color: inherit!important;">
+                                                        <i class="fa fa-power-off"></i> Sign Out</a>
+                                                </li>
+                                            </ul>
                                         </li>
                                         @endif
+                                        <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
                                         <li>
-                                            <a href="/profile" style="background-color: inherit!important;">
-                                                <i class="fa fa-eye"></i> Profile</a>
+                                            <a href="/checkout">
+                                                <i class="fa fa-crosshairs"></i> Checkout</a>
                                         </li>
                                         <li>
-                                            <a href="#" style="background-color: inherit!important;">
-                                                </a>
-                                        </li>
-                                        <li>
-                                            <a href="/logout" style="background-color: inherit!important;">
-                                                <i class="fa fa-power-off"></i> Sign Out</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                @endif
-                                <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
-                                <li>
-                                    <a href="/checkout">
-                                        <i class="fa fa-crosshairs"></i> Checkout</a>
-                                </li>
-                                <li>
-                                    <a href="/cart">
-                                        <i class="fa fa-shopping-cart" style="float:left;"></i>
-                                        <span style="float:left;"> Cart </span>
-                                        <i data-ng-if="cartCount" style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
+                                            <a href="/cart">
+                                                <i class="fa fa-shopping-cart" style="float:left;"></i>
+                                                <span style="float:left;"> Cart </span>
+                                                <i data-ng-if="cartCount" style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
                                             border-radius: 50%;background-color: black;color: white;text-align: center;font-size: 1em;float:right;"
-                                            data-ng-bind="cartCount"></i>
-                                    </a>
-                                </li>
-                                @if($username)
-                                <li>
-                                    <a href="/logout">
-                                        <i class="fa fa-power-off"></i> Sign out</a>
-                                </li>
-                                @endif
-                            </ul>
+                                                    data-ng-bind="cartCount"></i>
+                                            </a>
+                                        </li>
+                                        @if($username)
+                                        <li>
+                                            <a href="/logout">
+                                                <i class="fa fa-power-off"></i> Sign out</a>
+                                        </li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!--/header-middle-->
+            <!--/header-middle-->
 
 
-</nav>
+        </nav>
 
-</header><!--/header-->
-	 
-	 <div id="contact-page" class="container">
-    	<div class="bg">
-	    	<!-- <div class="row">    		
+    </header>
+    <!--/header-->
+
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <!-- <div class="row">    		
 	    		<div class="col-sm-12">    			   			
 					<h2 class="title text-center">Contact <strong>Us</strong></h2>    			    				    				
 					<div id="gmap" class="contact-map">
 					</div>
 				</div>			 		
 			</div> -->
-    		<div class="row">  	
-	    		<div class="col-sm-8">
-	    			<div class="contact-form">
-	    				<h2 class="title text-center">Get In Touch</h2>
-	    				<div class="status alert alert-success" style="display: none"></div>
-				    	<form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
-				            <div class="form-group col-md-6">
-				                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
-				            </div>
-				            <!-- <div class="form-group col-md-6">
-				                <input type="email" name="email" class="form-control" required="required" placeholder="Email">
-				            </div> -->
-				            <div class="form-group col-md-12">
-				                <input type="text" name="subject" class="form-control" required="required" placeholder="Subject">
-				            </div>
-				            <div class="form-group col-md-12">
-				                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your Message Here"></textarea>
-				            </div>                        
-				            <div class="form-group col-md-12">
-				                <input type="submit" name="submit" class="btn btn-primary pull-right" value="Submit">
-				            </div>
-				        </form>
-	    			</div>
-	    		</div>
-	    		<div class="col-sm-4">
-	    			<div class="contact-info">
-	    				<h2 class="title text-center">Contact Info</h2>
-	    				<address>
-	    					<p>Afiammuta.</p>
-							<p>Enugu</p>
-							<p>Enugu state, Nigeria.</p>
-							<p>Mobile: +234</p>
-							<p>Email: info@afiammuta.com</p>
-	    				</address>
-	    				<div class="social-networks">
-	    					<h2 class="title text-center">Social Networking</h2>
-							<ul>
-								<li>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-youtube"></i></a>
-								</li>
-							</ul>
-	    				</div>
-	    			</div>
-    			</div>    			
-	    	</div>  
-    	</div>	
-    </div><!--/#contact-page-->
-	
-	<footer id="footer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="contact-form">
+                        <h2 class="title text-center">Privacy Policy</h2>
+                        <div class="status alert alert-success" style="display: none"></div>
+                        <div class="category-tab shop-details-tab">
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in">
+                                    <div class="col-sm-12">
+                                        This is the privacy policy page and it is expected to be edited with the company's privacy policy.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/#contact-page-->
+
+    <footer id="footer">
         <!--Footer-->
         <div class="footer-top">
             <div class="container">
@@ -256,9 +223,9 @@
                         <div class="single-widget">
                             <h2>Afiammuta</h2>
                             <ul class="nav nav-pills nav-stacked">
-                                <li>
+                                <!-- <li>
                                     <a href="/company-info">Company Information</a>
-                                </li>
+                                </li> -->
                                 <li>
                                     <a href="#" data-toggle="modal" data-target="#storeLocationModal">Store Location</a>
                                 </li>
@@ -279,10 +246,10 @@
                     </div>
                     <div class="col-sm-4 col-sm-offset-1">
                         <div class="single-widget">
-                            <h2>Contact Afiammuta</h2>
+                            <!-- <h2>Contact Afiammuta</h2> -->
 
-                            <form action="#" class="searchform">
-                                <input type="text" placeholder="Your email address" />
+                            <form action="/" method="get" class="searchform">
+                                <input type="text" placeholder="Afiammuta" disabled />
                                 <button type="submit" class="btn btn-default">
                                     <i class="fa fa-arrow-circle-o-right"></i>
                                 </button>
@@ -349,23 +316,30 @@
                 <div class="row" style="text-align: center;">
                     <p class="pull-left">Copyright ©
                         <?php echo date("Y"); ?>
-                        <a href="afiammuta.com">Afiammuta.com</a> All rights reserved.</p>
+                        <a href="/">Afiammuta.com</a> All rights reserved.</p>
                 </div>
             </div>
         </div>
 
-    </footer><!--/Footer-->
-	
+    </footer>
+    <!--/Footer-->
 
-  
+
+
     <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" src="js/gmaps.js"></script>
-	<script src="js/contact.js"></script>
-	<script src="js/price-range.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/price-range.js"></script>
     <script src="js/jquery.scrollUp.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
+
+    <script type="text/javascript" src="/app/angular.js"></script>
+    <script type="text/javascript" src="/app/config/config.js"></script>
+    <script type="text/javascript" src="/app/service/api-service.js"></script>
+    <script type="text/javascript" src="/app/utility.js"></script>
 </body>
+
 </html>
