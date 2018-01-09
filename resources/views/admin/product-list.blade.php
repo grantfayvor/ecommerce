@@ -302,22 +302,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </script>
             <!-- /script-for sticky-nav -->
 
-            <div class="inner-block" data-ng-show="page == 'product-error'">
-                    <div class="inbox">
-                        <h2>All Products</h2>
-    
-                        <div class="col-md-12 mailbox-content  tab-content tab-content-in">
-                            <div class="tab-pane active text-style" id="tab1">
-                                <div class="mailbox-border">
-                                    <span data-ng-bind="productsMessage"></span>
-                                </div>
+            <!-- <div class="inner-block" style="min-height:600px;" data-ng-show="page == 'product-error'">
+                <div class="inbox">
+                    <h2>All Products</h2>
+
+                    <div class="col-md-12 mailbox-content  tab-content tab-content-in">
+                        <div class="tab-pane active text-style" id="tab1">
+                            <div class="mailbox-border">
+                                <span data-ng-bind="productsMessage"></span>
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
+            </div> -->
 
             <!--inner block start here-->
-            <div class="inner-block" data-ng-show="page == 'product-list'">
+            <div class="inner-block" style="min-height:600px;" data-ng-show="page == 'product-list'">
                 <div class="inbox">
                     <h2>All Products</h2>
 
@@ -383,7 +383,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
 
-            <div class="inner-block" data-ng-show="page == 'edit-product'">
+            <div class="inner-block" style="min-height:600px;" data-ng-show="page == 'edit-product'">
 
 
                 <!--mainpage chit-chating-->
@@ -568,6 +568,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </div>
+    <a href="#" class="scrollToTop"></a>
     <script>
         var toggle = true;
 
@@ -583,6 +584,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 }, 400);
             }
             toggle = !toggle;
+        });
+        $(document).ready(function () {
+
+            //Check to see if the window is top if not then display button
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('.scrollToTop').fadeIn();
+                } else {
+                    $('.scrollToTop').fadeOut();
+                }
+            });
+
+            //Click event to scroll to top
+            $('.scrollToTop').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 800);
+                return false;
+            });
+
         });
     </script>
     <!--scrolling js-->

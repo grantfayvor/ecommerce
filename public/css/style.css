@@ -4777,3 +4777,35 @@ input:checked + .slider::before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+     /* Place the button at the bottom of the page */
+     /* Make sure it does not overlap */
+     /* Remove outline */
+     /* Add a mouse pointer on hover */
+     /* Some padding */
+     /* Rounded corners */
+
+.scrollToTop{
+	width:100px; 
+	height:130px;
+	padding:10px; 
+	text-align:center; 
+	background: whiteSmoke;
+	font-weight: bold;
+	color: #444;
+	text-decoration: none;
+	position:fixed;
+    /* top:75px; */
+    bottom: 20px;
+    z-index: 99;
+    right:40px;
+    outline: none;
+    cursor: pointer;
+    display:none;
+    padding: 15px;
+    border-radius: 10px;
+	background: url('/images/arrow_up.png') no-repeat 0px 10px;
+}
+.scrollToTop:hover{
+	text-decoration:none;
+}

@@ -307,7 +307,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </script>
                 <!-- /script-for sticky-nav -->
                 <!--inner block start here-->
-                <div class="inner-block">
+                <div class="inner-block" style="min-height:600px;">
 
                     <!--mainpage chit-chating-->
                     <div class="chit-chat-layer1">
@@ -464,6 +464,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="clearfix"> </div>
     </div>
+    <a href="#" class="scrollToTop"></a>
     <!--slide bar menu end here-->
     <script>
         var toggle = true;
@@ -480,6 +481,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 }, 400);
             }
             toggle = !toggle;
+        });
+
+        $(document).ready(function () {
+
+            //Check to see if the window is top if not then display button
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('.scrollToTop').fadeIn();
+                } else {
+                    $('.scrollToTop').fadeOut();
+                }
+            });
+
+            //Click event to scroll to top
+            $('.scrollToTop').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 800);
+                return false;
+            });
+
         });
     </script>
     <!--scrolling js-->
