@@ -12,10 +12,10 @@ class SaleRepository extends AbstractRepository
         $this->model = $sale;
     }
 
-    public function search($param)
+    public function search($param, $n = 5)
     {
-        return $this->model->where('product', 'like', '%' . $param . '%')
-            ->orWhere('customer_id', 'like', '%' . $param . '%')
-            ->get();
+        return $this->model->where('payment_id', 'like', '%' . $param . '%')
+            ->orWhere('customer', 'like', '%' . $param . '%')
+            ->simplePaginate($n);
     }
 }

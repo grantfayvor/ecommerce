@@ -1,16 +1,24 @@
-app.controller('SaleController', ['$scope', 'SaleService', function($scope, SaleService){
+app.controller('SaleController', ['$scope', 'SaleService', function ($scope, SaleService) {
 
     $scope.sales = [];
 
-    $scope.initialize = function(){
+    $scope.initialize = function () {
         $scope.getAllSales();
     };
 
-    $scope.getAllSales = function(){
-        SaleService.getAllSales(function(response){
+    $scope.getAllSales = function () {
+        SaleService.getAllSales(function (response) {
             $scope.sales = response.data;
-        }, function(response){
+        }, function (response) {
             console.log("error getting sales");
+        });
+    };
+
+    $scope.searchByParam = function () {
+        SaleService.search($scope.searchParam, function (response) {
+            $scope.sales = response.data;
+        }, function(response) {
+            console.log("error occured while trying to get the searched for products");
         });
     };
 
@@ -34,7 +42,11 @@ app.controller('SaleController', ['$scope', 'SaleService', function($scope, Sale
 
 }]);
 
-app.service('SaleService', ['APIService', function(APIService){
+app.service('SaleService', ['APIService', function (APIService) {
+
+    this.search = function (param, successHandler, errorHandler) {
+        APIService.get("/api/sales/search/" + param, successHandler, errorHandler);
+    };
 
     this.getAllSales = function (successHandler, errorHandler) {
         APIService.get('/api/sales', successHandler, errorHandler);

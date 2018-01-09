@@ -32,6 +32,6 @@ class SaleService
 
     public function searchByParam($param)
     {
-        return $this->repository->search($param);
+        return $this->repository->search($param, 30);
     }
 }

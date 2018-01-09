@@ -90,7 +90,7 @@ class ProductService
 
     public function searchByParam($param)
     {
-        return $this->repository->search($param);
+        return $this->repository->search($param, 30);
     }
 
     public function delete($id)

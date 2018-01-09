@@ -52,8 +52,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!--search-box-->
                         <div class="search-box" style="float: right;">
                             <form>
-                                <input type="text" placeholder="Search..." required="">
-                                <input type="submit" value="">
+                            <input type="text" data-ng-model="searchParam" placeholder="Search..." required="">
+                            <input type="submit" value="" data-ng-click="searchByParam()">
                             </form>
                         </div>
                         <!--//end-search-box-->

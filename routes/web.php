@@ -61,7 +61,7 @@ Auth::routes();
 Route::get('/api/products', 'ProductController@findAllProducts');
 Route::post('/api/product/save', 'ProductController@saveProduct')->middleware('auth', 'admin');
 Route::post('/api/product/update', 'ProductController@updateProduct')->middleware('auth', 'admin');
-Route::get('/api/product/find/{param}', 'ProductController@search');
+Route::get('/api/product/search/{param}', 'ProductController@search');
 Route::get('/api/products/count', 'ProductController@countProducts')->middleware('auth', 'admin');
 Route::delete('/api/product/delete/{id}', 'ProductController@deleteProduct')->middleware('auth', 'admin');
 Route::get('/api/products/status/{status}', 'ProductController@findProductsByStatus');
@@ -83,6 +83,7 @@ Route::get('/api/cart/count', 'CartController@getCountOfItems');
 //Sale apis
 Route::get('/api/sales', 'SaleController@getAllSales')->middleware('auth', 'admin');
 Route::get('/api/sales/count', 'SaleController@getSaleCount')->middleware('auth', 'admin');
+Route::get('/api/sales/search/{param}', 'SaleController@search')->middleware('auth', 'admin');
 
 //User apis
 Route::post('/api/user/save', 'UserController@saveUser');
@@ -93,6 +94,7 @@ Route::put('/api/user/update/{id}', 'UserController@updateUser')->middleware('au
 Route::put('/api/user/admin/{id}', 'UserController@makeUserAdmin')->middleware('auth', 'admin');
 Route::get('/api/users', 'UserController@findAllUsers')->middleware('auth', 'admin');
 Route::delete('/api/user/delete', 'UserController@deleteUser')->middleware('auth', 'admin');
+Route::get('/api/users/search/{param}', 'UserController@search')->middleware('auth', 'admin');
 
 //Payment gateway
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay')->middleware('auth');

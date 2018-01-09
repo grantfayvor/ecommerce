@@ -13,12 +13,12 @@ class ProductRepository extends AbstractRepository
         $this->model = $product;
     }
 
-    public function search($param)
+    public function search($param, $n = 5)
     {
         return $this->model->where('name', 'like', '%' . $param . '%')
             ->orWhere('brand', 'like', '%' . $param . '%')
             ->orWhere('details', 'like', '%' . $param . '%')
-            ->get();
+            ->simplePaginate($n);
     }
 
 }

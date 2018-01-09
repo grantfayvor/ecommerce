@@ -103,6 +103,11 @@ class UserService
         }
     }
 
+    public function searchByParam($param)
+    {
+        return $this->repository->search($param, 30);
+    }
+
     public function deleteUser($id, $password)
     {
         $currentPassword = $this->getCurrentUserPassword(Auth::user()->id);
