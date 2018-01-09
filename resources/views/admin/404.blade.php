@@ -227,7 +227,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</script>
 		<!-- /script-for sticky-nav -->
 <!--inner block start here-->
-<div class="inner-block">
+<div class="inner-block" style="min-height:600px;">
     <div class="error-404">  	
     	<div class="error-page-left">
     		<img src="images/404.png" alt="">
