@@ -156,13 +156,16 @@
                     <div class="contact-form">
                         <h2 class="title text-center">Get In Touch</h2>
                         <div class="status alert alert-success" style="display: none"></div>
-                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+                        <form id="main-contact-form" action="/contact-us" class="contact-form row" name="contact-form" method="post">
+                            
+                            {{ csrf_field() }}
+                            
                             <div class="form-group col-md-6">
-                                <input type="text" name="name" class="form-control" required="required" placeholder="Name">
+                                <input type="text" name="name" class="form-control" placeholder="Name">
                             </div>
-                            <!-- <div class="form-group col-md-6">
-				                <input type="email" name="email" class="form-control" required="required" placeholder="Email">
-				            </div> -->
+                            <div class="form-group col-md-6">
+				                <input type="email" name="email" value="{{ $email }}" class="form-control" required="required" placeholder="Email">
+				            </div>
                             <div class="form-group col-md-12">
                                 <input type="text" name="subject" class="form-control" required="required" placeholder="Subject">
                             </div>

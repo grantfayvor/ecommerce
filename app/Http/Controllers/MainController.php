@@ -66,7 +66,7 @@ class MainController extends Controller
 
     public function contactUsView()
     {
-        return view('contact-us', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);    
+        return view('contact-us', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null,  'email' => Auth::user() ? Auth::user()->email : null]);    
     }
 
     public function companyInfoView()
