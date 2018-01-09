@@ -94,6 +94,10 @@ class UserController extends Controller
         return response()->json($this->userService->deleteUser($id, $password));
     }
 
+    public function search(Request $request, $param){
+        return  response()->json($this->userService->searchByParam($param));
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

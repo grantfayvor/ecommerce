@@ -95,6 +95,14 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
         });
     };
 
+    $scope.searchByParam = function () {
+        UserService.search($scope.searchParam, function (response) {
+            $scope.users = response.data;
+        }, function(response) {
+            console.log("error occured while trying to get the searched for users");
+        });
+    };
+
     $scope.showDeletePage = function (userId) {
         $scope.userIdToDelete = userId;
         $('#deleteModal').modal('show');
@@ -140,6 +148,10 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
 }]);
 
 app.service("UserService", ['APIService', function (APIService) {
+
+    this.search = function (param, successHandler, errorHandler) {
+        APIService.get("/api/users/search/" + param, successHandler, errorHandler);
+    };
 
     this.getHotProducts = function (successHandler, errorHandler) {
         var status = "HOT";

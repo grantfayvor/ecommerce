@@ -121,12 +121,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </a>
                         </div>
                         <!--search-box-->
-                        <div class="search-box" style="float: right;">
+                        <!-- <div class="search-box" style="float: right;">
                             <form>
                                 <input type="text" placeholder="Search..." required="">
                                 <input type="submit" value="">
                             </form>
-                        </div>
+                        </div> -->
                         <!--//end-search-box-->
                         <div class="clearfix"> </div>
                     </div>

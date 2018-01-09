@@ -106,6 +106,17 @@ function ($rootScope, $scope, MainService) {
         });
     };
 
+    $scope.searchByParam = function () {
+
+        MainService.search($scope.searchParam, function (response) {
+            if (!response.data.message) {
+                $scope.products = response.data;
+            } else {
+                $scope.productsMessage = response.data.message;
+            }
+        });
+    };
+
     $scope.productInfo = function (product) {
         Pace.restart();
         $scope.currentProduct = product;
@@ -163,6 +174,10 @@ function ($rootScope, $scope, MainService) {
 }]);
 
 app.service("MainService", ['APIService', function (APIService) {
+
+    this.search = function (param, successHandler, errorHandler) {
+        APIService.get("/api/product/search/" + param, successHandler, errorHandler);
+    };
 
     this.getHotProducts = function (successHandler, errorHandler) {
         var status = "HOT";

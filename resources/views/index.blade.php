@@ -54,11 +54,11 @@
                                     <img src="images/home/logo.png" alt="Afiammuta" />
                                 </a>
                             </div>
-                            <div class="btn-group pull-right">
+                            <!-- <div class="btn-group pull-right">
                                 <div class="search_box pull-right">
-                                    <input type="text" placeholder="Search" />
+                                    <input type="text" placeholder="Search" data-ng-model="searchParam" data-ng-change="searchByParam()" />
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                         <div class="col-sm-8">

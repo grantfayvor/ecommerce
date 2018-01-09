@@ -50,11 +50,11 @@
                                     <img src="images/home/logo.png" alt="Afiammuta logo" />
                                 </a>
                             </div>
-                            <div class="btn-group pull-right">
+                            <!-- <div class="btn-group pull-right">
                                 <div class="search_box pull-right">
                                     <input type="text" placeholder="Search" />
                                 </div>
-                            </div>
+                            </div> -->
 
                         </div>
                         <div class="col-sm-8">

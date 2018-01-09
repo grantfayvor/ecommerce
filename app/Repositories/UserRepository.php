@@ -18,4 +18,12 @@ class UserRepository extends AbstractRepository
         return $this->model->where('id', $id)->first()->password;
     }
 
+    public function search($param, $n = 5)
+    {
+        return $this->model->where('name', 'like', '%' . $param . '%')
+            ->orWhere('email', 'like', '%' . $param . '%')
+            ->orWhere('phone_number', 'like', '%' . $param . '%')
+            ->simplePaginate($n);
+    }
+
 }

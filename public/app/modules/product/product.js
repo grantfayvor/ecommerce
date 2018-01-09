@@ -71,6 +71,20 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
         });
     };
 
+    $scope.searchByParam = function () {
+        $scope.page = 'product-list';
+        ProductService.search($scope.searchParam, function (response) {
+            if (!response.data.message) {
+                $scope.products = response.data;
+            } else {
+                $scope.productsMessage = response.data.message;
+                $scope.page = 'product-error';
+            }
+        }, function(response) {
+            console.log("couldn't get the products sorry");
+        });
+    };
+
     $scope.showEditPage = function (product) {
         Pace.restart();
         $scope.updatedProduct = product;
@@ -113,6 +127,10 @@ app.service("ProductService", ['APIService', function (APIService) {
 
     this.saveProduct = function (productDetails, successHandler, errorHandler) {
         APIService.post("/api/product/save", productDetails, successHandler, errorHandler);
+    };
+
+    this.search = function (param, successHandler, errorHandler) {
+        APIService.get("/api/product/search/" + param, successHandler, errorHandler);
     };
 
     this.updateProduct = function (productId, productDetails, successHandler, errorHandler) {

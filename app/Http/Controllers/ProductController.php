@@ -78,11 +78,11 @@ class ProductController extends Controller
     public function search($param)
     {
         $productList = $this->productService->searchByParam($param);
-        if ($productList != null) {
+        // if (!$productList) {
             return response()->json($productList);
-        } else {
-            return response()->json(array("message" => "resource was not found"), 404);
-        }
+        // } else {
+        //     return response()->json(["message" => "sorry nothing was found for your search"]);
+        // }
     }
 
     public function deleteProduct($id)

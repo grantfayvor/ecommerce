@@ -36,10 +36,10 @@ class SaleController extends Controller
 
     public function search(Request $request, $param){
         $saleList = $this->saleService->searchByParam($param);
-        if(!empty($saleList)){
+        // if(!empty($saleList)){
 			return response()->json($saleList);
-		} else{
-            return response()->json(array("result" => false));
-        }
+		// } else{
+        //     return response()->json(array("result" => false));
+        // }
     }
 }
