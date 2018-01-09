@@ -64,6 +64,31 @@ class MainController extends Controller
         return view('payment-failure', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);
     }
 
+    public function contactUsView()
+    {
+        return view('contact-us', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);    
+    }
+
+    public function companyInfoView()
+    {
+        return view('company-info', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);    
+    }
+
+    public function privacyPolicyView()
+    {
+        return view('privacy-policy', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);    
+    }
+
+    public function refundPolicyView()
+    {
+        return view('refund-policy', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);    
+    }
+
+    public function termsOfUseView()
+    {
+        return view('terms-of-use', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);    
+    }
+
     public function adminDashboard()
     {
         return view('admin/dashboard', ['username' => Auth::user() ? Auth::user()->name : null]);

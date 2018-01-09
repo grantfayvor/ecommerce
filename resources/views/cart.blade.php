@@ -294,53 +294,28 @@
         <div class="footer-widget">
             <div class="container">
                 <div class="row">
+                
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2>Service</h2>
+                            <h2>Afiammuta</h2>
                             <ul class="nav nav-pills nav-stacked">
                                 <li>
-                                    <a href="#">Online Help</a>
+                                    <a href="/company-info">Company Information</a>
                                 </li>
                                 <li>
-                                    <a href="#">Contact Us</a>
+                                    <a href="#" data-toggle="modal" data-target="#storeLocationModal">Store Location</a>
                                 </li>
                                 <li>
-                                    <a href="#">Order Status</a>
+                                    <a href="/terms-of-use">Terms of Use</a>
                                 </li>
                                 <li>
-                                    <a href="#">FAQ’s</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="single-widget">
-                            <h2>Policies</h2>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li>
-                                    <a href="#">Terms of Use</a>
+                                    <a href="/privacy-policy">Privacy Policy</a>
                                 </li>
                                 <li>
-                                    <a href="#">Privacy Policy</a>
+                                    <a href="/refund-policy">Refund Policy</a>
                                 </li>
                                 <li>
-                                    <a href="#">Refund Policy</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="single-widget">
-                            <h2>About Afiammuta</h2>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li>
-                                    <a href="#">Company Information</a>
-                                </li>
-                                <li>
-                                    <a href="#">Store Location</a>
-                                </li>
-                                <li>
-                                    <a href="#">Copyright</a>
+                                    <a href="/contact-us">Contact Us</a>
                                 </li>
                             </ul>
                         </div>
@@ -386,6 +361,27 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </div>
+
+        <div id="storeLocationModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">Afiammuta</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Find us at Enugu, Nigeria.</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Ok</a>
+                    </div>
                 </div>
             </div>
         </div>
