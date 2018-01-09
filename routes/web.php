@@ -46,6 +46,14 @@ Route::get('/home', 'MainController@home');
 Route::get('/profile', 'MainController@userProfile')->middleware('auth');
 Route::get('/payment/success', 'MainController@paymentSuccessView')->middleware('auth');
 Route::get('/payment/failure', 'MainController@paymentFailureView')->middleware('auth');
+Route::get('/contact-us', 'MainController@contactUsView');
+Route::get('/company-info', 'MainController@companyInfoView');
+Route::get('/privacy-policy', 'MainController@privacyPolicyView');
+Route::get('/refund-policy', 'MainController@refundPolicyView');
+Route::get('/terms-of-use', 'MainController@termsOfUseView');
+
+//contact-us
+Route::post('/contact-us', 'ContactUsController@sendMail')->name('contact-us');
 
 Auth::routes();
 

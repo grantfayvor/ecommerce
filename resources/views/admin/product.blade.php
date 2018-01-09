@@ -27,6 +27,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
     <!--//skycons-icons-->
+
+
+    <style>
+        #deleteLink:hover {
+            color: crimson!important;
+        }
+    </style>
 </head>
 
 <body data-ng-controller="ProductController">
@@ -301,17 +308,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </script>
                 <!-- /script-for sticky-nav -->
                 <!--inner block start here-->
-                <div class="inner-block">
+                <div class="inner-block" data-ng-show="page == 'product-list'">
                     <div class="product-block">
                         <div class="pro-head">
                             <h2>Products</h2>
                         </div>
                         <div class="col-md-3 product-grid" data-ng-repeat="product in products.data">
                             <div class="product-items">
+                                <div class="text-right" style="background-color:#337AB7;">
+                                    <a id="deleteLink" href="javascript:void(0)" style="color:red" data-ng-click="showDeletePage(product.id)">
+                                        <i class="fa fa-lg fa-times"></i>
+                                    </a>
+                                </div>
                                 <div class="project-eff">
                                     <div id="nivo-lightbox-demo">
                                         <p>
-                                            <a data-ng-href="/product/image?location=<%product.image_location%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
+                                            <!-- <a data-ng-href="/product/image?location=<%product.image_location%>" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> -->
+                                            <a href="javascript:void(0)" data-ng-click="showEditPage(product)" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
                                                 <span class="rollover1"> </span>
                                             </a>
                                         </p>
@@ -341,6 +354,81 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                     </div>
                 </div>
+
+                <div class="inner-block" data-ng-show="page == 'edit-product'">
+
+
+                    <!--mainpage chit-chating-->
+                    <div class="chit-chat-layer1">
+                        <div style="width:50%;margin:auto;">
+                            <div class="work-progres">
+                                <div class="chit-chat-heading">
+                                    Update Product
+                                </div>
+                                <div class="signup-block">
+                                    <form class="form-horizontal form-label-left input_mask" enctype="MULTIPART/FORM-DATA" method="post" action="/api/product/update"
+                                        novalidate>
+                                        {{ csrf_field() }}
+
+                                        <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true" required/>
+
+                                        <div class="form-group">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="text" name="name" data-ng-model="updatedProduct.name" class="form-control" placeholder="Name" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="text" name="brand" data-ng-model="updatedProduct.brand" class="form-control" placeholder="Brand" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="text" name="sellingPrice" data-ng-model="updatedProduct.sellingPrice" class="form-control" placeholder="Selling Price"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control" required>
+                                                    <option value="1">Books</option>
+                                                    <option value="2">Cards</option>
+                                                    <option value="3">Charts</option>
+                                                    <option value="4">Learning Aids</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="file" name="image" data-ng-model="updatedProduct.image_location" class="form-control" placeholder="product image"
+                                                    required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <textarea name="details" data-ng-model="updatedProduct.details" class="form-control" rows="3" placeholder="Details about the product"
+                                                    required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                                <button type="button" class="btn btn-primary" data-ng-click="page = 'product-list'">Cancel</button>
+                                                <button class="btn btn-primary" type="reset">Reset</button>
+                                                <button type="submit" class="btn btn-success">Submit</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <!--main page chit chating end here-->
+
+                </div>
+
                 <!--inner block end here-->
                 <link rel="stylesheet" type="text/css" href="/css/magnific-popup.css">
                 <script type="text/javascript" src="/js/nivo-lightbox.min.js"></script>
@@ -417,7 +505,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                     </li>
 
-                    <li>
+                    <!-- <li>
                         <a href="#">
                             <i class="fa fa-envelope"></i>
                             <span>Mailbox</span>
@@ -431,7 +519,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <a href="#">Compose email</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
                 </ul>
             </div>
@@ -439,6 +527,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="clearfix"> </div>
     </div>
     <!--slide bar menu end here-->
+
+    <!--modal-->
+    <div id="deleteModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title">Confirm</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Do you really want to delete the product?</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Cancel</a>
+                    <a href="javascript:void(0)" data-ng-click="deleteProduct()" class="btn btn-danger">Ok</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         var toggle = true;
 

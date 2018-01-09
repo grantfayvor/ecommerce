@@ -101,8 +101,8 @@
                         <h2>Login to your account</h2>
                         <form method="post" action="/api/user/authenticate">
                             {{ csrf_field() }}
-                            <input type="email" placeholder="User email" name="email" value="{{ old('email') }}"  required/>
-                            <input type="password" name="password" placeholder="User password"  required/>
+                            <input type="email" placeholder="User email" name="email" value="{{ old('email') }}" required/>
+                            <input type="password" name="password" placeholder="User password" required/>
                             <span>
                                 <input type="checkbox" class="checkbox" name="remember" {{ old( 'remember') ? 'checked' : '' }}> Keep me signed in
                             </span>
@@ -120,11 +120,11 @@
                         <h2>New User Signup!</h2>
                         <form method="post" action="/api/user/save">
                             {{ csrf_field() }}
-                            <input type="text" placeholder="First Name" name="firstName"  required/>
-                            <input type="text" placeholder="Last Name" name="lastName"  required/>
-                            <input type="text" placeholder="Phone Number" name="phoneNumber"  required/>
-                            <input type="email" placeholder="Email Address" name="email"  required/>
-                            <input type="password" name="password" placeholder="Password"  required/>
+                            <input type="text" placeholder="First Name" name="firstName" required/>
+                            <input type="text" placeholder="Last Name" name="lastName" required/>
+                            <input type="text" placeholder="Phone Number" name="phoneNumber" required/>
+                            <input type="email" placeholder="Email Address" name="email" required/>
+                            <input type="password" name="password" placeholder="Password" required/>
                             <button type="submit" class="btn btn-default">Signup</button>
                         </form>
                     </div>
@@ -236,10 +236,10 @@
                     </div>
                     <div class="col-sm-4 col-sm-offset-1">
                         <div class="single-widget">
-                            <h2>Contact Afiammuta</h2>
+                            <!-- <h2>Contact Afiammuta</h2> -->
 
-                            <form action="#" class="searchform">
-                                <input type="text" placeholder="Your email address" />
+                            <form action="/" method="get" class="searchform">
+                                <input type="text" placeholder="Afiammuta" disabled />
                                 <button type="submit" class="btn btn-default">
                                     <i class="fa fa-arrow-circle-o-right"></i>
                                 </button>
@@ -285,7 +285,7 @@
                 <div class="row" style="text-align: center;">
                     <p class="pull-left">Copyright ©
                         <?php echo date("Y"); ?>
-                        <a href="afiammuta.com">Afiammuta.com</a> All rights reserved.</p>
+                        <a href="/">Afiammuta.com</a> All rights reserved.</p>
                 </div>
             </div>
         </div>

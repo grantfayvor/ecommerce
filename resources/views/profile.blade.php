@@ -209,21 +209,26 @@
                                         </span>
                                         <br>
                                         <span>
-                                            <input type="checkbox" style="width:3%!important;display:inline-block;margin-left:0%;" class="checkbox" name="changePassword" data-ng-model="changePassword">Change password
+                                            <input type="checkbox" style="width:3%!important;display:inline-block;margin-left:0%;" class="checkbox" name="changePassword"
+                                                data-ng-model="changePassword">Change password
                                         </span>
                                         <br>
                                         <span>
                                             <input type="password" placeholder="Old password" data-ng-model="user.oldPassword" required/>
-                                            <input type="password" placeholder="New password" data-ng-model="user.newPassword" data-ng-disabled="!changePassword"
-                                            />
+                                            <input type="password" placeholder="New password" data-ng-model="user.newPassword" data-ng-disabled="!changePassword" />
                                         </span>
                                         <br>
                                         <hr>
                                         <b>Rating: </b>
                                         <img src="images/product-details/rating.png" alt="" />
-                                        <button type="submit" data-ng-click="updateUser()" class="btn btn-default pull-right">
-                                            Submit
-                                        </button>
+                                        <div class="pull-right">
+                                            <a href="/" class="btn btn-default">
+                                                Cancel
+                                            </a>
+                                            <button type="submit" data-ng-click="updateUser()" class="btn btn-default">
+                                                Submit
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -284,61 +289,35 @@
                 <div class="row">
                     <div class="col-sm-2">
                         <div class="single-widget">
-                            <h2>Service</h2>
+                            <h2>Afiammuta</h2>
                             <ul class="nav nav-pills nav-stacked">
+                                <!-- <li>
+                                    <a href="/company-info">Company Information</a>
+                                </li> -->
                                 <li>
-                                    <a href="#">Online Help</a>
+                                    <a href="#" data-toggle="modal" data-target="#storeLocationModal">Store Location</a>
                                 </li>
                                 <li>
-                                    <a href="#">Contact Us</a>
+                                    <a href="/terms-of-use">Terms of Use</a>
                                 </li>
                                 <li>
-                                    <a href="#">Order Status</a>
+                                    <a href="/privacy-policy">Privacy Policy</a>
                                 </li>
                                 <li>
-                                    <a href="#">FAQ’s</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="single-widget">
-                            <h2>Policies</h2>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li>
-                                    <a href="#">Terms of Use</a>
+                                    <a href="/refund-policy">Refund Policy</a>
                                 </li>
                                 <li>
-                                    <a href="#">Privacy Policy</a>
-                                </li>
-                                <li>
-                                    <a href="#">Refund Policy</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="single-widget">
-                            <h2>About Afiammuta</h2>
-                            <ul class="nav nav-pills nav-stacked">
-                                <li>
-                                    <a href="#">Company Information</a>
-                                </li>
-                                <li>
-                                    <a href="#">Store Location</a>
-                                </li>
-                                <li>
-                                    <a href="#">Copyright</a>
+                                    <a href="/contact-us">Contact Us</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-4 col-sm-offset-1">
                         <div class="single-widget">
-                            <h2>Contact Afiammuta</h2>
+                            <!-- <h2>Contact Afiammuta</h2> -->
 
-                            <form action="#" class="searchform">
-                                <input type="text" placeholder="Your email address" />
+                            <form action="/" method="get" class="searchform">
+                                <input type="text" placeholder="Afiammuta" disabled />
                                 <button type="submit" class="btn btn-default">
                                     <i class="fa fa-arrow-circle-o-right"></i>
                                 </button>
@@ -378,12 +357,33 @@
             </div>
         </div>
 
+        <div id="storeLocationModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">Afiammuta</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Find us at Enugu, Nigeria.</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Ok</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="footer-bottom">
             <div class="container">
                 <div class="row" style="text-align: center;">
                     <p class="pull-left">Copyright ©
                         <?php echo date("Y"); ?>
-                        <a href="afiammuta.com">Afiammuta.com</a> All rights reserved.</p>
+                        <a href="/">Afiammuta.com</a> All rights reserved.</p>
                 </div>
             </div>
         </div>

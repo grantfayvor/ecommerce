@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@afiammuta.com'),
+        'name' => env('MAIL_FROM_NAME', 'Afiammuta'),
     ],
 
     /*
@@ -72,6 +72,22 @@ return [
     */
 
     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+
+     /*
+    |------------------------------------------------------------------------
+    | SET SSL OPTIONS
+    |------------------------------------------------------------------------
+    | Here you may set the ssl configurations that work best for you.
+    |
+    */
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ],
+    ],
+
 
     /*
     |--------------------------------------------------------------------------

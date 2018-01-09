@@ -6,30 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="images/favicon.ico" />
     <title>Afiammuta</title>
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/css/prettyPhoto.css" rel="stylesheet">
-    <link href="/css/price-range.css" rel="stylesheet">
-    <link href="/css/animate.css" rel="stylesheet">
-    <link href="/css/main.css" rel="stylesheet">
-    <link href="/css/responsive.css" rel="stylesheet">
-    <link href="/css/pace.css" rel="stylesheet">
-    <script src="/js/pace.min.js" type="text/javascript"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/price-range.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
 
-<body data-ng-controller="MainController">
+<body data-ng-controller="UtilityController">
     <header id="header" data-ng-init="initialize()">
         <!--header-->
 
@@ -101,7 +98,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="#" style="background-color: inherit!important;">
-                                                        </a>
+                                                    </a>
                                                 </li>
                                                 <li>
                                                     <a href="/logout" style="background-color: inherit!important;">
@@ -120,7 +117,7 @@
                                                 <i class="fa fa-shopping-cart" style="float:left;"></i>
                                                 <span style="float:left;"> Cart </span>
                                                 <i data-ng-if="cartCount" style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
-                                                    border-radius: 50%;background-color: black;color: white;text-align: center;font-size: 1em;float:right;"
+                                            border-radius: 50%;background-color: black;color: white;text-align: center;font-size: 1em;float:right;"
                                                     data-ng-bind="cartCount"></i>
                                             </a>
                                         </li>
@@ -145,154 +142,35 @@
     </header>
     <!--/header-->
 
-    <section>
-        <div class="container">
+    <div id="contact-page" class="container">
+        <div class="bg">
+            <!-- <div class="row">    		
+	    		<div class="col-sm-12">    			   			
+					<h2 class="title text-center">Contact <strong>Us</strong></h2>    			    				    				
+					<div id="gmap" class="contact-map">
+					</div>
+				</div>			 		
+			</div> -->
             <div class="row">
-                <div class="col-sm-12 padding-right" data-ng-show="page != 'product-details'">
-                    <div class="category-tab">
-                        <!--category-tab-->
-                        <div class="col-sm-12">
-                            <ul class="nav nav-tabs">
-                                <li class="active">
-                                    <a href="javascript:void(0)" data-ng-click="getAllBooks()" data-toggle="tab">Books</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="getAllCards()" data-toggle="tab">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="getAllCharts()" data-toggle="tab">Charts</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="getAllLearningAids()" data-toggle="tab">Learning Aids</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content">
-                            <div class="tab-pane fade active in" id="tshirt">
-                                <div class="col-sm-3" data-ng-repeat="product in products.data">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <a href="javascript:void(0)" data-ng-click="productInfo(product)">
-                                                    <img data-ng-src="<%product.image_location%>" alt="product image" style="height:200px;" />
-
-                                                    <h2>₦
-                                                        <span data-ng-bind="product.selling_price"></span>
-                                                    </h2>
-
-                                                    <p data-ng-bind="product.name"></p>
-                                                </a>
-                                                <a href="javascript:void(0)" data-ng-click="addToCart(product)" class="btn btn-default add-to-cart">
-                                                    <i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                            </div>
-
-                                        </div>
+                <div class="col-sm-8">
+                    <div class="contact-form">
+                        <h2 class="title text-center">Get In Touch</h2>
+                        <div class="status alert alert-success" style="display: none"></div>
+                        <div class="category-tab shop-details-tab">
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in">
+                                    <div class="col-sm-12">
+                                        This is the company information page and it is expected to be edited with the company's information.
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center" data-ng-show="products.next_page_url || products.prev_page_url">
-                        <ul class="pagination" style="background-color:white!important;">
-                            <li>
-                                <a href="javascript:void(0)" data-ng-click="previousPage(products.prev_page_url)">Previous</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" data-ng-click="nextPage(products.next_page_url)">Next</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--/category-tab-->
-
-                    <div class="recommended_items">
-                        <!--recommended_items-->
-                        <h2 class="title text-center">recommended items</h2>
-
-                        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div id="<% $index %>" class="item" data-ng-repeat="product in recommendedProducts.data" data-ng-class="{'active': $index < 4}">
-                                    <div class="col-sm-3">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <a href="javascript:void(0)" data-ng-click="productInfo(product)">
-                                                        <img data-ng-src="<%product.image_location%>" alt="product image" style="height:200px;" />
-                                                        <h2>₦
-                                                            <span data-ng-bind="product.selling_price"></span>
-                                                        </h2>
-
-                                                        <p data-ng-bind="product.name"></p>
-                                                    </a>
-                                                    <a href="javascript:void(0)" data-ng-click="addToCart(product)" class="btn btn-default add-to-cart">
-                                                        <i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!--/recommended_items-->
-
-                </div>
-                <div class="col-sm-12 padding-right" data-ng-show="page == 'product-details'">
-
-                    <div class="breadcrumbs">
-                        <ol class="breadcrumb">
-                            <li>
-                                <a href="javascript:void(0)" data-ng-click="page = 'products'">Home</a>
-                            </li>
-                            <li class="active" data-ng-bind="currentProduct.name"></li>
-                        </ol>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="category-tab">
-                        <div class="tab-content">
-                            <div class="tab-pane fade active in" id="product-details">
-                                <div class="col-sm-12">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center">
-                                                <div class="col-sm-6 col-md-6">
-                                                    <img data-ng-src="<%currentProduct.image_location%>" alt="product image" style="height:500px;" />
-                                                </div>
-                                                <div class="col-sm-6 col-md-6" style="position: relative;">
-                                                    <p style="position: absolute; top: 50%; transform: translateY(-50%);">
-                                                        <h2>₦
-                                                            <span data-ng-bind="currentProduct.selling_price"></span>
-                                                        </h2>
-
-                                                        <h3 data-ng-bind="currentProduct.name"></h3>
-                                                        <p data-ng-bind="currentProduct.details"></p>
-                                                        <a href="javascript:void(0)" data-ng-click="addToCart(currentProduct)" class="btn btn-default add-to-cart">
-                                                            <i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="javascript:void(0)" data-ng-click="page = 'products'">Home</a>
-                            </li>
-                            <li class="breadcrumb-item active" data-ng-bind="currentProduct.name">
-                            </li>
-                        </ol>
-                    </nav>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <!--/#contact-page-->
 
     <footer id="footer">
         <!--Footer-->
@@ -411,26 +289,6 @@
             </div>
         </div>
         <!--modal-->
-        <div id="cartModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title">Success</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>The product was successfully added to cart</label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Ok</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div id="storeLocationModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
             <div class="modal-dialog">
@@ -466,35 +324,22 @@
     </footer>
     <!--/Footer-->
 
-    <style>
-        .my-circle {
-            display: block;
-            height: 60px;
-            width: 60px;
-            line-height: 60px;
-
-            -moz-border-radius: 30px;
-            /* or 50% */
-            border-radius: 30px;
-            /* or 50% */
-            background-color: black;
-            color: white;
-            text-align: center;
-            font-size: 2em;
-        }
-    </style>
 
 
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.scrollUp.min.js"></script>
-    <script src="/js/price-range.js"></script>
-    <script src="/js/jquery.prettyPhoto.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="js/gmaps.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/price-range.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/main.js"></script>
+
     <script type="text/javascript" src="/app/angular.js"></script>
     <script type="text/javascript" src="/app/config/config.js"></script>
     <script type="text/javascript" src="/app/service/api-service.js"></script>
-    <script type="text/javascript" src="/app/main.js"></script>
+    <script type="text/javascript" src="/app/utility.js"></script>
 </body>
 
 </html>
