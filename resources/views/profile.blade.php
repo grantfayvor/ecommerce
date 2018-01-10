@@ -197,7 +197,7 @@
                                     <b>Edit your profile</b>
                                     </p>
 
-                                    <form novalidate>
+                                    <form>
                                         <span>
                                             <input type="text" placeholder="Your Name" data-ng-model="user.name" required/>
                                             <input type="email" placeholder="Email Address" data-ng-model="user.email" required/>
