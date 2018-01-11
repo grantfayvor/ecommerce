@@ -153,18 +153,17 @@
                         <!--category-tab-->
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
+                                @foreach($categories as $category)
+                                @if($category == $categories[0])
                                 <li class="active">
-                                    <a href="javascript:void(0)" data-ng-click="getAllBooks()" data-toggle="tab">Books</a>
+                                    <a href="javascript:void(0)" data-ng-click="getAllByCategory({{ $category->id }})" data-toggle="tab">{{ $category->name}}</a>
                                 </li>
+                                @else
                                 <li>
-                                    <a href="javascript:void(0)" data-ng-click="getAllCards()" data-toggle="tab">Cards</a>
+                                    <a href="javascript:void(0)" data-ng-click="getAllByCategory({{ $category->id }})" data-toggle="tab">{{ $category->name}}</a>
                                 </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="getAllCharts()" data-toggle="tab">Charts</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="getAllLearningAids()" data-toggle="tab">Learning Aids</a>
-                                </li>
+                                @endif
+                                @endforeach
                             </ul>
                         </div>
                         <div class="tab-content">

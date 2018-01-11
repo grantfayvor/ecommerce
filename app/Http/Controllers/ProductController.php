@@ -47,6 +47,7 @@ class ProductController extends Controller
             'image' => 'required',
             'details' => 'required'
         ];
+        $this->validate($request, $rules);
         $id = $request->id;
         if($this->productService->update($request, $id)){
             return redirect('/admin/view-products');

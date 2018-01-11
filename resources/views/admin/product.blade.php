@@ -199,10 +199,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control" required>
-                                                    <option value="1">Books</option>
-                                                    <option value="2">Cards</option>
-                                                    <option value="3">Charts</option>
-                                                    <option value="4">Learning Aids</option>
+                                                    <option value="<% category.id %>" data-ng-repeat="category in categories"><% category.name %></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -279,6 +276,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="/admin/add-product">
                             <i class="fa fa-plus-circle"></i>
                             <span>Add New Product</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/add-category">
+                            <i class="fa fa-plus-square"></i>
+                            <span>Add New Category</span>
                         </a>
                     </li>
                     <li>

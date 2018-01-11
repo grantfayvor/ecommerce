@@ -15,23 +15,11 @@ use Illuminate\Http\Request;
 
 // use Auth;
 
-//View urls
-/*Route::get('/admin/dashboard', ['middleware' => ['auth', 'admin'], function () {
-    return view('admin/dashboard');
-}])->name('admin');
-Route::get('/admin/add-product', ['middleware' => ['auth', 'admin'], function () {
-    return view('admin/add-product');
-}]);
-Route::get('/admin/view-products', ['middleware' => ['auth', 'admin'], function () {
-    return view('admin/product');
-}]);
-Route::get('/admin/view-products-list', ['middleware' => ['auth', 'admin'], function () {
-    return view('admin/product-list');
-}]);*/
 
 //admin view
 Route::get('/admin/dashboard', 'MainController@adminDashboard')->name('admin')->middleware('auth', 'admin');
 Route::get('/admin/add-product', 'MainController@addProduct')->middleware('auth', 'admin');
+Route::get('/admin/add-category', 'MainController@addCategory')->middleware('auth', 'admin');
 Route::get('/admin/view-products', 'MainController@viewProducts')->middleware('auth', 'admin');
 Route::get('/admin/view-products-list', 'MainController@viewProductsAsList')->middleware('auth', 'admin');
 Route::get('/admin/view-sales-list', 'MainController@viewSalesAsList')->middleware('auth', 'admin');
@@ -56,6 +44,10 @@ Route::get('/terms-of-use', 'MainController@termsOfUseView');
 Route::post('/contact-us', 'ContactUsController@sendMail')->name('contact-us');
 
 Auth::routes();
+
+//Category apis
+Route::post('/api/category/save', 'CategoryController@saveCategory')->middleware('auth', 'admin');
+Route::get('/api/categories', 'CategoryController@getAllCategories')->middleware('auth', 'admin');
 
 //Product apis
 Route::get('/api/products', 'ProductController@findAllProducts');

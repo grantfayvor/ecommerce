@@ -466,6 +466,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                     </li>
                     <li>
+                        <a href="/admin/add-category">
+                            <i class="fa fa-plus-square"></i>
+                            <span>Add New Category</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/admin/view-products">
                             <i class="fa fa-eye"></i>
                             <span>View Products</span>
