@@ -7,10 +7,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html data-ng-app="e-shop">
 
 <head>
-    <title>Afiammuta | Product List</title>
+    <title>Afiammuta | Category List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -29,8 +29,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--//skycons-icons-->
 </head>
 
-<body data-ng-controller="ProductController">
-    <div class="page-container" data-ng-init="initialize()">
+<body data-ng-controller="AdminController">
+    <div class="page-container" data-ng-init="getAllCategories()">
         <div class="left-content">
             <div class="mother-grid-inner">
                 <!--header start here-->
@@ -45,8 +45,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!--search-box-->
                         <div class="search-box" style="float: right;">
                             <form>
-                                <input type="text" data-ng-model="searchParam" placeholder="Search..." required="">
-                                <input type="submit" value="" data-ng-click="searchByParam()">
+                                <input type="text" data-ng-model="search" placeholder="Search..." required="">
+                                <input type="submit" value="">
                             </form>
                         </div>
                         <!--//end-search-box-->
@@ -110,25 +110,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 });
             </script>
             <!-- /script-for sticky-nav -->
-
-            <!-- <div class="inner-block" style="min-height:600px;" data-ng-show="page == 'product-error'">
-                <div class="inbox">
-                    <h2>All Products</h2>
-
-                    <div class="col-md-12 mailbox-content  tab-content tab-content-in">
-                        <div class="tab-pane active text-style" id="tab1">
-                            <div class="mailbox-border">
-                                <span data-ng-bind="productsMessage"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
             <!--inner block start here-->
-            <div class="inner-block" style="min-height:600px;" data-ng-show="page == 'product-list'">
+            <div class="inner-block" style="min-height:600px;">
                 <div class="inbox">
-                    <h2>All Products</h2>
+                    <h2>All Sales</h2>
 
                     <div class="col-md-12 mailbox-content  tab-content tab-content-in">
                         <div class="tab-pane active text-style" id="tab1">
@@ -139,127 +124,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <table class="table tab-border table-hover table-responsive">
                                     <thead>
                                         <th>S/N</th>
-                                        <th>Image</th>
-                                        <th>Name</th>
-                                        <th>Brand</th>
-                                        <th>Details</th>
-                                        <th>Selling Price</th>
+                                        <th>Category Name</th>
                                         <th>Actions</th>
                                     </thead>
                                     <tbody>
-                                        <tr class="unread checked" data-ng-repeat="product in products.data | filter: search">
+                                        <tr class="unread checked" data-ng-repeat="category in categories | filter: search">
                                             <td class="hidden-xs">
                                                 <span data-ng-bind="$index + 1"></span>
                                             </td>
-                                            <td>
-                                                <img data-ng-src="../<%product.image_location%>" style="height:30px;width:30px;" alt="product image" />
-                                            </td>
                                             <td class="hidden-xs">
-                                                <span data-ng-bind="product.name"></span>
-                                            </td>
-                                            <td class="hidden-xs">
-                                                <span data-ng-bind="product.brand"></span>
-                                            </td>
-                                            <td class="col-md-6 col-sm-6">
-                                                <span data-ng-bind="product.details"></span>
+                                                <span data-ng-bind="category.name"></span>
                                             </td>
                                             <td>
-                                                <span data-ng-bind="product.selling_price"></span>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0)" data-ng-click="showEditPage(product)">
-                                                    <span class="fa fa-pencil"></span> Edit</a>
-                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="showDeletePage(product.id)">
-                                                    <span class="fa fa-trash"></span>Delete</a>
+                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteCategory(category.id)">
+                                                    <span class="fa fa-trash"></span> Delete</a>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="text-center" data-ng-show="products.next_page_url || products.prev_page_url">
-                            <ul class="pagination" style="background-color:white!important;">
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="previousPage(products.prev_page_url)">Previous</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="nextPage(products.next_page_url)">Next</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                     <div class="clearfix"> </div>
                 </div>
-            </div>
-
-            <div class="inner-block" style="min-height:600px;" data-ng-show="page == 'edit-product'">
-
-
-                <!--mainpage chit-chating-->
-                <div class="chit-chat-layer1">
-                    <div style="width:50%;margin:auto;">
-                        <div class="work-progres">
-                            <div class="chit-chat-heading">
-                                Update Product
-                            </div>
-                            <div class="signup-block">
-                                <form class="form-horizontal form-label-left input_mask" enctype="MULTIPART/FORM-DATA" method="post" action="/api/product/update">
-                                    {{ csrf_field() }}
-
-                                    <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true" required/>
-
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="name" data-ng-model="updatedProduct.name" class="form-control" placeholder="Name" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="brand" data-ng-model="updatedProduct.brand" class="form-control" placeholder="Brand" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="text" name="sellingPrice" data-ng-model="updatedProduct.sellingPrice" class="form-control" placeholder="Selling Price"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control" required>
-                                                <option value="<% category.id %>" data-ng-repeat="category in categories"><% category.name %></option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="file" name="image" data-ng-model="updatedProduct.image_location" class="form-control" placeholder="product image"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <textarea name="details" data-ng-model="updatedProduct.details" class="form-control" rows="3" placeholder="Details about the product"
-                                                required></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="ln_solid"></div>
-                                    <div class="form-group">
-                                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                            <button type="button" class="btn btn-primary" data-ng-click="page = 'product-list'">Cancel</button>
-                                            <button class="btn btn-primary" type="reset">Reset</button>
-                                            <button type="submit" class="btn btn-success">Submit</button>
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clearfix"> </div>
-                </div>
-                <!--main page chit chating end here-->
-
             </div>
 
             <!--inner block end here-->
@@ -362,30 +249,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <div class="clearfix"> </div>
     </div>
-    <!--slide bar menu end here-->
-    <!--modal-->
-    <div id="deleteModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title">Confirm</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Do you really want to delete the product?</label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Cancel</a>
-                    <a href="javascript:void(0)" data-ng-click="deleteProduct()" class="btn btn-danger">Ok</a>
-                </div>
-            </div>
-        </div>
-    </div>
     <a href="#" class="scrollToTop"></a>
+    <!--slide bar menu end here-->
     <script>
         var toggle = true;
 
@@ -431,7 +296,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript" src="/app/angular.js"></script>
     <script type="text/javascript" src="/app/config/config.js"></script>
     <script type="text/javascript" src="/app/service/api-service.js"></script>
-    <script type="text/javascript" src="/app/modules/product/product.js"></script>
+    <script type="text/javascript" src="/app/admin.js"></script>
 </body>
 
 </html>

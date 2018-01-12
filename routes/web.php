@@ -21,6 +21,7 @@ Route::get('/admin/dashboard', 'MainController@adminDashboard')->name('admin')->
 Route::get('/admin/add-product', 'MainController@addProduct')->middleware('auth', 'admin');
 Route::get('/admin/add-category', 'MainController@addCategory')->middleware('auth', 'admin');
 Route::get('/admin/view-products', 'MainController@viewProducts')->middleware('auth', 'admin');
+Route::get('/admin/view-categories', 'MainController@viewCategoriesAsList')->middleware('auth', 'admin');
 Route::get('/admin/view-products-list', 'MainController@viewProductsAsList')->middleware('auth', 'admin');
 Route::get('/admin/view-sales-list', 'MainController@viewSalesAsList')->middleware('auth', 'admin');
 Route::get('/admin/view-users', 'MainController@viewUsersAsList')->middleware('auth', 'admin');
@@ -48,6 +49,7 @@ Auth::routes();
 //Category apis
 Route::post('/api/category/save', 'CategoryController@saveCategory')->middleware('auth', 'admin');
 Route::get('/api/categories', 'CategoryController@getAllCategories')->middleware('auth', 'admin');
+Route::delete('/api/category/delete/{id}', 'CategoryController@deleteCategory')->middleware('auth', 'admin');
 
 //Product apis
 Route::get('/api/products', 'ProductController@findAllProducts');

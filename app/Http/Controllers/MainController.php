@@ -108,6 +108,11 @@ class MainController extends Controller
         return view('admin/add-category', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
+    public function viewCategoriesAsList()
+    {
+        return view('admin/category-list', ['username' => Auth::user() ? Auth::user()->name : null]);
+    }
+
     public function viewProducts()
     {
         return view('admin/product', ['username' => Auth::user() ? Auth::user()->name : null]);

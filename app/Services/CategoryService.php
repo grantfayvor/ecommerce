@@ -28,4 +28,9 @@ class CategoryService
         return $this->repository->findAllUnPaged();
     }
 
+    public function deleteCategory($id)
+    {
+        return $this->repository->delete($id);
+    }
+
 }
