@@ -98,6 +98,17 @@ class UserController extends Controller
         return  response()->json($this->userService->searchByParam($param));
     }
 
+    public function addAdress(Request $request) {
+        $deliveryAddress = $request->deliveryAddress;
+        // return $deliveryAddress;
+        session(['deliveryAddress' => $request->deliveryAddress]);
+        return response()->json(true);
+    }
+
+    public function getAddress(Request $request) {
+        return response(session('deliveryAddress'));
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();

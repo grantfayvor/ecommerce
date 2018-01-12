@@ -218,6 +218,18 @@
     <section id="do_action">
         <div class="container">
             <div class="row">
+                <div class="col-sm-6">
+                    <div class="chose_area">
+                        <ul class="user_option">
+                            <li>Delivery address
+                                <span>
+                                    <input type="text" class="form-control" placeholder="Enter your delivery address here" name="deliveryAddress" data-ng-model="sale.deliveryAddress" />
+                                </span>
+                                <button class="btn btn-primary" type="submit" data-ng-click="submitAddress()">Submit Address</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="col-sm-6 pull-right">
                     <div class="total_area">
                         <ul>
@@ -225,9 +237,6 @@
                                 <span>₦
                                     <span data-ng-bind="cart.total_price"></span>
                                 </span>
-                            </li>
-                            <li>Tax
-                                <span>₦ 0</span>
                             </li>
                             <li>Delivery Cost
                                 <span>₦ 0</span>
@@ -377,6 +386,27 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Find us at Enugu, Nigeria.</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart">Ok</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="deliveryAddressModal" class="modal fade" aria-hidden="false" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title">Success</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Your delivery location is <span data-ng-bind="sale.deliveryAddress"></span>.</label>
                         </div>
                     </div>
                     <div class="modal-footer">

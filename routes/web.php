@@ -88,6 +88,9 @@ Route::get('/api/users', 'UserController@findAllUsers')->middleware('auth', 'adm
 Route::delete('/api/user/delete', 'UserController@deleteUser')->middleware('auth', 'admin');
 Route::get('/api/users/search/{param}', 'UserController@search')->middleware('auth', 'admin');
 
+Route::post('/api/address/save', 'UserController@addAdress');
+Route::get('/api/address', 'UserController@getAddress');
+
 //Payment gateway
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay')->middleware('auth');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback')->middleware('auth');

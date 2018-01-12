@@ -129,6 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <th>Number of Products</th>
                                         <th>Payment Reference</th>
                                         <th>Amount Paid</th>
+                                        <th>Delivery Address</th>
                                         <!-- <th>Actions</th> -->
                                     </thead>
                                     <tbody>
@@ -150,6 +151,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             </td>
                                             <td>
                                                 <span data-ng-bind="sale.amount_paid"></span>
+                                            </td>
+                                            <td>
+                                                <span data-ng-bind="sale.delivery_address"></span>
                                             </td>
                                             <!-- <td>
                                                 <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteSale(sale.id)">

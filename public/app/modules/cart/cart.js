@@ -2,13 +2,15 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
 
     $scope.cart = [];
     $scope.cartCount = 0;
+    $scope.sale = {};
 
     $scope.initialize = function () {
         $scope.getHotProducts();
         $scope.getCartCount();
         $scope.getUserCart();
+        $scope.getAddress();
         $scope.orderId = Math.random().toString(36).replace(/[^a-z0-9]+/g, '').substr(0, 6);
-        console.log($scope.orderId);
+        // console.log($scope.orderId);
     };
 
     $scope.getHotProducts = function () {
@@ -30,6 +32,25 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
         });
     };
 
+    $scope.submitAddress = function () {
+        CartService.submitAddress($scope.sale, function (response) {
+            console.log(response.data);
+            $('#deliveryAddressModal').modal('show');
+            console.log("address was submitted");
+        }, function (response) {
+            console.log("error occurred while trying to add the address");
+        });
+    };
+
+    $scope.getAddress = function () {
+        CartService.getAddress(function (response) {
+            console.log(response.data);
+            $scope.sale.deliveryAddress = response.data || '';
+        }, function(response) {
+            console.log("error occured while trying to get the delivery address");
+        });
+    };
+
     $scope.removeFromCart = function (id) {
         Pace.restart();
         CartService.removeFromCart(id, function (response) {
@@ -41,29 +62,29 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
     };
 
     $scope.getCartCount = function () {
-        CartService.getCartCount(function(response){
+        CartService.getCartCount(function (response) {
             $scope.cartCount = response.data;
-        }, function(response) {
+        }, function (response) {
             console.log("error occured while getting count of the cart");
         });
     };
 
-    $scope.updateProductInCart = function (rowId){
+    $scope.updateProductInCart = function (rowId) {
         Pace.restart();
-        if(!$('#quantity_value').val()){
+        if (!$('#quantity_value').val()) {
             return;
         }
         var details = {
-            'rowId' : rowId,
-            'qty' : $('#quantity_value').val()
+            'rowId': rowId,
+            'qty': $('#quantity_value').val()
         };
         console.log(details);
-        CartService.updateProductInCart(details, function(response){
+        CartService.updateProductInCart(details, function (response) {
             $scope.getCartCount();
             $scope.cart.total_price = response.data.total_price;
             console.log("product in cart has been updated");
             console.log(response.data);
-        }, function(response){
+        }, function (response) {
             console.log("error occured while updating product in cart");
         });
     };
@@ -99,7 +120,7 @@ app.service("CartService", ['APIService', function (APIService) {
     };
 
     this.removeFromCart = function (id, successHandler, errorHandler) {
-        APIService.delete("/api/cart/delete/" +id, successHandler, errorHandler);
+        APIService.delete("/api/cart/delete/" + id, successHandler, errorHandler);
     };
 
     this.getCartCount = function (successHandler, errorHandler) {
@@ -108,5 +129,13 @@ app.service("CartService", ['APIService', function (APIService) {
 
     this.updateProductInCart = function (details, successHandler, errorHandler) {
         APIService.put('/api/cart/update', details, successHandler, errorHandler);
+    };
+
+    this.submitAddress = function (address, successHandler, errorHandler) {
+        APIService.post('/api/address/save', address, successHandler, errorHandler);
+    };
+
+    this.getAddress = function (successHandler, errorHandler) {
+        APIService.get('/api/address', successHandler, errorHandler);
     };
 }]);
