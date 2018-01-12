@@ -23,6 +23,12 @@ class CategoriesSeeder extends Seeder
         ], [
             'id' => 4,
             'name' => 'LEARNING AIDS'
+        ], [
+            'id' => 5,
+            'name' => 'AUDIO BOOKS'
+        ], [
+            'id' => 6,
+            'name' => 'E-BOOKS'
         ]]);
     }
 }
