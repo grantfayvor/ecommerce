@@ -72,10 +72,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu drp-mnu">
-                                        <li>
+                                        <!-- <li>
                                             <a href="#">
                                                 <i class="fa fa-cog"></i> Settings</a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="/profile">
                                                 <i class="fa fa-user"></i> Profile</a>
@@ -212,6 +212,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="/admin/add-product">
                             <i class="fa fa-plus-circle"></i>
                             <span>Add New Product</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/add-category">
+                            <i class="fa fa-plus-square"></i>
+                            <span>Add New Category</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/view-categories">
+                            <i class="fa fa-eye"></i>
+                            <span>View Categories</span>
                         </a>
                     </li>
                     <li>

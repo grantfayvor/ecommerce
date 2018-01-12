@@ -4,19 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\CartService;
+use App\Services\CategoryService;
 
 use Auth;
 
 class MainController extends Controller
 {
+    private $categoryService;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CategoryService $categoryService)
     {
         // $this->middleware('auth');
+        $this->categoryService = $categoryService;
     }
 
     /**
@@ -26,7 +29,8 @@ class MainController extends Controller
      */
     public function index()
     {
-        return view('index', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null]);
+        $categories = $this->categoryService->getAllCategories();
+        return view('index', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null, 'categories' => $categories]);
     }
 
     public function home()
@@ -97,6 +101,16 @@ class MainController extends Controller
     public function addProduct()
     {
         return view('admin/add-product', ['username' => Auth::user() ? Auth::user()->name : null]);
+    }
+
+    public function addCategory()
+    {
+        return view('admin/add-category', ['username' => Auth::user() ? Auth::user()->name : null]);
+    }
+
+    public function viewCategoriesAsList()
+    {
+        return view('admin/category-list', ['username' => Auth::user() ? Auth::user()->name : null]);
     }
 
     public function viewProducts()

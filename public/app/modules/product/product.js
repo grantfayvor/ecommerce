@@ -8,6 +8,7 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
 
     $scope.initialize = function () {
         $scope.getAllProducts();
+        $scope.getCategories();
     };
 
     $scope.getAllProducts = function () {
@@ -68,6 +69,14 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
             $scope.getAllProducts();
         }, function (response) {
             console.log("product delete was unsuccessful");
+        });
+    };
+
+    $scope.getCategories = function () {
+        ProductService.getCategories(function(response) {
+            $scope.categories = response.data;
+        }, function (response) {
+            console.log("error occurred while trying to fetch the categories");
         });
     };
 
@@ -148,6 +157,10 @@ app.service("ProductService", ['APIService', function (APIService) {
 
     this.deleteProduct = function (id, successHandler, errorHandler) {
         APIService.delete('/api/product/delete/' + id, successHandler, errorHandler);
+    };
+
+    this.getCategories = function (successHandler, errorHandler) {
+        APIService.get('/api/categories', successHandler, errorHandler);
     };
 
     this.nextPage = function (url, successHandler, errorHandler) {

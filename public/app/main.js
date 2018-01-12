@@ -10,7 +10,7 @@ function ($rootScope, $scope, MainService) {
     $scope.initialize = function () {
         $scope.getHotProducts();
         $scope.getCartCount();
-        $scope.getAllBooks();
+        $scope.getAllByCategory(1);
         $scope.getRecommendedProducts();
     };
 
@@ -32,47 +32,20 @@ function ($rootScope, $scope, MainService) {
         });
     };
 
-    $scope.getAllBooks = function () {
-        Pace.restart();
-        MainService.findAllBooks(function (response) {
-            $scope.products = response.data;
-        }, function (response) {
-            console.log("error in fetching books");
-        });
-    };
-
-    $scope.getAllCards = function () {
-        Pace.restart();
-        MainService.findAllCards(function (response) {
-            $scope.products = response.data;
-        }, function (response) {
-            console.log("error in fetching cards");
-        });
-    };
-
-    $scope.getAllCharts = function () {
-        Pace.restart();
-        MainService.findAllCharts(function (response) {
-            $scope.products = response.data;
-        }, function (response) {
-            console.log("error in fetching charts");
-        });
-    };
-
-    $scope.getAllLearningAids = function () {
-        Pace.restart();
-        MainService.findAllLearningAids(function (response) {
-            $scope.products = response.data;
-        }, function (response) {
-            console.log("error in fetching learning aids");
-        });
-    };
-
     $scope.getAllProducts = function () {
         MainService.getAllProducts(function (response) {
             $scope.products = response.data;
         }, function (response, status) {
             console.log("an error occurred while fetching the list of products");
+        });
+    };
+
+    $scope.getAllByCategory = function (categoryId) {
+        Pace.restart();
+        MainService.findAllByCategory(categoryId, function (response) {
+            $scope.products = response.data;
+        }, function (response) {
+            console.log("error in fetching learning aids");
         });
     };
 
@@ -197,20 +170,8 @@ app.service("MainService", ['APIService', function (APIService) {
         APIService.post("/api/product/save", productDetails, successHandler, errorHandler);
     };
 
-    this.findAllBooks = function (successHandler, errorHandler) {
-        APIService.get('/api/products/find?q=1', successHandler, errorHandler);
-    };
-
-    this.findAllCards = function (successHandler, errorHandler) {
-        APIService.get('/api/products/find?q=2', successHandler, errorHandler);
-    };
-
-    this.findAllCharts = function (successHandler, errorHandler) {
-        APIService.get('/api/products/find?q=3', successHandler, errorHandler);
-    };
-
-    this.findAllLearningAids = function (successHandler, errorHandler) {
-        APIService.get('/api/products/find?q=4', successHandler, errorHandler);
+    this.findAllByCategory = function (categoryId, successHandler, errorHandler) {
+        APIService.get('/api/products/find?q=' + categoryId, successHandler, errorHandler);
     };
 
     this.addToCart = function (selectedProduct, successHandler, errorHandler) {

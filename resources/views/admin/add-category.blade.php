@@ -7,10 +7,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html data-ng-app="e-shop">
 
 <head>
-    <title>Afiammuta | Sale List</title>
+    <title>Afiammuta::Add Category</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -26,11 +26,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--Google Fonts-->
     <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
-    <!--//skycons-icons-->
+
+    <!--//charts-->
+    <!-- geo chart -->
+    <script src="//cdn.jsdelivr.net/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <script>window.modernizr || document.write('<script src="lib/modernizr/modernizr-custom.js"><\/script>')</script>
+    <!--<script src="lib/html5shiv/html5shiv.js"></script>-->
+
 </head>
 
-<body data-ng-controller="SaleController">
-    <div class="page-container" data-ng-init="initialize()">
+<body data-ng-controller="ProductController">
+    <div class="page-container">
         <div class="left-content">
             <div class="mother-grid-inner">
                 <!--header start here-->
@@ -43,12 +49,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </a>
                         </div>
                         <!--search-box-->
-                        <div class="search-box" style="float: right;">
+                        <!-- <div class="search-box" style="float: right;">
                             <form>
-                                <input type="text" data-ng-model="searchParam" placeholder="Search..." required="">
-                                <input type="submit" value="" data-ng-click="searchByParam()">
+                                <input type="text" placeholder="Search..." required="">
+                                <input type="submit" value="">
                             </form>
-                        </div>
+                        </div> -->
                         <!--//end-search-box-->
                         <div class="clearfix"> </div>
                     </div>
@@ -61,7 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                         <div class="profile_img">
                                             <span class="prfil-img">
-                                                <!-- <img src="images/p1.png" alt=""> </span> -->
+                                                <!-- <img src="/images/p1.png" alt=""> </span> -->
                                             <div class="user-name">
                                                 <p>{{ $username }}</p>
                                                 <span>Administrator</span>
@@ -92,103 +98,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="clearfix"> </div>
                 </div>
-            </div>
-            <!--heder end here-->
-            <!-- script-for sticky-nav -->
-            <script>
-                $(document).ready(function () {
-                    var navoffeset = $(".header-main").offset().top;
-                    $(window).scroll(function () {
-                        var scrollpos = $(window).scrollTop();
-                        if (scrollpos >= navoffeset) {
-                            $(".header-main").addClass("fixed");
-                        } else {
-                            $(".header-main").removeClass("fixed");
-                        }
+                <!--heder end here-->
+                <!-- script-for sticky-nav -->
+                <script>
+                    $(document).ready(function () {
+                        var navoffeset = $(".header-main").offset().top;
+                        $(window).scroll(function () {
+                            var scrollpos = $(window).scrollTop();
+                            if (scrollpos >= navoffeset) {
+                                $(".header-main").addClass("fixed");
+                            } else {
+                                $(".header-main").removeClass("fixed");
+                            }
+                        });
+
                     });
+                </script>
+                <!-- /script-for sticky-nav -->
+                <!--inner block start here-->
+                <div class="inner-block" style="min-height:600px;">
 
-                });
-            </script>
-            <!-- /script-for sticky-nav -->
-            <!--inner block start here-->
-            <div class="inner-block" style="min-height:600px;">
-                <div class="inbox">
-                    <h2>All Sales</h2>
-
-                    <div class="col-md-12 mailbox-content  tab-content tab-content-in">
-                        <div class="tab-pane active text-style" id="tab1">
-                            <div class="mailbox-border">
-                                <div class="mail-toolbar clearfix">
-
+                    <!--mainpage chit-chating-->
+                    <div class="chit-chat-layer1">
+                        <div style="width:50%;margin:auto;">
+                            <div class="work-progres">
+                                <div class="chit-chat-heading">
+                                    New Product
                                 </div>
-                                <table class="table tab-border table-hover table-responsive">
-                                    <thead>
-                                        <th>S/N</th>
-                                        <th>Customer Name</th>
-                                        <th>Cart Price</th>
-                                        <th>Number of Products</th>
-                                        <th>Payment Reference</th>
-                                        <th>Amount Paid</th>
-                                        <th>Delivery Address</th>
-                                        <!-- <th>Actions</th> -->
-                                    </thead>
-                                    <tbody>
-                                        <tr class="unread checked" data-ng-repeat="sale in sales.data | filter: search">
-                                            <td class="hidden-xs">
-                                                <input type="checkbox" class="checkbox">
-                                            </td>
-                                            <td class="hidden-xs">
-                                                <span data-ng-bind="sale.customer"></span>
-                                            </td>
-                                            <td class="hidden-xs">
-                                                <span data-ng-bind="sale.cart_price"></span>
-                                            </td>
-                                            <td>
-                                                <span data-ng-bind="sale.quantity"></span>
-                                            </td>
-                                            <td>
-                                                <span data-ng-bind="sale.payment_id"></span>
-                                            </td>
-                                            <td>
-                                                <span data-ng-bind="sale.amount_paid"></span>
-                                            </td>
-                                            <td>
-                                                <span data-ng-bind="sale.delivery_address"></span>
-                                            </td>
-                                            <!-- <td>
-                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteSale(sale.id)">
-                                                    <span class="fa fa-trash"></span> Delete</a>
-                                            </td> -->
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="signup-block">
+                                    <form class="form-horizontal form-label-left input_mask" method="POST" action="/api/category/save">
+                                        {{ csrf_field() }}
+
+                                        <div class="form-group">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="text" name="name" class="form-control" placeholder="Name of the category in capital letters" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                                <button type="button" class="btn btn-primary">Cancel</button>
+                                                <button class="btn btn-primary" type="reset">Reset</button>
+                                                <button type="submit" class="btn btn-success">Submit</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                        <div class="text-center" data-ng-show="sales.next_page_url || sales.prev_page_url">
-                            <ul class="pagination" style="background-color:white!important;">
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="previousPage(sales.prev_page_url)">Previous</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="nextPage(sales.next_page_url)">Next</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <div class="clearfix"> </div>
                     </div>
-                    <div class="clearfix"> </div>
+                    <!--main page chit chating end here-->
+
                 </div>
+                <!--inner block end here-->
+                <!--copy rights start here-->
+                <div class="copyrights">
+                    <p>©
+                        <?php echo date("Y"); ?> Afiammuta. All Rights Reserved </p>
+                </div>
+                <!--COPY rights end here-->
             </div>
-
-            <!--inner block end here-->
-            <!--copy rights start here-->
-            <div class="copyrights">
-                <p>©
-                    <?php echo date("Y"); ?> Afiammuta. All Rights Reserved
-                </p>
-            </div>
-            <!--COPY rights end here-->
         </div>
-
         <!--slider menu-->
         <div class="sidebar-menu">
             <div class="logo">
@@ -297,6 +270,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             }
             toggle = !toggle;
         });
+
         $(document).ready(function () {
 
             //Check to see if the window is top if not then display button
@@ -323,10 +297,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="/js/bootstrap.js"> </script>
     <!-- mother grid end here-->
     <!--app here-->
-    <script type="text/javascript" src="/app/angular.js"></script>
-    <script type="text/javascript" src="/app/config/config.js"></script>
-    <script type="text/javascript" src="/app/service/api-service.js"></script>
-    <script type="text/javascript" src="/app/modules/sale/sale.js"></script>
 </body>
 
 </html>

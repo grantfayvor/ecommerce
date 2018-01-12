@@ -131,7 +131,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="clearfix"> </div>
                     </div>
                     <div class="header-right">
-                        
+
                         <!--notification menu end -->
                         <div class="profile_details">
                             <ul>
@@ -140,20 +140,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="profile_img">
                                             <span class="prfil-img">
                                                 <!-- <img src="images/p1.png" alt=""> </span> -->
-                                            <div class="user-name">
-                                                <p>{{ $username }}</p>
-                                                <span>Administrator</span>
-                                            </div>
-                                            <i class="fa fa-angle-down lnr"></i>
-                                            <i class="fa fa-angle-up lnr"></i>
-                                            <div class="clearfix"></div>
+                                                <div class="user-name">
+                                                    <p>{{ $username }}</p>
+                                                    <span>Administrator</span>
+                                                </div>
+                                                <i class="fa fa-angle-down lnr"></i>
+                                                <i class="fa fa-angle-up lnr"></i>
+                                                <div class="clearfix"></div>
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu drp-mnu">
-                                        <li>
+                                        <!-- <li>
                                             <a href="#">
                                                 <i class="fa fa-cog"></i> Settings</a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="/profile">
                                                 <i class="fa fa-user"></i> Profile</a>
@@ -191,7 +191,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="inner-block" style="min-height:600px;">
                     <!--market updates updates-->
                     <div class="market-updates">
-                        <div class="col-md-4 market-update-gd">
+                        <div class="col-md-6 market-update-gd">
                             <div class="market-update-block clr-block-1">
                                 <div class="col-md-8 market-update-left">
                                     <h3 data-ng-bind="userCount"></h3>
@@ -203,7 +203,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="clearfix"> </div>
                             </div>
                         </div>
-                        <div class="col-md-4 market-update-gd">
+                        <div class="col-md-6 market-update-gd">
                             <div class="market-update-block clr-block-2">
                                 <div class="col-md-8 market-update-left">
                                     <h3 data-ng-bind="productCount"></h3>
@@ -215,220 +215,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="clearfix"> </div>
                             </div>
                         </div>
-                        <div class="col-md-4 market-update-gd">
+
+                        <div class="clearfix"> </div>
+                        <div class="clearfix"> </div>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="market-updates">
+                        <div class="col-md-6 market-update-gd">
                             <div class="market-update-block clr-block-3">
                                 <div class="col-md-8 market-update-left">
                                     <h3 data-ng-bind="saleCount"></h3>
                                     <h4>Total Sales</h4>
                                 </div>
                                 <div class="col-md-4 market-update-right">
-                                    <i class="fa fa-line-chart"> </i>
+                                    <i class="fa fa-envelope-o"> </i>
                                 </div>
                                 <div class="clearfix"> </div>
                             </div>
                         </div>
-                        <div class="clearfix"> </div>
-                        <div class="clearfix"> </div>
-                        <br>
-                        <br>
+                        <div class="col-md-6 market-update-gd">
+                            <div class="market-update-block clr-block-3">
+                                <div class="col-md-8 market-update-left">
+                                    <h3 data-ng-bind="categoryCount"></h3>
+                                    <h4>Total Categories</h4>
+                                </div>
+                                <div class="col-md-4 market-update-right">
+                                    <i class="fa fa-eye"> </i>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </div>
                     </div>
                     <!--market updates end here-->
                     <!--mainpage chit-chating-->
 
                     <!--main page chit chating end here-->
-                    <!--main page chart start here-->
-                    <div class="main-page-charts">
-                        <div class="main-page-chart-layer1">
-                            <div class="col-md-6 chart-layer1-left">
-                                <div class="glocy-chart">
-                                    <div class="span-2c">
-                                        <h3 class="tlt">Sales Analytics</h3>
-                                        <canvas id="bar" height="300" width="400" style="width: 400px; height: 300px;"></canvas>
-                                        <script>
-                                            var barChartData = {
-                                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "jul"],
-                                                datasets: [
-                                                    {
-                                                        fillColor: "#FC8213",
-                                                        data: [65, 59, 90, 81, 56, 55, 40]
-                                                    },
-                                                    {
-                                                        fillColor: "#337AB7",
-                                                        data: [28, 48, 40, 19, 96, 27, 100]
-                                                    }
-                                                ]
-
-                                            };
-                                            new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
-
-                                        </script>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"> </div>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-
-
-                    <!--climate start here-->
-                    <div class="climate">
-                        <div class="col-md-4 climate-grids">
-                            <div class="climate-grid1">
-                                <div class="climate-gd1-top">
-                                    <div class="col-md-6 climate-gd1top-left">
-                                        <h4>Aprill 6-wed</h4>
-                                        <h3>12:30
-                                            <span class="timein-pms">PM</span>
-                                        </h3>
-                                        <p>Humidity:</p>
-                                        <p>Sunset:</p>
-                                        <p>Sunrise:</p>
-                                    </div>
-                                    <div class="col-md-6 climate-gd1top-right">
-                                        <span class="clime-icon">
-                                            <figure class="icons">
-                                                <canvas id="partly-cloudy-day" width="64" height="64">
-                                                </canvas>
-                                            </figure>
-                                            <script>
-                                                var icons = new Skycons({ "color": "#fff" }),
-                                                    list = [
-                                                        "clear-night", "partly-cloudy-day",
-                                                        "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                                                        "fog"
-                                                    ],
-                                                    i;
-
-                                                for (i = list.length; i--;)
-                                                    icons.set(list[i], list[i]);
-
-                                                icons.play();
-                                            </script>
-                                        </span>
-                                        <p>88%</p>
-                                        <p>5:40PM</p>
-                                        <p>6:30AM</p>
-                                    </div>
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <div class="climate-gd1-bottom">
-                                    <div class="col-md-4 cloudy1">
-                                        <h4>Hongkong</h4>
-                                        <figure class="icons">
-                                            <canvas id="sleet" width="58" height="58">
-                                            </canvas>
-                                        </figure>
-                                        <script>
-                                            var icons = new Skycons({ "color": "#fff" }),
-                                                list = [
-                                                    "clear-night", "clear-day",
-                                                    "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                                                    "fog"
-                                                ],
-                                                i;
-
-                                            for (i = list.length; i--;)
-                                                icons.set(list[i], list[i]);
-
-                                            icons.play();
-                                        </script>
-                                        <h3>10c</h3>
-                                    </div>
-                                    <div class="col-md-4 cloudy1">
-                                        <h4>UK</h4>
-                                        <figure class="icons">
-                                            <canvas id="cloudy" width="58" height="58"></canvas>
-                                        </figure>
-                                        <script>
-                                            var icons = new Skycons({ "color": "#fff" }),
-                                                list = [
-                                                    "clear-night", "cloudy",
-                                                    "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                                                    "fog"
-                                                ],
-                                                i;
-
-                                            for (i = list.length; i--;)
-                                                icons.set(list[i], list[i]);
-
-                                            icons.play();
-                                        </script>
-                                        <h3>6c</h3>
-                                    </div>
-                                    <div class="col-md-4 cloudy1">
-                                        <h4>USA</h4>
-                                        <figure class="icons">
-                                            <canvas id="snow" width="58" height="58">
-                                            </canvas>
-                                        </figure>
-                                        <script>
-                                            var icons = new Skycons({ "color": "#fff" }),
-                                                list = [
-                                                    "clear-night", "clear-day",
-                                                    "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                                                    "fog"
-                                                ],
-                                                i;
-
-                                            for (i = list.length; i--;)
-                                                icons.set(list[i], list[i]);
-
-                                            icons.play();
-                                        </script>
-                                        <h3>10c</h3>
-                                    </div>
-                                    <div class="clearfix"> </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 climate-grids">
-                            <div class="climate-grid2">
-                                <span class="shoppy-rate">
-                                    <h4>$180</h4>
-                                </span>
-                                <ul>
-                                    <li>
-                                        <i class="fa fa-credit-card"> </i>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-usd"> </i>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="shoppy">
-                                <h3>Those Who Hate Shopping?</h3>
-                            </div>
-                        </div>
-                        <div class="col-md-4 climate-grids">
-                            <div class="climate-grid3">
-                                <div class="popular-brand">
-                                    <div class="col-md-6 popular-bran-left">
-                                        <h3>Popular</h3>
-                                        <h4>Brand of this month</h4>
-                                        <p> Duis aute irure in reprehenderit.</p>
-                                    </div>
-                                    <div class="col-md-6 popular-bran-right">
-                                        <h3>Polo</h3>
-                                    </div>
-                                    <div class="clearfix"> </div>
-                                </div>
-                                <div class="popular-follow">
-                                    <div class="col-md-6 popular-follo-left">
-                                        <p>Lorem ipsum dolor sit amet, adipiscing elit.</p>
-                                    </div>
-                                    <div class="col-md-6 popular-follo-right">
-                                        <h4>Follower</h4>
-                                        <h5>2892</h5>
-                                    </div>
-                                    <div class="clearfix"> </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"> </div>
-                    </div>
-                    <!--climate end here-->
+                    
                 </div>
                 <!--inner block end here-->
                 <!--copy rights start here-->
@@ -463,6 +286,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="/admin/add-product">
                             <i class="fa fa-plus-circle"></i>
                             <span>Add New Product</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/add-category">
+                            <i class="fa fa-plus-square"></i>
+                            <span>Add New Category</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/view-categories">
+                            <i class="fa fa-eye"></i>
+                            <span>View Categories</span>
                         </a>
                     </li>
                     <li>

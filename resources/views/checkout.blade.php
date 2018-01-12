@@ -178,7 +178,7 @@
                                         <span data-ng-bind="product.name"></span>
                                     </a>
                                 </h4>
-                                <p>Web ID: 1089772</p>
+                                <!-- <p>Web ID: 1089772</p> -->
                             </td>
                             <td class="cart_price">
                                 <p>₦
@@ -203,7 +203,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="4">&nbsp;</td>
+                            <td colspan="4">
+                                <div class="col-sm-6">
+                                    <div class="chose_area">
+                                        <ul class="user_option">
+                                            <li>Delivery address
+                                                <span>
+                                                    <input type="text" class="form-control" placeholder="Enter your delivery address here" name="deliveryAddress" data-ng-model="sale.deliveryAddress"/>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
                             <td colspan="2">
                                 <table class="table table-condensed total-result">
                                     <tr>
@@ -213,10 +225,6 @@
                                                 <span data-ng-bind="cart.total_price"></span>
                                             </span>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tax</td>
-                                        <td>₦ 0</td>
                                     </tr>
                                     <tr class="shipping-cost">
                                         <td>Delivery Cost</td>
@@ -236,6 +244,7 @@
                                                 <div class="row" style="margin-bottom:40px;">
                                                     <div class="col-md-8 col-md-offset-2">
 
+                                                        <input type="hidden" name="deliveryAddress" value="<% sale.deliveryAddress %>" required >
                                                         <input type="hidden" name="email" value="{{ $email }}" required> {{-- required email of the user making payments --}}
                                                         <input type="hidden" name="orderID" value="<% orderId %>" required>
                                                         <input type="hidden" name="amount" value="<% cart.total_price * 100 %>" required> {{-- required in kobo --}}

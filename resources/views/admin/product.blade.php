@@ -79,10 +79,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu drp-mnu">
-                                        <li>
+                                        <!-- <li>
                                             <a href="#">
                                                 <i class="fa fa-cog"></i> Settings</a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="/profile">
                                                 <i class="fa fa-user"></i> Profile</a>
@@ -199,10 +199,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control" required>
-                                                    <option value="1">Books</option>
-                                                    <option value="2">Cards</option>
-                                                    <option value="3">Charts</option>
-                                                    <option value="4">Learning Aids</option>
+                                                    <option value="<% category.id %>" data-ng-repeat="category in categories"><% category.name %></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -279,6 +276,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <a href="/admin/add-product">
                             <i class="fa fa-plus-circle"></i>
                             <span>Add New Product</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/add-category">
+                            <i class="fa fa-plus-square"></i>
+                            <span>Add New Category</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/view-categories">
+                            <i class="fa fa-eye"></i>
+                            <span>View Categories</span>
                         </a>
                     </li>
                     <li>

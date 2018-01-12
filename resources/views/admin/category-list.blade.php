@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html data-ng-app="e-shop">
 
 <head>
-    <title>Afiammuta | Sale List</title>
+    <title>Afiammuta | Category List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -29,8 +29,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--//skycons-icons-->
 </head>
 
-<body data-ng-controller="SaleController">
-    <div class="page-container" data-ng-init="initialize()">
+<body data-ng-controller="AdminController">
+    <div class="page-container" data-ng-init="getAllCategories()">
         <div class="left-content">
             <div class="mother-grid-inner">
                 <!--header start here-->
@@ -45,8 +45,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <!--search-box-->
                         <div class="search-box" style="float: right;">
                             <form>
-                                <input type="text" data-ng-model="searchParam" placeholder="Search..." required="">
-                                <input type="submit" value="" data-ng-click="searchByParam()">
+                                <input type="text" data-ng-model="search" placeholder="Search..." required="">
+                                <input type="submit" value="">
                             </form>
                         </div>
                         <!--//end-search-box-->
@@ -124,55 +124,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <table class="table tab-border table-hover table-responsive">
                                     <thead>
                                         <th>S/N</th>
-                                        <th>Customer Name</th>
-                                        <th>Cart Price</th>
-                                        <th>Number of Products</th>
-                                        <th>Payment Reference</th>
-                                        <th>Amount Paid</th>
-                                        <th>Delivery Address</th>
-                                        <!-- <th>Actions</th> -->
+                                        <th>Category Name</th>
+                                        <th>Actions</th>
                                     </thead>
                                     <tbody>
-                                        <tr class="unread checked" data-ng-repeat="sale in sales.data | filter: search">
+                                        <tr class="unread checked" data-ng-repeat="category in categories | filter: search">
                                             <td class="hidden-xs">
-                                                <input type="checkbox" class="checkbox">
-                                            </td>
-                                            <td class="hidden-xs">
-                                                <span data-ng-bind="sale.customer"></span>
+                                                <span data-ng-bind="$index + 1"></span>
                                             </td>
                                             <td class="hidden-xs">
-                                                <span data-ng-bind="sale.cart_price"></span>
+                                                <span data-ng-bind="category.name"></span>
                                             </td>
                                             <td>
-                                                <span data-ng-bind="sale.quantity"></span>
-                                            </td>
-                                            <td>
-                                                <span data-ng-bind="sale.payment_id"></span>
-                                            </td>
-                                            <td>
-                                                <span data-ng-bind="sale.amount_paid"></span>
-                                            </td>
-                                            <td>
-                                                <span data-ng-bind="sale.delivery_address"></span>
-                                            </td>
-                                            <!-- <td>
-                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteSale(sale.id)">
+                                                <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteCategory(category.id)">
                                                     <span class="fa fa-trash"></span> Delete</a>
-                                            </td> -->
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="text-center" data-ng-show="sales.next_page_url || sales.prev_page_url">
-                            <ul class="pagination" style="background-color:white!important;">
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="previousPage(sales.prev_page_url)">Previous</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" data-ng-click="nextPage(sales.next_page_url)">Next</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div class="clearfix"> </div>
@@ -326,7 +296,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript" src="/app/angular.js"></script>
     <script type="text/javascript" src="/app/config/config.js"></script>
     <script type="text/javascript" src="/app/service/api-service.js"></script>
-    <script type="text/javascript" src="/app/modules/sale/sale.js"></script>
+    <script type="text/javascript" src="/app/admin.js"></script>
 </body>
 
 </html>

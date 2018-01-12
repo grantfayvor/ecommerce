@@ -15,24 +15,13 @@ use Illuminate\Http\Request;
 
 // use Auth;
 
-//View urls
-/*Route::get('/admin/dashboard', ['middleware' => ['auth', 'admin'], function () {
-    return view('admin/dashboard');
-}])->name('admin');
-Route::get('/admin/add-product', ['middleware' => ['auth', 'admin'], function () {
-    return view('admin/add-product');
-}]);
-Route::get('/admin/view-products', ['middleware' => ['auth', 'admin'], function () {
-    return view('admin/product');
-}]);
-Route::get('/admin/view-products-list', ['middleware' => ['auth', 'admin'], function () {
-    return view('admin/product-list');
-}]);*/
 
 //admin view
 Route::get('/admin/dashboard', 'MainController@adminDashboard')->name('admin')->middleware('auth', 'admin');
 Route::get('/admin/add-product', 'MainController@addProduct')->middleware('auth', 'admin');
+Route::get('/admin/add-category', 'MainController@addCategory')->middleware('auth', 'admin');
 Route::get('/admin/view-products', 'MainController@viewProducts')->middleware('auth', 'admin');
+Route::get('/admin/view-categories', 'MainController@viewCategoriesAsList')->middleware('auth', 'admin');
 Route::get('/admin/view-products-list', 'MainController@viewProductsAsList')->middleware('auth', 'admin');
 Route::get('/admin/view-sales-list', 'MainController@viewSalesAsList')->middleware('auth', 'admin');
 Route::get('/admin/view-users', 'MainController@viewUsersAsList')->middleware('auth', 'admin');
@@ -56,6 +45,12 @@ Route::get('/terms-of-use', 'MainController@termsOfUseView');
 Route::post('/contact-us', 'ContactUsController@sendMail')->name('contact-us');
 
 Auth::routes();
+
+//Category apis
+Route::post('/api/category/save', 'CategoryController@saveCategory')->middleware('auth', 'admin');
+Route::get('/api/categories', 'CategoryController@getAllCategories')->middleware('auth', 'admin');
+Route::delete('/api/category/delete/{id}', 'CategoryController@deleteCategory')->middleware('auth', 'admin');
+Route::get('/api/categories/count', 'CategoryController@countCategories')->middleware('auth', 'admin');
 
 //Product apis
 Route::get('/api/products', 'ProductController@findAllProducts');
@@ -95,6 +90,9 @@ Route::put('/api/user/admin/{id}', 'UserController@makeUserAdmin')->middleware('
 Route::get('/api/users', 'UserController@findAllUsers')->middleware('auth', 'admin');
 Route::delete('/api/user/delete', 'UserController@deleteUser')->middleware('auth', 'admin');
 Route::get('/api/users/search/{param}', 'UserController@search')->middleware('auth', 'admin');
+
+Route::post('/api/address/save', 'UserController@addAdress');
+Route::get('/api/address', 'UserController@getAddress');
 
 //Payment gateway
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay')->middleware('auth');

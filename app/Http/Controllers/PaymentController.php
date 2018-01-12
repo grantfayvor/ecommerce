@@ -24,9 +24,11 @@ class PaymentController extends Controller
             'amount' => 'required',
             'quantity' => 'required',
             'reference' => 'required',
-            'key' => 'required'
+            'key' => 'required',
+            'deliveryAddress' => 'required'
         ];
         $this->validate($request, $rules);
+        session(['deliveryAddress' => $request->deliveryAddress]);
         if($request->amount == ((int) $this->cartService->getCartSubtotal() * 100)){
             return Paystack::getAuthorizationUrl()->redirectNow();
         } else {
@@ -45,6 +47,7 @@ class PaymentController extends Controller
             $transactionId = $paymentDetails['data']['reference'];
             $amountPaid = $paymentDetails['data']['amount'];
             $customer = $paymentDetails['data']['customer']['email'];
+            $deliveryAddress = session('deliveryAddress');
 
             $sale = [
                 'cart' => $cart,
@@ -54,6 +57,7 @@ class PaymentController extends Controller
                 'amount_paid' => (int) $amountPaid / 100,
                 'profit' => $cartPrice,
                 'customer' => $customer,
+                'delivery_address' => $deliveryAddress
             ];
 
             $this->saleService->addSale($sale);
