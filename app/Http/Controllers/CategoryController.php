@@ -36,4 +36,9 @@ class CategoryController extends Controller
     {
         return response()->json($this->categoryService->deleteCategory($id));
     }
+
+    public function countCategories()
+    {
+        return response()->json($this->categoryService->countCategories());
+    }
 }

@@ -2,11 +2,14 @@ app.controller('AdminController', ['$scope', 'AdminService', function ($scope, A
 
     $scope.userCount = 0;
     $scope.productCount = 0;
+    $scope.saleCount = 0;
+    $scope.categoryCount = 0;
 
     $scope.initialize = function () {
         $scope.countProducts();
         $scope.countUsers();
         $scope.countSales();
+        $scope.countCategories();
     };
 
     $scope.countProducts = function () {
@@ -30,6 +33,14 @@ app.controller('AdminController', ['$scope', 'AdminService', function ($scope, A
             $scope.saleCount = response.data;
         }, function (response) {
             console.log("error occured while trying to get the sale count");
+        });
+    };
+
+    $scope.countCategories = function () {
+        AdminService.countCategories(function (response) {
+            $scope.categoryCount = response.data;
+        }, function (response) {
+            console.log("error occurred while trying to get the category count");
         });
     };
 
@@ -64,6 +75,10 @@ app.service('AdminService', ['APIService', function (APIService) {
 
     this.countSales = function (successHandler, errorHandler) {
         APIService.get('/api/sales/count', successHandler, errorHandler);
+    };
+
+    this.countCategories = function (successHandler, errorHandler) {
+        APIService.get('/api/categories/count', successHandler, errorHandler);
     };
 
     this.getAllCategories = function (successHandler, errorHandler) {

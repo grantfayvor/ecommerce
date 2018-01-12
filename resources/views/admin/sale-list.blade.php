@@ -72,10 +72,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu drp-mnu">
-                                        <li>
+                                        <!-- <li>
                                             <a href="#">
                                                 <i class="fa fa-cog"></i> Settings</a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="/profile">
                                                 <i class="fa fa-user"></i> Profile</a>

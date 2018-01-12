@@ -28,6 +28,11 @@ class CategoryService
         return $this->repository->findAllUnPaged();
     }
 
+    public function countCategories()
+    {
+        return $this->repository->findAllUnPaged()->count();
+    }
+
     public function deleteCategory($id)
     {
         return $this->repository->delete($id);

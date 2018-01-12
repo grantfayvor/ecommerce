@@ -50,6 +50,7 @@ Auth::routes();
 Route::post('/api/category/save', 'CategoryController@saveCategory')->middleware('auth', 'admin');
 Route::get('/api/categories', 'CategoryController@getAllCategories')->middleware('auth', 'admin');
 Route::delete('/api/category/delete/{id}', 'CategoryController@deleteCategory')->middleware('auth', 'admin');
+Route::get('/api/categories/count', 'CategoryController@countCategories')->middleware('auth', 'admin');
 
 //Product apis
 Route::get('/api/products', 'ProductController@findAllProducts');
