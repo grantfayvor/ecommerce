@@ -19,6 +19,7 @@ app.controller('UtilityController', ['$scope', 'UtilityService', function ($scop
         UtilityService.getHotProducts(function (response) {
             $scope.hotProducts = response.data;
             $scope.hotProducts.data = shuffle($scope.hotProducts.data);
+            $scope.hotProducts.data = $scope.hotProducts.data.splice(0, 2);
         }, function () {
             console.log("error in getting hot products");
         });

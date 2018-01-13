@@ -123,27 +123,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <table class="table tab-border table-hover table-responsive">
                                     <thead>
-                                        <th>S/N</th>
+                                        <th class="hidden-xs">S/N</th>
                                         <th>Customer Name</th>
-                                        <th>Cart Price</th>
-                                        <th>Number of Products</th>
+                                        <th class="hidden-xs">Cart Price</th>
+                                        <th class="hidden-xs">Number of Products</th>
                                         <th>Payment Reference</th>
                                         <th>Amount Paid</th>
-                                        <th>Delivery Address</th>
+                                        <th class="hidden-xs">Delivery Address</th>
                                         <!-- <th>Actions</th> -->
                                     </thead>
                                     <tbody>
                                         <tr class="unread checked" data-ng-repeat="sale in sales.data | filter: search">
                                             <td class="hidden-xs">
-                                                <input type="checkbox" class="checkbox">
+                                                <span data-ng-bind="$index + 1"></span>
                                             </td>
-                                            <td class="hidden-xs">
+                                            <td>
                                                 <span data-ng-bind="sale.customer"></span>
                                             </td>
                                             <td class="hidden-xs">
                                                 <span data-ng-bind="sale.cart_price"></span>
                                             </td>
-                                            <td>
+                                            <td class="hidden-xs">
                                                 <span data-ng-bind="sale.quantity"></span>
                                             </td>
                                             <td>
@@ -152,7 +152,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <td>
                                                 <span data-ng-bind="sale.amount_paid"></span>
                                             </td>
-                                            <td>
+                                            <td class="hidden-xs">
                                                 <span data-ng-bind="sale.delivery_address"></span>
                                             </td>
                                             <!-- <td>
@@ -223,7 +223,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <li>
                         <a href="/admin/view-categories">
-                            <i class="fa fa-eye"></i>
+                            <i class="fa fa-tags"></i>
                             <span>View Categories</span>
                         </a>
                     </li>

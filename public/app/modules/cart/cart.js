@@ -17,6 +17,7 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
         CartService.getHotProducts(function (response) {
             $scope.hotProducts = response.data;
             $scope.hotProducts.data = shuffle($scope.hotProducts.data);
+            $scope.hotProducts.data = $scope.hotProducts.data.splice(0, 2);
         }, function () {
             console.log("error in getting hot products");
         });

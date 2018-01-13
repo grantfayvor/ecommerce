@@ -191,30 +191,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="inner-block" style="min-height:600px;">
                     <!--market updates updates-->
                     <div class="market-updates">
-                        <div class="col-md-6 market-update-gd">
-                            <div class="market-update-block clr-block-1">
-                                <div class="col-md-8 market-update-left">
-                                    <h3 data-ng-bind="userCount"></h3>
-                                    <h4>Total Users</h4>
+                        <a href="/admin/view-users">
+                            <div class="col-md-6 market-update-gd">
+                                <div class="market-update-block clr-block-1">
+                                    <div class="col-md-8 market-update-left">
+                                        <h3 data-ng-bind="userCount"></h3>
+                                        <h4>Total Users</h4>
+                                    </div>
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-eye"> </i>
+                                    </div>
+                                    <div class="clearfix"> </div>
                                 </div>
-                                <div class="col-md-4 market-update-right">
-                                    <i class="fa fa-eye"> </i>
-                                </div>
-                                <div class="clearfix"> </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 market-update-gd">
-                            <div class="market-update-block clr-block-2">
-                                <div class="col-md-8 market-update-left">
-                                    <h3 data-ng-bind="productCount"></h3>
-                                    <h4>Total Products</h4>
+                        </a>
+                        <a href="/admin/view-products">
+                            <div class="col-md-6 market-update-gd">
+                                <div class="market-update-block clr-block-2">
+                                    <div class="col-md-8 market-update-left">
+                                        <h3 data-ng-bind="productCount"></h3>
+                                        <h4>Total Products</h4>
+                                    </div>
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-file-text-o"> </i>
+                                    </div>
+                                    <div class="clearfix"> </div>
                                 </div>
-                                <div class="col-md-4 market-update-right">
-                                    <i class="fa fa-file-text-o"> </i>
-                                </div>
-                                <div class="clearfix"> </div>
                             </div>
-                        </div>
+                        </a>
 
                         <div class="clearfix"> </div>
                         <div class="clearfix"> </div>
@@ -222,36 +226,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <br>
                     </div>
                     <div class="market-updates">
-                        <div class="col-md-6 market-update-gd">
-                            <div class="market-update-block clr-block-3">
-                                <div class="col-md-8 market-update-left">
-                                    <h3 data-ng-bind="saleCount"></h3>
-                                    <h4>Total Sales</h4>
+                        <a href="/admin/view-sales-list">
+                            <div class="col-md-6 market-update-gd">
+                                <div class="market-update-block clr-block-3">
+                                    <div class="col-md-8 market-update-left">
+                                        <h3 data-ng-bind="saleCount"></h3>
+                                        <h4>Total Sales</h4>
+                                    </div>
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-envelope-o"> </i>
+                                    </div>
+                                    <div class="clearfix"> </div>
                                 </div>
-                                <div class="col-md-4 market-update-right">
-                                    <i class="fa fa-envelope-o"> </i>
-                                </div>
-                                <div class="clearfix"> </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 market-update-gd">
-                            <div class="market-update-block clr-block-3">
-                                <div class="col-md-8 market-update-left">
-                                    <h3 data-ng-bind="categoryCount"></h3>
-                                    <h4>Total Categories</h4>
+                        </a>
+                        <a href="/admin/view-categories">
+                            <div class="col-md-6 market-update-gd">
+                                <div class="market-update-block clr-block-3">
+                                    <div class="col-md-8 market-update-left">
+                                        <h3 data-ng-bind="categoryCount"></h3>
+                                        <h4>Total Categories</h4>
+                                    </div>
+                                    <div class="col-md-4 market-update-right">
+                                        <i class="fa fa-eye"> </i>
+                                    </div>
+                                    <div class="clearfix"> </div>
                                 </div>
-                                <div class="col-md-4 market-update-right">
-                                    <i class="fa fa-eye"> </i>
-                                </div>
-                                <div class="clearfix"> </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <!--market updates end here-->
                     <!--mainpage chit-chating-->
 
                     <!--main page chit chating end here-->
-                    
+
                 </div>
                 <!--inner block end here-->
                 <!--copy rights start here-->
@@ -296,7 +304,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <li>
                         <a href="/admin/view-categories">
-                            <i class="fa fa-eye"></i>
+                            <i class="fa fa-tags"></i>
                             <span>View Categories</span>
                         </a>
                     </li>

@@ -123,38 +123,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <table class="table tab-border table-hover table-responsive">
                                     <thead>
-                                        <th>S/N</th>
+                                        <th class="hidden-xs">S/N</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone Number</th>
-                                        <th>Account Type</th>
-                                        <th>Administrator</th>
-                                        <th>Delete User</th>
+                                        <th class="hidden-xs">Account Type</th>
+                                        <th class="hidden-xs">Administrator</th>
+                                        <th class="hidden-xs">Delete User</th>
                                     </thead>
                                     <tbody>
                                         <tr class="unread checked" data-ng-repeat="user in users.data | filter: search">
                                             <td class="hidden-xs">
                                                 <input type="checkbox" class="checkbox">
                                             </td>
-                                            <td class="hidden-xs">
+                                            <td>
                                                 <span data-ng-bind="user.name"></span>
                                             </td>
-                                            <td class="hidden-xs">
+                                            <td>
                                                 <span data-ng-bind="user.email"></span>
                                             </td>
                                             <td>
                                                 <span data-ng-bind="user.phone_number"></span>
                                             </td>
-                                            <td>
+                                            <td class="hidden-xs">
                                                 <span data-ng-bind="user.admin ? 'Administrator' : 'User'"></span>
                                             </td>
-                                            <td>
+                                            <td class="hidden-xs">
                                                 <label class="switch">
                                                     <input id="adminToggle<%$index%>" type="checkbox" data-ng-checked="user.admin" data-ng-click="showMakeAdminModal(user.id, $index)">
                                                     <span class="slider round"></span>
                                                 </label>
                                             </td>
-                                            <td>
+                                            <td class="hidden-xs">
                                                 <a href="javascript:void(0)" style="color: red!important;" data-ng-click="showDeletePage(user.id)">
                                                     <span class="fa fa-trash"></span> Delete</a>
                                             </td>
@@ -222,7 +222,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <li>
                         <a href="/admin/view-categories">
-                            <i class="fa fa-eye"></i>
+                            <i class="fa fa-tags"></i>
                             <span>View Categories</span>
                         </a>
                     </li>

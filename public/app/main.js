@@ -18,6 +18,7 @@ function ($rootScope, $scope, MainService) {
         MainService.getHotProducts(function (response) {
             $scope.hotProducts = response.data;
             $scope.hotProducts.data = shuffle($scope.hotProducts.data);
+            $scope.hotProducts.data = $scope.hotProducts.data.splice(0, 2);
         }, function () {
             console.log("error in getting hot products");
         });
@@ -27,6 +28,7 @@ function ($rootScope, $scope, MainService) {
         MainService.getRecommendedProducts(function (response) {
             $scope.recommendedProducts = response.data;
             $scope.recommendedProducts.data = shuffle($scope.recommendedProducts.data);
+            $scope.recommendedProducts.data = $scope.recommendedProducts.data.splice(0, 4);
         }, function (response) {
             console.log("error in getting recommended products");
         });
