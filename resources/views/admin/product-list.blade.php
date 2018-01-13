@@ -138,11 +138,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </div>
                                 <table class="table tab-border table-hover table-responsive">
                                     <thead>
-                                        <th>S/N</th>
-                                        <th>Image</th>
+                                        <th class="hidden-xs">S/N</th>
+                                        <th class="hidden-xs">Image</th>
                                         <th>Name</th>
-                                        <th>Brand</th>
-                                        <th>Details</th>
+                                        <th class="hidden-xs">Brand</th>
+                                        <th class="hidden-xs">Details</th>
                                         <th>Selling Price</th>
                                         <th>Actions</th>
                                     </thead>
@@ -151,16 +151,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <td class="hidden-xs">
                                                 <span data-ng-bind="$index + 1"></span>
                                             </td>
-                                            <td>
+                                            <td class="hidden-xs">
                                                 <img data-ng-src="../<%product.image_location%>" style="height:30px;width:30px;" alt="product image" />
                                             </td>
-                                            <td class="hidden-xs">
+                                            <td>
                                                 <span data-ng-bind="product.name"></span>
                                             </td>
                                             <td class="hidden-xs">
                                                 <span data-ng-bind="product.brand"></span>
                                             </td>
-                                            <td class="col-md-6 col-sm-6">
+                                            <td class="col-md-6 col-sm-6 hidden-xs">
                                                 <span data-ng-bind="product.details"></span>
                                             </td>
                                             <td>
@@ -306,7 +306,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <li>
                         <a href="/admin/view-categories">
-                            <i class="fa fa-eye"></i>
+                            <i class="fa fa-tags"></i>
                             <span>View Categories</span>
                         </a>
                     </li>

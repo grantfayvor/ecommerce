@@ -115,24 +115,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="inbox">
                     <h2>All Sales</h2>
 
-                    <div class="col-md-12 mailbox-content  tab-content tab-content-in">
+                    <div class="col-md-12 col-sm-6 mailbox-content  tab-content tab-content-in">
                         <div class="tab-pane active text-style" id="tab1">
                             <div class="mailbox-border">
-                                <div class="mail-toolbar clearfix">
-
-                                </div>
                                 <table class="table tab-border table-hover table-responsive">
                                     <thead>
-                                        <th>S/N</th>
-                                        <th>Category Name</th>
-                                        <th>Actions</th>
+                                        <th class="col-sm-1">S/N</th>
+                                        <th class="col-sm-7">Category Name</th>
+                                        <th class="col-sm-4">Actions</th>
                                     </thead>
                                     <tbody>
                                         <tr class="unread checked" data-ng-repeat="category in categories | filter: search">
-                                            <td class="hidden-xs">
+                                            <td>
                                                 <span data-ng-bind="$index + 1"></span>
                                             </td>
-                                            <td class="hidden-xs">
+                                            <td>
                                                 <span data-ng-bind="category.name"></span>
                                             </td>
                                             <td>
@@ -193,7 +190,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <li>
                         <a href="/admin/view-categories">
-                            <i class="fa fa-eye"></i>
+                            <i class="fa fa-tags"></i>
                             <span>View Categories</span>
                         </a>
                     </li>

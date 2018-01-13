@@ -31,108 +31,99 @@
 <body data-ng-controller="CartController" data-ng-cloak>
     <header id="header" data-ng-init="initialize()">
         <!--header-->
-        <nav class="navbar navbar-custom" role="navigation">
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="btn btn-navbar navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#app-navbar-collapse">
                 <span class="sr-only">Toggle Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+        </div>
 
-            <div class="header-middle" style="background-color: white;">
-                <!--header-middle-->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="logo pull-left">
-                                <a href="/">
-                                    <img src="images/home/logo.png" alt="Afiammuta logo" />
-                                </a>
-                            </div>
-                            <!-- <div class="btn-group pull-right">
-                                <div class="search_box pull-right">
-                                    <input type="text" placeholder="Search" />
-                                </div>
-                            </div> -->
-
+        <div class="header-middle" style="background-color: white;">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="logo pull-left">
+                            <!-- TODO change logo to company logo-->
+                            <a href="/">
+                                <img src="images/home/logo.png" alt="Afiammuta" />
+                            </a>
                         </div>
-                        <div class="col-sm-8">
-                            <div class="shop-menu pull-right">
-                                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                                    <ul class="nav navbar-nav">
-                                        @if(!$username)
-                                        <li class="dropdown">
-                                            <a href="#">
-                                                <i class="fa fa-user"></i> Account
-                                                <i class="fa fa-angle-down"></i>
-                                            </a>
-                                            <ul role="menu" class="sub-menu">
-                                                <li>
-                                                    <a href="/login" style="background-color: inherit!important;">
-                                                        <i class="fa fa-sign-in"></i> Sign in</a>
-                                                </li>
-                                                <li>
-                                                    <a href="/register" style="background-color: inherit!important;">
-                                                        <i class="fa fa-user"></i> Create Account</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        @else
-                                        <li class="dropdown">
-                                            <a href="javascript:void(0)">
-                                                <i class="fa fa-user"></i> {{ $username }}
-                                                <i class="fa fa-angle-down"></i>
-                                            </a>
-                                            <ul role="menu" class="sub-menu">
-                                                @if($admin)
-                                                <li>
-                                                    <a href="/admin/dashboard" style="background-color: inherit!important;">
-                                                        <i class="fa fa-dashboard"></i> Admin Dashboard</a>
-                                                </li>
-                                                @endif
-                                                <li>
-                                                    <a href="/profile" style="background-color: inherit!important;">
-                                                        <i class="fa fa-eye"></i> Profile</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" style="background-color: inherit!important;">
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="/logout" style="background-color: inherit!important;">
-                                                        <i class="fa fa-power-off"></i> Sign Out</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        @endif
-                                        <!--<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>-->
-                                        <li>
-                                            <a href="/checkout">
-                                                <i class="fa fa-crosshairs"></i> Checkout</a>
-                                        </li>
-                                        <li>
-                                            <a href="/cart">
-                                                <i class="fa fa-shopping-cart" style="float:left;"></i>
-                                                <span style="float:left;"> Cart </span>
-                                                <i data-ng-if="cartCount" style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
+
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="mainmenu pull-right">
+                            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    @if(!$username)
+                                    <li class="dropdown">
+                                        <a href="#">
+                                            <i class="fa fa-user"></i> Account
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul role="menu" class="sub-menu">
+                                            <li>
+                                                <a href="/login" style="background-color: inherit!important;">
+                                                    <i class="fa fa-sign-in"></i> Sign in</a>
+                                            </li>
+                                            <li>
+                                                <a href="/register" style="background-color: inherit!important;">
+                                                    <i class="fa fa-user"></i> Create Account</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    @else
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0)">
+                                            <i class="fa fa-user"></i> {{ $username }}
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul role="menu" class="sub-menu">
+                                            @if($admin)
+                                            <li>
+                                                <a href="/admin/dashboard" style="background-color: inherit!important;">
+                                                    <i class="fa fa-dashboard"></i> Admin Dashboard</a>
+                                            </li>
+                                            @endif
+                                            <li>
+                                                <a href="/profile" style="background-color: inherit!important;">
+                                                    <i class="fa fa-eye"></i> Profile</a>
+                                            </li>
+                                            <li>
+                                                <a href="/logout" style="background-color: inherit!important;">
+                                                    <i class="fa fa-power-off"></i> Sign Out</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    @endif
+                                    <li>
+                                        <a href="/checkout">
+                                            <i class="fa fa-crosshairs"></i> Checkout</a>
+                                    </li>
+                                    <li>
+                                        <a href="/cart">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <span>Cart</span>
+                                            <i data-ng-if="cartCount" style="display: block;height: 18px;width: 18px;line-height: 18px;-moz-border-radius: 50%;
                                                     border-radius: 50%;background-color: black;color: white;text-align: center;font-size: 1em;float:right;"
-                                                    data-ng-bind="cartCount"></i>
-                                            </a>
-                                        </li>
-                                        @if($username)
-                                        <li>
-                                            <a href="/logout">
-                                                <i class="fa fa-power-off"></i> Sign out</a>
-                                        </li>
-                                        @endif
-                                    </ul>
-                                </div>
+                                                data-ng-bind="cartCount"></i>
+                                        </a>
+                                    </li>
+                                    @if($username)
+                                    <li>
+                                        <a href="/logout">
+                                            <i class="fa fa-power-off"></i> Sign out</a>
+                                    </li>
+                                    @endif
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
             <!--/header-middle-->
 
 
