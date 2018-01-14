@@ -20,7 +20,7 @@ class ProductsSeeder extends Seeder
             .'through to Z -Zokor. Learn about classification of the animals, habitat, and the names of their female, males, young ones, group '
             .'and their classification as regards their feeding.',
             'selling_price' => '160000',
-            'image_location' => 'images/products/alphamals.jpg',
+            'image_location' => 'images/products/alphamals.png',
             'status' => 'HOT'
         ], [
             'id' => 2,
@@ -31,7 +31,7 @@ class ProductsSeeder extends Seeder
             .'families in Animal vertebrate families Book one are sketched for children to colour them using their own colour scheme or copying the one '
             .'in Alphamals (Animal Vertebrate families) Book one.',
             'selling_price' => '160000',
-            'image_location' => 'images/products/alphamals-color-me.jpg',
+            'image_location' => 'images/products/alphamals-color-me.png',
             'status' => 'HOT'
         ], [
             'id' => 3,
@@ -40,7 +40,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 1,
             'details' => 'Alphamals Sketch Book is here to give children a platform to start sketching their way to becoming real artists',
             'selling_price' => '156000',
-            'image_location' => 'images/products/alphamals-sketch-book.jpg',
+            'image_location' => 'images/products/alphamals-sketch-book.png',
             'status' => 'COLD'
         ], [
             'id' => 4,
@@ -49,7 +49,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 1,
             'details' => 'An introduction to the letters of the modern English Alphabet with words and images',
             'selling_price' => '140000',
-            'image_location' => 'images/products/alphabet-book.jpg',
+            'image_location' => 'images/products/alphabet-book.png',
             'status' => 'COLD'
         ], [
             'id' => 5,
@@ -58,7 +58,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 1,
             'details' => 'A sketch book for children that are learning how to draw',
             'selling_price' => '100000',
-            'image_location' => 'images/products/akwukwo-nsechalu.jpg',
+            'image_location' => 'images/products/akwukwo-nsechalu.png',
             'status' => 'COLD'
         ], [
             'id' => 6,
@@ -67,7 +67,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 1,
             'details' => 'An introduction to numbers from 1 to 10 with words and images',
             'selling_price' => '130000',
-            'image_location' => 'images/products/numbers-book.jpg',
+            'image_location' => 'images/products/numbers-book.png',
             'status' => 'COLD'
         ], [
             'id' => 7,
@@ -76,7 +76,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 1,
             'details' => 'A book for children learning to colour',
             'selling_price' => '165000',
-            'image_location' => 'images/products/imu-itee-agba.jpg',
+            'image_location' => 'images/products/imu-itee-agba.png',
             'status' => 'COLD'
         ], [
             'id' => 8,
@@ -85,7 +85,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 2,
             'details' => 'Asamgbede is a card game. It is good for teaching children addition and the Igbo names that are on the cards',
             'selling_price' => '120000',
-            'image_location' => 'images/products/asamgbede.jpg',
+            'image_location' => 'images/products/asamgbede.png',
             'status' => 'COLD'
         ], [
             'id' => 9,
@@ -94,7 +94,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 2,
             'details' => 'Asangosi (flash cards) introduces the big and small letters of Igbo language with images and words with translations to English, French, German and Spanish',
             'selling_price' => '110000',
-            'image_location' => 'images/products/asa-ngosi.jpg',
+            'image_location' => 'images/products/asa-ngosi.png',
             'status' => 'COLD'
         ], [
             'id' => 10,
@@ -103,7 +103,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 3,
             'details' => 'A drawn human body with labeling of the different parts of the body with translations in English and French',
             'selling_price' => '123000',
-            'image_location' => 'images/products/arum.jpg',
+            'image_location' => 'images/products/arum.png',
             'status' => 'COLD'
         ], [
             'id' => 11,
@@ -112,7 +112,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 3,
             'details' => 'An introduction to the letters of the modern English Alphabet with images',
             'selling_price' => '140000',
-            'image_location' => 'images/products/english-alphabet-chart.jpg',
+            'image_location' => 'images/products/english-alphabet-chart.png',
             'status' => 'COLD'
         ], [
             'id' => 12,
@@ -121,7 +121,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 3,
             'details' => 'An introduction to the numbers (1 - 10) in English using images',
             'selling_price' => '130000',
-            'image_location' => 'images/products/english-numbers-chart.jpg',
+            'image_location' => 'images/products/english-numbers-chart.png',
             'status' => 'COLD'
         ], [
             'id' => 13,
@@ -130,7 +130,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 3,
             'details' => 'An introduction to the letters of the modern english alphabet with images',
             'selling_price' => '110000',
-            'image_location' => 'images/products/english-alphabet-chart.jpg',
+            'image_location' => 'images/products/english-alphabet-chart.png',
             'status' => 'COLD'
         ], [
             'id' => 14,
@@ -139,7 +139,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 3,
             'details' => 'Well design written big and small letters of the igbo language alphabet, placed in different colour backgrounds',
             'selling_price' => '120000',
-            'image_location' => 'images/products/nnukwu-na-obele-mkpulu-okwu.jpg',
+            'image_location' => 'images/products/nnukwu-na-obele-mkpulu-okwu.png',
             'status' => 'COLD'
         ], [
             'id' => 15,
@@ -148,7 +148,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 3,
             'details' => 'An introduction to numbers one to ten in Igbo, with images and translations of the words to English and French',
             'selling_price' => '150000',
-            'image_location' => 'images/products/onu-ogugu-na-igbo.jpg',
+            'image_location' => 'images/products/onu-ogugu-na-igbo.png',
             'status' => 'COLD'
         ], [
             'id' => 16,
@@ -157,7 +157,7 @@ class ProductsSeeder extends Seeder
             'category_id' => 3,
             'details' => 'The Alphabet of the Igbo language, with words, images and translations of the Igbo words to English, French and German',
             'selling_price' => '120000',
-            'image_location' => 'images/products/mkpulu-na-okwu-asusu-igbo.jpg',
+            'image_location' => 'images/products/mkpulu-na-okwu-asusu-igbo.png',
             'status' => 'COLD'
         ]]);
 
