@@ -63,8 +63,17 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
 
     $scope.showMakeAdminModal = function (userId, currentIndex) {
         $scope.userIdToMakeAdmin = userId;
-        $scope.adminStatus = $('#adminToggle' + currentIndex).is(':checked');
-        $('#makeAdminModal').modal('show');
+        $scope.adminStatus = !$('#adminToggle' + currentIndex).is(':checked');
+        $('#makeAdminModal').modal({
+            backdrop: 'static', show: true
+        });
+    };
+
+    $scope.closeMakeAdminModal = function () {
+        $scope.makeAdminMessage = "";
+        $scope.confirmPassword = "";
+        $('#makeAdminModal').modal('hide');
+        $scope.getAllUsers();        
     };
 
     $scope.updateUser = function () {
@@ -73,7 +82,6 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
             $('#updateAlert').fadeIn();
             $scope.updateMessage = response.data.message;
             console.log('user was successfully updated');
-            // $('#updateAlert').fadeOut(10000);
         }, function (response) {
             console.log('error occured while trying to update the user');
         });
@@ -81,6 +89,7 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
 
     $scope.deleteUser = function () {
         Pace.restart();
+        
         UserService.deleteUser($scope.userIdToDelete, $scope.confirmPassword, function (response) {
             $scope.deleteUserMessage = response.data.original ? response.data.original.message : '';
             if($scope.deleteUserMessage !== 'your password is incorrect'){
