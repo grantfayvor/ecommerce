@@ -72,7 +72,7 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
 
     $scope.updateProductInCart = function (rowId, index) {
         Pace.restart();
-        if (!$('#quantity_value'+index).val()) {
+        if (!$('#quantity_value'+index).val() || $('#quantity_value'+index).val() < 1) {
             return;
         }
         var details = {

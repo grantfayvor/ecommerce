@@ -183,7 +183,7 @@
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
                                     <input id="quantity_value<%$index%>" class="cart_quantity_input" style="width:20%!important" type="number" data-ng-model="productToUpdate.qty"
-                                        name="quantity" value="<% product.qty %>" data-ng-change="updateProductInCart(product.rowId, $index)">
+                                        name="quantity" value="<% product.qty %>" data-ng-change="updateProductInCart(product.rowId, $index)" min="1">
                                 </div>
                             </td>
                             <td class="cart_total">
