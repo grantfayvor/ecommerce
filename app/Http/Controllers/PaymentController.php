@@ -32,7 +32,8 @@ class PaymentController extends Controller
         if($request->amount == ((int) $this->cartService->getCartSubtotal() * 100)){
             return Paystack::getAuthorizationUrl()->redirectNow();
         } else {
-            return response()->json(['message' => 'sorry you can\'t hack the price. I got it covered! ;)' . $request->amount]);
+            return response()->back()->withInput();
+            // return response()->json(['message' => 'sorry you can\'t hack the price. I got it covered! ;)' . $request->amount]);
         }
     }
 
