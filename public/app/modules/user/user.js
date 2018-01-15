@@ -136,6 +136,14 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
         });
     };
 
+    $scope.confirmPhoneNumber = function () {
+        if(isNaN($scope.phoneNumber)){
+            $scope.phoneError = "phone number should consist of numbers";
+        } else {
+            $scope.phoneError = null;
+        }
+    };
+
     var shuffle = function (array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
 
