@@ -274,7 +274,7 @@
 
                                 <p>popular today</p>
 
-                                <h2>24 DEC 2017</h2>
+                                <h2><?php echo Date('d M Y') ?></h2>
                             </div>
                         </div>
                     </div>

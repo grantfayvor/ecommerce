@@ -100,6 +100,12 @@
                         <!--login form-->
                         <h2>Login to your account</h2>
                         <form method="post" action="/api/user/authenticate">
+                            @if($errors->any())
+                            <div class="row text-center">
+                            <span style="color:red;">{{ $errors->first() }}</span>
+                            </div>
+                            <hr>
+                            @endif
                             {{ csrf_field() }}
                             <input type="email" placeholder="User email" name="email" value="{{ old('email') }}" required/>
                             <input type="password" name="password" placeholder="User password" required/>
@@ -164,7 +170,7 @@
 
                                 <p>popular today</p>
 
-                                <h2>24 DEC 2017</h2>
+                                <h2><?php echo Date('d M Y') ?></h2>
                             </div>
                         </div>
 
@@ -301,10 +307,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript" src="../app/angular.js"></script>
-    <script type="text/javascript" src="../app/config/config.js"></script>
-    <script type="text/javascript" src="../app/service/api-service.js"></script>
-    <script type="text/javascript" src="../app/modules/user/user.js"></script>
+    <script type="text/javascript" src="/app/angular.js"></script>
+    <script type="text/javascript" src="/app/config/config.js"></script>
+    <script type="text/javascript" src="/app/service/api-service.js"></script>
+    <script type="text/javascript" src="/app/modules/user/user.js"></script>
 
 </body>
 
