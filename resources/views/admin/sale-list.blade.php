@@ -130,6 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <th>Payment Reference</th>
                                         <th>Amount Paid</th>
                                         <th class="hidden-xs">Delivery Address</th>
+                                        <th class="hidden-xs">Time stamp</th>
                                         <!-- <th>Actions</th> -->
                                     </thead>
                                     <tbody>
@@ -154,6 +155,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             </td>
                                             <td class="hidden-xs">
                                                 <span data-ng-bind="sale.delivery_address"></span>
+                                            </td>
+                                            <td class="hidden-xs">
+                                                <span data-ng-bind="sale.updated_at"></span>
                                             </td>
                                             <!-- <td>
                                                 <a href="javascript:void(0)" style="color: red!important;" data-ng-click="deleteSale(sale.id)">

@@ -372,7 +372,7 @@
                     </div>
                     <div class="col-sm-4 col-sm-offset-1">
                         <div class="social-icons pull-left">
-                            <ul class="nav navbar-nav">
+                            <!-- <ul class="nav navbar-nav">
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-facebook"></i>
@@ -393,7 +393,7 @@
                                         <i class="fa fa-google-plus"></i>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
 

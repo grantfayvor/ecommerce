@@ -44,14 +44,6 @@ app.controller("ProductController", ['$scope', '$rootScope', 'ProductService', f
         });
     };
 
-    // $scope.updateProduct = function () {
-    //     ProductService.updateProduct($scope.updatedProduct, function (response) {
-    //         console.log("the product was successfully updated");
-    //     }, function (response) {
-    //         console.log("error in updating the product " + response);
-    //     });
-    // };
-
     $scope.countProducts = function () {
         Pace.restart();
         ProductService.countProducts(function (response) {
