@@ -245,7 +245,7 @@
                                                         laravel 5.1, 5.2 --}}
 
                                                         <p>
-                                                            <button class="btn btn-primary" type="submit" value="Pay Now!">
+                                                            <button class="btn btn-primary" data-ng-disabled="cart.total_price <= 0" type="submit" value="Pay Now!">
                                                                 <i class="fa fa-credit-card"></i> Pay Now!
                                                             </button>
                                                         </p>

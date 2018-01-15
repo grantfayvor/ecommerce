@@ -107,8 +107,8 @@
                             <hr>
                             @endif
                             {{ csrf_field() }}
-                            <input type="email" placeholder="User email" name="email" value="{{ old('email') }}" required/>
-                            <input type="password" name="password" placeholder="User password" required/>
+                            <input type="email" placeholder="Email" name="email" value="{{ old('email') }}" required/>
+                            <input type="password" name="password" placeholder="Password" required/>
                             <span>
                                 <input type="checkbox" class="checkbox" name="remember" {{ old( 'remember') ? 'checked' : '' }}> Keep me signed in
                             </span>
@@ -128,7 +128,8 @@
                             {{ csrf_field() }}
                             <input type="text" placeholder="First Name" name="firstName" required/>
                             <input type="text" placeholder="Last Name" name="lastName" required/>
-                            <input type="text" placeholder="Phone Number" name="phoneNumber" required/>
+                            <span class="pull-right" data-ng-show="phoneError" style="color:red;" data-ng-bind="phoneError"></span>
+                            <input type="text" placeholder="Phone Number" data-ng-model="phoneNumber" data-ng-change="confirmPhoneNumber()" name="phoneNumber" required/>
                             <input type="email" placeholder="Email Address" name="email" required/>
                             <input type="password" name="password" placeholder="Password" required/>
                             <button type="submit" class="btn btn-default">Signup</button>
