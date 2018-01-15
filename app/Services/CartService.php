@@ -22,10 +22,8 @@ class CartService
     private $productDetailsRepository;
     private $cart;
 
-    public function __construct(/* CartRepository $cartRepository, CartProductDetailsRepository $cpdRepository, */ GSCart $cart)
+    public function __construct(GSCart $cart)
     {
-        /* $this->cartRepository = $cartRepository;
-        $this->productDetailsRepository = $cpdRepository; */
         $this->cart = $cart;
     }
 

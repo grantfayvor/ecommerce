@@ -182,13 +182,13 @@
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                    <input id="quantity_value" class="cart_quantity_input" style="width:20%!important" type="number" data-ng-model="productToUpdate.qty"
-                                        name="quantity" value="<% product.qty %>" data-ng-change="updateProductInCart(product.rowId)">
+                                    <input id="quantity_value<%$index%>" class="cart_quantity_input" style="width:20%!important" type="number" data-ng-model="productToUpdate.qty"
+                                        name="quantity" value="<% product.qty %>" data-ng-change="updateProductInCart(product.rowId, $index)">
                                 </div>
                             </td>
                             <td class="cart_total">
                                 <p class="cart_total_price">₦
-                                    <span data-ng-bind="product.options.subtotal"></span>
+                                    <span data-ng-bind="product.price * product.qty"></span>
                                 </p>
                             </td>
                             <td class="cart_delete">
@@ -236,9 +236,7 @@
                                 </span>
                             </li>
                         </ul>
-                        {{--
-                        <a class="btn btn-default update" href="">Update</a>--}}
-                        <a class="btn btn-default update" href="/checkout">Check Out</a>
+                        <a class="btn btn-default update" data-ng-disabled="cart.total_price <= 0" href="/checkout">Check Out</a>
                     </div>
                 </div>
             </div>

@@ -66,7 +66,7 @@ function ($rootScope, $scope, MainService) {
             "id": product.id,
             "name": product.name,
             "qty": 1,
-            "price": product.selling_price
+            "price": parseInt(product.selling_price)
         };
         selectedProduct.details.options = {
             "image_location": product.image_location,

@@ -70,21 +70,22 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
         });
     };
 
-    $scope.updateProductInCart = function (rowId) {
+    $scope.updateProductInCart = function (rowId, index) {
         Pace.restart();
-        if (!$('#quantity_value').val()) {
+        if (!$('#quantity_value'+index).val()) {
             return;
         }
         var details = {
             'rowId': rowId,
-            'qty': $('#quantity_value').val()
+            'qty': $('#quantity_value'+index).val()
         };
         console.log(details);
         CartService.updateProductInCart(details, function (response) {
             $scope.getCartCount();
             $scope.cart.total_price = response.data.total_price;
+            $scope.cart = response.data;
             console.log("product in cart has been updated");
-            console.log(response.data);
+            // console.log(response.data);
         }, function (response) {
             console.log("error occured while updating product in cart");
         });
