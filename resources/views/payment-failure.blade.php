@@ -50,7 +50,7 @@
                         <div class="logo pull-left">
                             <!-- TODO change logo to company logo-->
                             <a href="/">
-                                <img src="images/home/logo.png" alt="Afiammuta" />
+                                <img src="images/home/logo.png" style="height:60px; width:80px;" alt="Afiammuta" />
                             </a>
                         </div>
 
