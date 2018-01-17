@@ -63,7 +63,7 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
 
     $scope.showMakeAdminModal = function (userId, currentIndex) {
         $scope.userIdToMakeAdmin = userId;
-        $scope.adminStatus = !$('#adminToggle' + currentIndex).is(':checked');
+        $scope.adminStatus = $('#adminToggle' + currentIndex).is(':checked');
         $('#makeAdminModal').modal({
             backdrop: 'static', show: true
         });
