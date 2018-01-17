@@ -137,9 +137,13 @@ app.controller("UserController", ['$scope', '$rootScope', 'UserService', functio
     };
 
     $scope.confirmPhoneNumber = function () {
+        var regExp = new RegExp('[e]');
         if(isNaN($scope.phoneNumber)){
             $scope.phoneError = "phone number should consist of numbers";
-        } else {
+        } else if(regExp.test($scope.phoneNumber)) {
+            $scope.phoneError = "phone number should consist of numbers";
+        }
+         else {
             $scope.phoneError = null;
         }
     };
