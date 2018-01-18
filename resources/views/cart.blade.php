@@ -125,7 +125,7 @@
                 </div>
             </div>
         </div>
-            <!--/header-middle-->
+        <!--/header-middle-->
 
 
         </nav>
@@ -183,7 +183,8 @@
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
                                     <input id="quantity_value<%$index%>" class="cart_quantity_input" style="width:20%!important" type="number" data-ng-model="productToUpdate.qty"
-                                        name="quantity" value="<% product.qty %>" data-ng-change="updateProductInCart(product.rowId, $index)" min="1">
+                                        name="quantity" value="<% product.qty %>" data-ng-change="updateProductInCart(product.rowId, $index)"
+                                        min="1">
                                 </div>
                             </td>
                             <td class="cart_total">
@@ -210,12 +211,15 @@
                 <div class="col-sm-6">
                     <div class="chose_area">
                         <ul class="user_option">
-                            <li>Delivery address
-                                <span>
-                                    <input type="text" class="form-control" placeholder="Enter your delivery address here" name="deliveryAddress" data-ng-model="sale.deliveryAddress" />
-                                </span>
-                                <button class="btn btn-primary" type="submit" data-ng-click="submitAddress()">Submit Address</button>
-                            </li>
+                            <form data-ng-submit="submitAddress()">
+                                <li>Delivery address
+                                    <span>
+                                        <input type="text" id="address" minlength="10" class="form-control" placeholder="Enter your delivery address here" name="deliveryAddress"
+                                            data-ng-model="sale.deliveryAddress" />
+                                    </span>
+                                    <button class="btn btn-primary" type="submit">Submit Address</button>
+                                </li>
+                            </form>
                         </ul>
                     </div>
                 </div>
@@ -272,7 +276,9 @@
 
                                 <p>popular today</p>
 
-                                <h2><?php echo Date('d M Y') ?></h2>
+                                <h2>
+                                    <?php echo Date('d M Y') ?>
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -393,7 +399,8 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Your delivery location is <span data-ng-bind="sale.deliveryAddress"></span>.</label>
+                            <label>Your delivery location is
+                                <span data-ng-bind="sale.deliveryAddress"></span>.</label>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -435,6 +442,16 @@
         var increment = function () {
             document.getElementById('#quantity_value') = document.getElementById('#quantity_value') + 1;
         };
+
+        var address = document.getElementById('address');
+        address.addEventListener("input", function (event) {
+            
+            if (address.validity.tooShort) {
+                address.setCustomValidity("Enter a valid delivery address!");
+            } else {
+                address.setCustomValidity("");
+            }
+        });
     </script>
 </body>
 
