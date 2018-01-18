@@ -133,7 +133,7 @@
                                 required/>
                             <input type="email" placeholder="Email Address" name="email" required/>
                             <input type="password" name="password" placeholder="Password" required/>
-                            <button type="submit" class="btn btn-default">Signup</button>
+                            <button type="submit" class="btn btn-default" data-ng-disabled="phoneError">Signup</button>
                         </form>
                     </div>
                     <!--/sign up form-->
