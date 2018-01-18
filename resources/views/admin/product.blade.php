@@ -199,7 +199,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <select name="categoryId" data-ng-model="updatedProduct.categoryId" class="form-control" required>
-                                                    <option value="<% category.id %>" data-ng-repeat="category in categories"><% category.name %></option>
+                                                    <option value="<% category.id %>" data-ng-repeat="category in categories" data-ng-selected="category.id == updatedProduct.categoryId"><% category.name %></option>
                                                 </select>
                                             </div>
                                         </div>

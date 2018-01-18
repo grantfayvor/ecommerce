@@ -33,52 +33,54 @@
         <!--header-->
 
         <!--<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">-->
-        <nav class="navbar navbar-custom" role="navigation">
-            <!-- Collapsed Hamburger -->
+        <!-- <nav class="navbar navbar-custom" role="navigation"> -->
+        <!-- Collapsed Hamburger -->
+        <div class="navbar-header">
             <button type="button" class="btn btn-navbar navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
                 <span class="sr-only">Toggle Navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+        </div>
 
-            <div class="header-middle" style="background-color: white;">
-                <!--header-middle-->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="logo pull-left">
-                                <!-- TODO change logo to company logo-->
-                                <a href="/">
-                                    <img src="images/home/logo.png" alt="Afiammuta" />
-                                </a>
-                            </div>
-                            <!-- <div class="btn-group pull-right">
+        <div class="header-middle" style="background-color: white;">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="logo pull-left">
+                            <!-- TODO change logo to company logo-->
+                            <a href="/">
+                                <img src="images/home/logo.png" style="height:60px; width:80px;" alt="Afiammuta" />
+                            </a>
+                        </div>
+                        <!-- <div class="btn-group pull-right">
                                 <div class="search_box pull-right">
                                     <input type="text" placeholder="Search" />
                                 </div>
                             </div> -->
 
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="shop-menu pull-right">
-                                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                                    <ul class="nav navbar-nav">
-                                        <li>
-                                            <a href="/">
-                                                <i class="fa fa-home"></i> Home</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right">
+                            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <a href="/">
+                                            <i class="fa fa-home"></i> Home</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--/header-middle-->
+        </div>
+        <!--/header-middle-->
 
 
-        </nav>
+        <!-- </nav> -->
         <!--/header-middle-->
     </header>
     <!--/header-->
@@ -100,9 +102,13 @@
                         <!--login form-->
                         <h2>Login to your account</h2>
                         <form method="post" action="/api/user/authenticate">
-                            {{ csrf_field() }}
-                            <input type="email" placeholder="User email" name="email" value="{{ old('email') }}" required/>
-                            <input type="password" name="password" placeholder="User password" required/>
+                            @if($errors->any())
+                            <div class="row text-center">
+                                <span style="color:red;">{{ $errors->first() }}</span>
+                            </div>
+                            <hr> @endif {{ csrf_field() }}
+                            <input type="email" placeholder="Email" name="email" value="{{ old('email') }}" required/>
+                            <input type="password" name="password" placeholder="Password" required/>
                             <span>
                                 <input type="checkbox" class="checkbox" name="remember" {{ old( 'remember') ? 'checked' : '' }}> Keep me signed in
                             </span>
@@ -122,10 +128,12 @@
                             {{ csrf_field() }}
                             <input type="text" placeholder="First Name" name="firstName" required/>
                             <input type="text" placeholder="Last Name" name="lastName" required/>
-                            <input type="text" placeholder="Phone Number" name="phoneNumber" required/>
+                            <span class="pull-right" data-ng-show="phoneError" style="color:red;" data-ng-bind="phoneError"></span>
+                            <input type="text" placeholder="Phone Number" data-ng-model="phoneNumber" data-ng-change="confirmPhoneNumber()" name="phoneNumber"
+                                required/>
                             <input type="email" placeholder="Email Address" name="email" required/>
                             <input type="password" name="password" placeholder="Password" required/>
-                            <button type="submit" class="btn btn-default">Signup</button>
+                            <button type="submit" class="btn btn-default" data-ng-disabled="phoneError">Signup</button>
                         </form>
                     </div>
                     <!--/sign up form-->
@@ -164,7 +172,9 @@
 
                                 <p>popular today</p>
 
-                                <h2>24 DEC 2017</h2>
+                                <h2>
+                                    <?php echo Date('d M Y') ?>
+                                </h2>
                             </div>
                         </div>
 
@@ -250,7 +260,7 @@
                     </div>
                     <div class="col-sm-4 col-sm-offset-1">
                         <div class="social-icons pull-left">
-                            <ul class="nav navbar-nav">
+                            <!-- <ul class="nav navbar-nav">
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-facebook"></i>
@@ -271,7 +281,7 @@
                                         <i class="fa fa-google-plus"></i>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
 
@@ -301,10 +311,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
-    <script type="text/javascript" src="../app/angular.js"></script>
-    <script type="text/javascript" src="../app/config/config.js"></script>
-    <script type="text/javascript" src="../app/service/api-service.js"></script>
-    <script type="text/javascript" src="../app/modules/user/user.js"></script>
+    <script type="text/javascript" src="/app/angular.js"></script>
+    <script type="text/javascript" src="/app/config/config.js"></script>
+    <script type="text/javascript" src="/app/service/api-service.js"></script>
+    <script type="text/javascript" src="/app/modules/user/user.js"></script>
 
 </body>
 

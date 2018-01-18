@@ -53,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="clearfix"> </div>
                     </div>
                     <div class="header-right">
-                        
+
                         <!--notification menu end -->
                         <div class="profile_details">
                             <ul>
@@ -62,13 +62,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="profile_img">
                                             <span class="prfil-img">
                                                 <!-- <img src="images/p1.png" alt=""> </span> -->
-                                            <div class="user-name">
-                                                <p>{{ $username }}</p>
-                                                <span>Administrator</span>
-                                            </div>
-                                            <i class="fa fa-angle-down lnr"></i>
-                                            <i class="fa fa-angle-up lnr"></i>
-                                            <div class="clearfix"></div>
+                                                <div class="user-name">
+                                                    <p>{{ $username }}</p>
+                                                    <span>Administrator</span>
+                                                </div>
+                                                <i class="fa fa-angle-down lnr"></i>
+                                                <i class="fa fa-angle-up lnr"></i>
+                                                <div class="clearfix"></div>
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu drp-mnu">
@@ -315,7 +315,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-ng-click="closeMakeAdminModal()" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                     <h4 class="modal-title">Confirm</h4>
@@ -333,7 +333,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" class="btn btn-default add-to-cart" data-ng-click="makeAdminMessage = ''">Cancel</a>
+                    <a href="#" class="btn btn-default add-to-cart" data-ng-click="closeMakeAdminModal()">Cancel</a>
                     <a href="javascript:void(0)" data-ng-click="makeAdmin()" class="btn btn-danger">Ok</a>
                 </div>
             </div>
@@ -372,7 +372,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 return false;
             });
 
+            
+
         });
+
+
+
     </script>
     <!--scrolling js-->
     <script src="/js/jquery.nicescroll.js"></script>

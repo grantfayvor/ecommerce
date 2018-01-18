@@ -51,7 +51,7 @@
                         <div class="logo pull-left">
                             <!-- TODO change logo to company logo-->
                             <a href="/">
-                                <img src="images/home/logo.png" alt="Afiammuta" />
+                                <img src="images/home/logo.png" style="height:60px; width:80px;" alt="Afiammuta" />
                             </a>
                         </div>
                         <div class="btn-group pull-right">
@@ -312,7 +312,7 @@
 
                                 <p>popular today</p>
 
-                                <h2>24 DEC 2017</h2>
+                                <h2><?php echo Date('d M Y') ?></h2>
                             </div>
                         </div>
 
@@ -372,7 +372,7 @@
                     </div>
                     <div class="col-sm-4 col-sm-offset-1">
                         <div class="social-icons pull-left">
-                            <ul class="nav navbar-nav">
+                            <!-- <ul class="nav navbar-nav">
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-facebook"></i>
@@ -393,7 +393,7 @@
                                         <i class="fa fa-google-plus"></i>
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
 
