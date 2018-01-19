@@ -17,9 +17,9 @@ class UserService
         $this->repository = $userRepository;
     }
 
-    public function authenticateUser($username, $password)
+    public function authenticateUser($username, $password, $rememberMe = false)
     {
-        return Auth::attempt(['email' => $username, 'password' => $password]);
+        return Auth::attempt(['email' => $username, 'password' => $password], $rememberMe);
     }
 
     public function findAllUsers()
