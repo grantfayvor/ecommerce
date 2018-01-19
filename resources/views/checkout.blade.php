@@ -124,7 +124,7 @@
                 </div>
             </div>
         </div>
-            <!--/header-middle-->
+        <!--/header-middle-->
 
 
         </nav>
@@ -179,7 +179,8 @@
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
                                     <input id="quantity_value<%$index%>" class="cart_quantity_input" style="width:20%!important" type="number" data-ng-model="productToUpdate.qty"
-                                        name="quantity" value="<% product.qty %>" data-ng-change="updateProductInCart(product.rowId, $index)" min="1">
+                                        name="quantity" value="<% product.qty %>" data-ng-change="updateProductInCart(product.rowId, $index)"
+                                        min="1">
                                 </div>
                             </td>
                             <td class="cart_total">
@@ -194,48 +195,48 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="4">
-                                <div class="col-sm-6">
-                                    <div class="chose_area">
-                                        <ul class="user_option">
-                                            <li>Delivery address
-                                                <span>
-                                                    <input type="text" class="form-control" placeholder="Enter your delivery address here" name="deliveryAddress" data-ng-model="sale.deliveryAddress"/>
-                                                </span>
-                                            </li>
-                                        </ul>
+                            <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+                                <td colspan="4">
+                                    <div class="col-sm-6">
+                                        <div class="chose_area">
+                                            <ul class="user_option">
+                                                <li>Delivery address
+                                                    <span>
+                                                        <input type="text" id="address" minlength="10" class="form-control" placeholder="Enter your delivery address here" name="deliveryAddress"
+                                                            data-ng-model="sale.deliveryAddress" required/>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td colspan="2">
-                                <table class="table table-condensed total-result">
-                                    <tr>
-                                        <td>Cart Sub Total</td>
-                                        <td>
-                                            <span>₦
-                                                <span data-ng-bind="cart.total_price"></span>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr class="shipping-cost">
-                                        <td>Delivery Cost</td>
-                                        <td>₦ 0</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Total</td>
-                                        <td>
-                                            <span>₦
-                                                <span data-ng-bind="cart.total_price"></span>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+                                </td>
+                                <td colspan="2">
+                                    <table class="table table-condensed total-result">
+                                        <tr>
+                                            <td>Cart Sub Total</td>
+                                            <td>
+                                                <span>₦
+                                                    <span data-ng-bind="cart.total_price"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr class="shipping-cost">
+                                            <td>Delivery Cost</td>
+                                            <td>₦ 0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td>
+                                                <span>₦
+                                                    <span data-ng-bind="cart.total_price"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                                 <div class="row" style="margin-bottom:40px;">
                                                     <div class="col-md-8 col-md-offset-2">
 
-                                                        <input type="hidden" name="deliveryAddress" value="<% sale.deliveryAddress %>" required >
                                                         <input type="hidden" name="email" value="{{ $email }}" required> {{-- required email of the user making payments --}}
                                                         <input type="hidden" name="orderID" value="<% orderId %>" required>
                                                         <input type="hidden" name="amount" value="<% cart.total_price * 100 %>" required> {{-- required in kobo --}}
@@ -251,11 +252,11 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </form>
                         </tr>
                     </tbody>
                 </table>
@@ -293,7 +294,9 @@
 
                                 <p>popular today</p>
 
-                                <h2><?php echo Date('d M Y') ?></h2>
+                                <h2>
+                                    <?php echo Date('d M Y') ?>
+                                </h2>
                             </div>
                         </div>
                     </div>
@@ -424,6 +427,18 @@
     <script type="text/javascript" src="/app/config/config.js"></script>
     <script type="text/javascript" src="/app/service/api-service.js"></script>
     <script type="text/javascript" src="/app/modules/cart/cart.js"></script>
+
+    <script>
+        var address = document.getElementById('address');
+        address.addEventListener("input", function (event) {
+
+            if (address.validity.tooShort) {
+                address.setCustomValidity("Enter a valid delivery address!");
+            } else {
+                address.setCustomValidity("");
+            }
+        });
+    </script>
 </body>
 
 </html>
