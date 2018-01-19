@@ -49,7 +49,8 @@ class UserController extends Controller
         $this->validate($request, $rules);
         $username = $request->email;
         $password = $request->password;
-        if ($this->userService->authenticateUser($username, $password)) {
+        $rememberMe = $request->remember;
+        if ($this->userService->authenticateUser($username, $password, $rememberMe)) {
             if(Auth::user()->admin){
                 return redirect()->intended('/admin/dashboard');
             }
