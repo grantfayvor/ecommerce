@@ -180,6 +180,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                         <input type="number" name="id" data-ng-model="updatedProduct.id" data-ng-hide="true" required/>
 
+                                        {{--@if($errors->any())--}}
+                                            <div class="form-group">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <span style="color:red;">please upload an image with either a jpg or png format</span>
+                                                </div>
+                                            </div>
+                                        {{--@endif--}}
+
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
                                                 <input type="text" name="name" data-ng-model="updatedProduct.name" class="form-control" placeholder="Name" required>
