@@ -29,10 +29,16 @@ class ProductController extends Controller
             'details' => 'required'
         ];
         $this->validate($request, $rules);
-        if($this->productService->save($request)){
-            return redirect('/admin/view-products');
+        $image = $request->file('image');
+        $imageExtension = $image->getClientOriginalExtension();
+        if($imageExtension === 'jpg' || $imageExtension === 'png'){
+            if($this->productService->save($request)){
+                return redirect('/admin/view-products');
+            } else {
+                return back()->withInput();
+            }
         } else {
-            return back()->withInput();
+            return back()->withInput()->withErrors(['imageError' => 'please upload an image with either a jpg or png format']);
         }
     }
 
@@ -48,11 +54,17 @@ class ProductController extends Controller
             'details' => 'required'
         ];
         $this->validate($request, $rules);
+        $image = $request->file('image');
+        $imageExtension = $image->getClientOriginalExtension();
         $id = $request->id;
-        if($this->productService->update($request, $id)){
-            return redirect('/admin/view-products');
+        if($imageExtension === 'jpg' || $imageExtension === 'png') {
+            if ($this->productService->update($request, $id)) {
+                return redirect('/admin/view-products');
+            } else {
+                return back()->withInput();
+            }
         } else {
-            return back()->withInput();
+            return back()->withInput()->withErrors(['imageError' => 'please upload an image with either a jpg or png format']);
         }
     }
 

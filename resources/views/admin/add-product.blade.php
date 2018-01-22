@@ -129,25 +129,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <form class="form-horizontal form-label-left input_mask" enctype="MULTIPART/FORM-DATA" method="POST" action="/api/product/save">
                                         {{ csrf_field() }}
 
+                                        @if($errors->any())
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <input type="text" name="name" data-ng-model="new_product.name" class="form-control" placeholder="Name" required>
+                                                <span style="color:red;">{{ $errors->first() }}</span>
+                                            </div>
+                                        </div>
+                                        @endif
+
+                                        <div class="form-group">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <input type="text" name="name" value="{{ old('name') }}" data-ng-model="new_product.name" class="form-control" placeholder="Name" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <input type="text" name="brand" data-ng-model="new_product.brand" class="form-control" placeholder="Brand" required>
+                                                <input type="text" name="brand" value="{{ old('brand') }}" data-ng-model="new_product.brand" class="form-control" placeholder="Brand" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <input type="text" name="sellingPrice" data-ng-model="new_product.sellingPrice" class="form-control" placeholder="Selling Price"
+                                                <input type="text" name="sellingPrice" value="{{ old('sellingPrice') }}" data-ng-model="new_product.sellingPrice" class="form-control" placeholder="Selling Price"
                                                     required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <select name="categoryId" data-ng-model="new_product.categoryId" class="form-control" required>
+                                                <select name="categoryId" value="{{ old('categoryId') }}" data-ng-model="new_product.categoryId" class="form-control" required>
                                                     <option value="" selected disabled>Category</option>
                                                     <option value="<% category.id %>" data-ng-repeat="category in categories"><% category.name %></option>
                                                 </select>
@@ -155,12 +163,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <input type="file" name="image" data-ng-model="new_product.image" class="form-control" placeholder="product image" required>
+                                                <input type="file" name="image" value="{{ old('image') }}" data-ng-model="new_product.image" class="form-control" placeholder="product image" required>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <textarea name="details" data-ng-model="new_product.details" class="form-control" rows="3" placeholder="Details about the product"
+                                                <textarea name="details" value="{{ old('details') }}" data-ng-model="new_product.details" class="form-control" rows="3" placeholder="Details about the product"
                                                     required></textarea>
                                             </div>
                                         </div>
