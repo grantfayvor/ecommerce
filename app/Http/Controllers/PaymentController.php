@@ -37,6 +37,37 @@ class PaymentController extends Controller
         }
     }
 
+    public function getTransactionReference()
+    {
+        return Paystack::genTranxRef();
+    }
+
+    public function storePaymentDetails(Request $request) 
+    {
+        $cart = base64_encode(serialize($this->cartService->getCart()));
+        $cartPrice = $this->cartService->getCartSubtotal();
+        $quantity = $this->cartService->getCountOfItems();
+        $transactionId = $request->reference;
+        $amountPaid = $request->amount;
+        $customer = $request->customer;
+        $deliveryAddress = session('deliveryAddress');
+
+        $sale = [
+            'cart' => $cart,
+            'cart_price' => $cartPrice,
+            'quantity' => $quantity,
+            'payment_id' => $transactionId,
+            'amount_paid' => (int) $amountPaid / 100,
+            'profit' => $cartPrice,
+            'customer' => $customer,
+            'delivery_address' => $deliveryAddress
+        ];
+
+        $this->saleService->addSale($sale);
+        $request->session()->forget('cart');
+        return response()->json(true);
+    }
+
     public function handleGatewayCallback(Request $request)
     {
         $paymentDetails = Paystack::getPaymentData();
