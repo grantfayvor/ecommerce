@@ -29,7 +29,7 @@
 <!--/head-->
 
 <body data-ng-controller="CartController" data-ng-cloak>
-    <header id="header" data-ng-init="initialize()">
+    <header id="header" data-ng-init="initialize(); getTransactionReference();">
         <!--header-->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -195,7 +195,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+                            <form>
                                 <td colspan="4">
                                     <div class="col-sm-6">
                                         <div class="chose_area">
@@ -237,16 +237,19 @@
                                                 <div class="row" style="margin-bottom:40px;">
                                                     <div class="col-md-8 col-md-offset-2">
 
-                                                        <input type="hidden" name="email" value="{{ $email }}" required> {{-- required email of the user making payments --}}
+                                                        <script src="https://js.paystack.co/v1/inline.js"></script>
+
+                                                        <input type="hidden" id="email" name="email" value="{{ $email }}" required> {{-- required email of the user making payments --}}
+                                                        <input type="hidden" id="phone" name="phone" value="{{ $phone }}" required>
                                                         <input type="hidden" name="orderID" value="<% orderId %>" required>
                                                         <input type="hidden" name="amount" value="<% cart.total_price * 100 %>" required> {{-- required in kobo --}}
                                                         <input type="hidden" name="quantity" value="<% cartCount %>" required>
-                                                        <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}" required> {{-- required --}}
-                                                        <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}" required> {{-- required --}} {{ csrf_field() }} {{-- works only when using
+                                                        <input type="hidden" name="reference" value="<% transactionReference %>" required>
+                                                        <input type="hidden" id="publicKey" name="key" value="{{ config('paystack.publicKey') }}" required> {{-- required --}} {{ csrf_field() }} {{-- works only when using
                                                         laravel 5.1, 5.2 --}}
 
                                                         <p>
-                                                            <button class="btn btn-primary" data-ng-disabled="cart.total_price <= 0" type="submit" value="Pay Now!">
+                                                            <button class="btn btn-primary" data-ng-click="payWithPaystack()" data-ng-disabled="cart.total_price <= 0" type="button" value="Pay Now!">
                                                                 <i class="fa fa-credit-card"></i> Pay Now!
                                                             </button>
                                                         </p>

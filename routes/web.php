@@ -97,3 +97,5 @@ Route::get('/api/address', 'UserController@getAddress');
 //Payment gateway
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay')->middleware('auth');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback')->middleware('auth');
+Route::post('/payment/storeDetails', 'PaymentController@storePaymentDetails')->middleware('auth');
+Route::get('/paystack/reference', 'PaymentController@getTransactionReference')->middleware('auth');

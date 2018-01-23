@@ -47,7 +47,7 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
         CartService.getAddress(function (response) {
             console.log(response.data);
             $scope.sale.deliveryAddress = response.data || '';
-        }, function(response) {
+        }, function (response) {
             console.log("error occured while trying to get the delivery address");
         });
     };
@@ -72,12 +72,12 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
 
     $scope.updateProductInCart = function (rowId, index) {
         Pace.restart();
-        if (!$('#quantity_value'+index).val() || $('#quantity_value'+index).val() < 1) {
+        if (!$('#quantity_value' + index).val() || $('#quantity_value' + index).val() < 1) {
             return;
         }
         var details = {
             'rowId': rowId,
-            'qty': $('#quantity_value'+index).val()
+            'qty': $('#quantity_value' + index).val()
         };
         console.log(details);
         CartService.updateProductInCart(details, function (response) {
@@ -88,6 +88,67 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
             // console.log(response.data);
         }, function (response) {
             console.log("error occured while updating product in cart");
+        });
+    };
+
+    $scope.payWithPaystack = function () {
+        Pace.restart();
+        console.log("attempting to access paystack");
+        var handler = PaystackPop.setup({
+            key: $('#publicKey').val(),
+            email: $('#email').val(),
+            amount: $scope.cart.total_price * 100,
+            ref: $scope.transactionReference,
+            metadata: {
+                custom_fields: [
+                    {
+                        display_name: "Mobile Number",
+                        variable_name: "mobile_number",
+                        value: $('#phone').val()
+                    }, {
+                        display_name: "Quantity",
+                        variable_name: "quantity",
+                        value: $scope.cartCount
+                    }, {
+                        display_name: "Order ID",
+                        variable_name: "orderId",
+                        value: $scope.orderId
+                    }
+                ]
+            },
+            callback: function (response) {
+                $scope.storePaymentDetails(response.reference);
+            },
+            onClose: function () {
+                alert('sorry could not complete payment. try again');
+            }
+        });
+        handler.openIframe();
+    };
+
+    $scope.storePaymentDetails = function (reference) {
+        Pace.restart();
+        var details = {
+            'reference': reference,
+            'amount': $scope.cart.total_price * 100,
+            'customer': $('#email').val()
+        };
+        CartService.storePaymentDetails(details, function (response) {
+            if (response.data === true) {
+                window.location.href = '/payment/success';
+            } else {
+                window.location.href = '/payment/failure';
+            }
+        }, function (response) {
+            window.location.href = '/payment/failure';
+        });
+    };
+
+    $scope.getTransactionReference = function () {
+        CartService.getTransactionReference(function (response) {
+            $scope.transactionReference = response.data;
+        }, function (response) {
+            console.log("unable to get the paystack transaction reference");
         });
     };
 
@@ -139,5 +200,13 @@ app.service("CartService", ['APIService', function (APIService) {
 
     this.getAddress = function (successHandler, errorHandler) {
         APIService.get('/api/address', successHandler, errorHandler);
+    };
+
+    this.getTransactionReference = function (successHandler, errorHandler) {
+        APIService.get('/paystack/reference', successHandler, errorHandler);
+    };
+
+    this.storePaymentDetails = function (details, successHandler, errorHandler) {
+        APIService.post('/payment/storeDetails', details, successHandler, errorHandler);
     };
 }]);

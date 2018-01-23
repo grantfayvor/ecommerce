@@ -50,7 +50,7 @@ class MainController extends Controller
 
     public function checkout()
     {
-        return view('checkout', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null, 'email' => Auth::user() ? Auth::user()->email : null]);
+        return view('checkout', ['username' => Auth::user() ? Auth::user()->name : null, 'admin' => Auth::user() ? Auth::user()->admin : null, 'email' => Auth::user() ? Auth::user()->email : null, 'phone' => Auth::user() ? Auth::user()->phone_number : null]);
     }
 
     public function userProfile()
