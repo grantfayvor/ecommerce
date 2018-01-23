@@ -241,7 +241,6 @@
                                                         <input type="hidden" name="orderID" value="<% orderId %>" required>
                                                         <input type="hidden" name="amount" value="<% cart.total_price * 100 %>" required> {{-- required in kobo --}}
                                                         <input type="hidden" name="quantity" value="<% cartCount %>" required>
-                                                        <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}" required> {{-- required --}}
                                                         <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}" required> {{-- required --}} {{ csrf_field() }} {{-- works only when using
                                                         laravel 5.1, 5.2 --}}
 

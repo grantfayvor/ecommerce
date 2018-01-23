@@ -23,10 +23,10 @@ class PaymentController extends Controller
             'orderID' => 'required',
             'amount' => 'required',
             'quantity' => 'required',
-            'reference' => 'required',
             'key' => 'required',
             'deliveryAddress' => 'required'
         ];
+        $request->reference = Paystack::genTranxRef();
         $this->validate($request, $rules);
         session(['deliveryAddress' => $request->deliveryAddress]);
         if($request->amount == ((int) $this->cartService->getCartSubtotal() * 100)){
