@@ -50,7 +50,7 @@ class PaymentController extends Controller
         $transactionId = $request->reference;
         $amountPaid = $request->amount;
         $customer = $request->customer;
-        $deliveryAddress = session('deliveryAddress');
+        $deliveryAddress = $request->deliveryAddress ?: session('deliveryAddress');
 
         $sale = [
             'cart' => $cart,
