@@ -158,7 +158,7 @@
                                                 <div class="col-sm-12 col-md-12" style="position: relative;">
                                                     <!-- <p style="position: absolute; top: 50%; transform: translateY(-50%);"> -->
                                                     <h2 class="alert alert-danger" style="font:bold;">
-                                                        Sorry, your payment was not be completed.
+                                                        Sorry, your payment has not been completed.
                                                     </h2>
                                                     <!-- </p> -->
                                                 </div>
@@ -257,7 +257,7 @@
                                     <i class="fa fa-arrow-circle-o-right"></i>
                                 </button>
                                 <p>Get the most recent educational materials from
-                                    <br/>from us at Afiammuta...</p>
+                                    <br/>us at Afiammuta...</p>
                             </form>
                         </div>
                     </div>

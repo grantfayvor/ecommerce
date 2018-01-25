@@ -311,7 +311,7 @@
                                     <i class="fa fa-arrow-circle-o-right"></i>
                                 </button>
                                 <p>Get the most recent educational materials from
-                                    <br/>from us at Afiammuta...</p>
+                                    <br/>us at Afiammuta...</p>
                             </form>
                         </div>
                     </div>
