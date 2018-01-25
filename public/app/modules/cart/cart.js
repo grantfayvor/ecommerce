@@ -92,6 +92,10 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
     };
 
     $scope.payWithPaystack = function () {
+        if (!$scope.sale.deliveryAddress) {
+            $scope.addressError = "The delivery address should be meaningful";
+            return;
+        }
         Pace.restart();
         console.log("attempting to access paystack");
         var handler = PaystackPop.setup({
@@ -131,7 +135,8 @@ app.controller("CartController", ['$scope', 'CartService', function ($scope, Car
         var details = {
             'reference': reference,
             'amount': $scope.cart.total_price * 100,
-            'customer': $('#email').val()
+            'customer': $('#email').val(),
+            'deliveryAddress': $scope.sale.deliveryAddress
         };
         CartService.storePaymentDetails(details, function (response) {
             if (response.data === true) {

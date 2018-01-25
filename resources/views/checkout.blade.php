@@ -201,6 +201,8 @@
                                         <div class="chose_area">
                                             <ul class="user_option">
                                                 <li>Delivery address
+                                                <br>
+                                                <span style="color:red;" data-ng-bind="addressError"></span>
                                                     <span>
                                                         <input type="text" id="address" minlength="10" class="form-control" placeholder="Enter your delivery address here" name="deliveryAddress"
                                                             data-ng-model="sale.deliveryAddress" required/>
@@ -352,7 +354,7 @@
                                     <i class="fa fa-arrow-circle-o-right"></i>
                                 </button>
                                 <p>Get the most recent educational materials from
-                                    <br/>from us at Afiammuta...</p>
+                                    <br/>us at Afiammuta...</p>
                             </form>
                         </div>
                     </div>
