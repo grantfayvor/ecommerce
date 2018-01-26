@@ -202,9 +202,11 @@
                                     </div>
                                 </a>
 
-                                <p>popular today</p>
+                                <!-- <p>popular today</p>
 
-                                <h2><?php echo Date('d M Y') ?></h2>
+                                <h2>
+                                <?php /* echo Date('d M Y') */ ?>
+                                </h2> -->
                             </div>
                         </div>
                     </div>
